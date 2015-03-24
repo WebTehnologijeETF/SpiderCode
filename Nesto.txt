@@ -1,2 +1,7 @@
 Promjena s Weba-a
+<<<<<<< HEAD
  ,jgjututiiiu
+=======
+
+Probla za konflikt s Weba
+>>>>>>> origin/master
