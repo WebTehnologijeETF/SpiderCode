@@ -16,19 +16,23 @@ summary {
   display: block;
 }
  
- 
+
 /*Whole Page*/
 html{
 	padding: 0;
+}
+*{
+	box-sizing: border-box;
 }
 body{
 	margin: 0;
 	font-size: 15px;
 	font-family: Lato, Arial,  Sans-serif;
+	background-color: #172029;
 }
+
 a{
 	text-decoration: none;
-	color: inherit;
 }
 /*Whole page - END*/
 
@@ -36,17 +40,72 @@ a{
 .navbar{
 	min-height: 60px;
 	font-size: 20px;
+  	padding-left: 15px;
+  	padding-right: 15px;
+  	margin-right: auto;
+  	margin-left: auto;
+  	overflow: hidden;
 }
-.navbar-tamni{
-	background-color: #2c3e50;
-	color: white;
+
+.navbar-small{
+	min-height: 50px;
+	font-size: 16px;
 }
 
 .navbar ul{
 	margin: 0;
 	list-style-type: none; 
+	float: left;
+	overflow: hidden;
+	padding-left: 40px;
+	padding-right: 40px;
 }
-.navbar ul>li{
-	display: inline;
+.navbar>ul>li{
+	float: left;
+	
+	padding: 0 10px;
+}
+.navbar>ul>li>a{
+	display: block;
+	padding-top: 18px;
+	padding-bottom: 18px; 
+}
+
+.navbar-small>ul>li>a{
+	padding-top: 14px;
+	padding-bottom: 14px;
+}
+
+
+.navbar-tamni{
+	background-color: #2c3e50;
+	color: white;
+}
+.navbar-tamni a{
+	color: white;
+}
+@media (max-width: 500px){
+	.navbar>ul>li{
+		clear: both;
+	}
+	.navbar ul{
+		padding-left: 0;
+		padding-right: 0;
+	}
+	
 }
 /*Navbar - END*/
+
+/*Warrnig: footer;*/
+footer{
+	background-color: #1d2935;
+	color: white;
+	min-height: 50px;
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	overflow: auto;
+}
+footer a{
+	color: white;
+}
