@@ -30,7 +30,9 @@ body{
 	font-family: Lato, Arial,  Sans-serif;
 	background-color: #172029;
 }
-
+body{
+	overflow: hidden;
+}
 a{
 	text-decoration: none;
 }
@@ -84,6 +86,10 @@ a{
 .navbar-tamni a{
 	color: white;
 }
+.navbar li.active{
+	background-color: #1d2935;
+	box-shadow: 0px 0px 2px 0px black;
+}
 @media (max-width: 500px){
 	.navbar>ul>li{
 		clear: both;
@@ -93,6 +99,24 @@ a{
 		padding-right: 0;
 	}
 	
+}
+
+.logo{
+	width: auto;
+	height: 56px;
+	margin: 0 0 0 -20px;
+	padding: 12px 0 !important;
+	font-size: 28px;
+}
+.logo>img{
+	margin: -15px 4px -13px 0;
+	height: 50px;
+	vertical-align: middle;
+	display: inline;
+}
+
+.navbar{
+	box-shadow: 0px 0px 6px -1px black;
 }
 /*Navbar - END*/
 
