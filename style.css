@@ -86,10 +86,14 @@ a{
 .navbar-tamni a{
 	color: white;
 }
-.navbar li.active{
+.navbar-tamni li.active, .navbar-tamni li:hover:not(.no-hover){
 	background-color: #1d2935;
-	box-shadow: 0px 0px 2px 0px black;
 }
+.navbar-tamni li.active{
+	/*Udustali od sjene
+	box-shadow: 0px 0px 3px 0px black;*/
+}
+
 @media (max-width: 500px){
 	.navbar>ul>li{
 		clear: both;
