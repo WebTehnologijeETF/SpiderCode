@@ -1,6 +1,6 @@
     'use strict';
     
-    var app = angular.module('app', ['NgRoute'])
+    var app = angular.module('app', ['ngRoute'])
                     .config(['$routeProvider', function ($routeProvider) {
                            $routeProvider.when('/', {
                             controller: HomeController,
@@ -25,11 +25,17 @@
                             }]);
 
     app.controller('HomeController', function($scope) {
-        // nista pametno sad zasad
+
+        $scope.Projects = [];
+
+        for(var i = 0; i < 5; i++)
+            {
+                $scope.Projects[i] = { files: ['file1','file2', 'file3','file4'], name: 'Project'+i};
+            } 
     });
 
     app.controller('AboutController', function($scope) {
-        
+        // nista pametno sad zasad
     });
 
     app.controller('ContactsController', function($scope) {
