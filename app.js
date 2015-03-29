@@ -1,24 +1,29 @@
     'use strict';
     
-    var app = angular.module('app', ['NgRoute'])
+    var app = angular.module('app', ['ngRoute'])
                     .config(['$routeProvider', function ($routeProvider) {
                            $routeProvider.when('/', {
-                            controller: HomeController,
+                            controller: 'HomeController',
                             templateUrl: '/templates/Home.html'
                             });
                             $routeProvider.when('/Home', {
-                            controller: HomeController,
+                            controller: 'HomeController',
                             templateUrl: '/templates/Home.html'
                             });
 
                             $routeProvider.when('/About', {
-                            controller: AboutController,
+                            controller: 'AboutController',
                             templateUrl: '/templates/About.html'
                             });
 
                             $routeProvider.when('/Contacts', {
-                            controller: ContactsController,
+                            controller: 'ContactsController',
                             templateUrl: '/templates/Contacts.html'
+                            });
+
+                            $routeProvider.when('/ChooseServer', {
+                            controller: 'ChooseServerController',
+                            templateUrl: '/templates/ChooseServer.html'
                             });
 
                             $routeProvider.otherwise({ redirectTo: '/' });

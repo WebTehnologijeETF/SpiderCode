@@ -146,17 +146,55 @@ footer a{
 .modal{
 	display: block;
 	position: relative;
-	top:auto;
-	right: auto;
-	bottom: auto;
-	left: auto;
+	margin-top:50px;
+	margin-right: auto;
+	margin-bottom: auto;
+	margin-left: auto;
+	max-width: 700px;
 	width: 50%;
-	
+	background-color: transparent;
+	padding: 0px;
 }
-.modal>a{
+
+.modal-content{
+	border-radius: 6px;
+	padding: 15px;
+}
+
+.modal-content>a{
 	display: block;
+	
 }
 .modal-tamni{
 	color: inherit;
 	background-color: #172029;
+}
+.modal-tamni a{
+	color: white;
+}
+/*Modal - END*/
+
+/*Buttons*/
+.btn{
+	display: block;
+	border-radius: 6px;
+}
+
+.btn-wide{
+	width:100%;
+	font-size: 23px;
+	margin: 20px;
+	
+}
+
+.btn-orange{
+	background-color: #bd4028;
+	border-top-left-radius: 6px;
+}
+
+.btn-violet{
+	background-color: #6C0EA3;
+}
+.btn-blue{
+	background-color: #1A74AB;
 }
