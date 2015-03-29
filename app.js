@@ -1,5 +1,5 @@
     
-    var module = angular.module('app', ['ui.router', 'app.filters', 'app.services', 'app.directives', 'app.controllers'])
+    var module = angular.module('app', [])
                     .config(["$routeProvider", function ($routeProvider) {
                            $routeProvider.when("/", {
                             controller: "HomeController",
