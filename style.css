@@ -28,7 +28,7 @@ body{
 	margin: 0;
 	font-size: 15px;
 	font-family: Lato, Arial,  Sans-serif;
-	background-color: #172029;
+	background-color: #0B0F13;
 }
 body{
 	overflow: hidden;
@@ -124,7 +124,8 @@ a{
 }
 /*Navbar - END*/
 
-/*Warrnig: footer;*/
+/*Warrnig: footer is not very good, test it before use, 
+and use it with .navbar and .navbar-tamni*/
 footer{
 	background-color: #1d2935;
 	color: white;
