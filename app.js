@@ -26,6 +26,10 @@
                             templateUrl: '/templates/ChooseServer.html'
                             });
 
+                            $routeProvider.when('/Loggin', {
+                            controller: 'LogginController',
+                            templateUrl: '/templates/Loggin.html'
+                            });
 
                             $routeProvider.otherwise({ redirectTo: "/" });
                             }]);
