@@ -31,7 +31,7 @@ body{
 	background-color: #0B0F13;
 }
 body{
-	overflow: hidden;
+	overflow: auto;
 }
 a{
 	text-decoration: none;
@@ -46,7 +46,7 @@ a{
   	padding-right: 15px;
   	margin-right: auto;
   	margin-left: auto;
-  	overflow: hidden;
+  	overflow: auto;
 }
 
 .navbar-small{
@@ -126,7 +126,13 @@ a{
 
 /*Warrnig: footer is not very good, test it before use, 
 and use it with .navbar and .navbar-tamni*/
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 footer{
+	display: none;
 	background-color: #1d2935;
 	color: white;
 	min-height: 50px;
@@ -135,13 +141,18 @@ footer{
 	bottom: 0;
 	overflow: auto;
 	text-align:center;
-   padding:5px;
+   	padding:5px;
 }
 footer a{
 	color: white;
 }
+
 /*Footer - END*/
 
+.ng-scoope{
+	display: block;
+	overflow: hidden;
+}
 /*Modal*/
 .modal{
 	display: block;
@@ -154,6 +165,8 @@ footer a{
 	width: 50%;
 	background-color: transparent;
 	padding: 0px;
+
+	overflow: auto;
 }
 
 .modal-content{
@@ -281,3 +294,11 @@ footer a{
   border-style: groove;
 }
 /*Home - END*/
+@media (min-width: 900px){
+	.right-fix{
+		position: fixed;
+		top: 60px;
+		right: 20px;
+		width: 200px;
+	}
+}
