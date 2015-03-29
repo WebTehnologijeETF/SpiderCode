@@ -1,5 +1,6 @@
 <!doctype html>
 <html>
+  <html ng-app="app">
 <head>
 	<title>SpiderCode</title>
 	<link rel="stylesheet" type="text/css" href="style.css">
@@ -13,8 +14,8 @@
 		<nav class="navbar navbar-tamni">
 			<ul>
 				<li class="no-hover"><a href="#" class="logo"><img src="img/Logo_white.png">Code</a></li>
-				<li class="active"><a href="#">Home</a></li>
-				<li><a href="#">About</a></li>
+				<li class="active"><a href="/">Home</a></li>
+				<li><a href="/A">About</a></li>
 				<li><a href="#">Contact</a></li>
 				<!--For window resize test<li><a href="">Jos Nesto</a></li>
 				<li><a href="">Jos Nesto</a></li>
@@ -26,6 +27,16 @@
 			</ul>
 		</nav>
 	</header>
+
+	     <!-- MAIN CONTENT AND INJECTED VIEWS -->
+        <div id="main">
+
+            <!-- angular I love you :P  -->
+            <!-- I am so happyyyyyyyyy XD -->
+            <div ng-view></div>
+
+        </div>
+
 	<footer class="navbar navbar-small">
 		Copyright © Sumejja Porca &amp; Luka Pejovic
 	</footer>
