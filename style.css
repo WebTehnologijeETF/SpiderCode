@@ -302,3 +302,7 @@ footer a{
 		width: 200px;
 	}
 }
+
+#PartnersList{
+	list-style-image: url('img/bullet02.png');
+}
