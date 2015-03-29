@@ -133,6 +133,8 @@ footer{
 	position: absolute;
 	bottom: 0;
 	overflow: auto;
+	text-align:center;
+   padding:5px;
 }
 footer a{
 	color: white;
