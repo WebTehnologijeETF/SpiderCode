@@ -1,5 +1,6 @@
+    'use strict';
     
-    var app = angular.module('app', [])
+    var app = angular.module('app', ['NgRoute'])
                     .config(['$routeProvider', function ($routeProvider) {
                            $routeProvider.when('/', {
                             controller: HomeController,
@@ -17,7 +18,7 @@
 
                             $routeProvider.when('/Contacts', {
                             controller: ContactsController,
-                            templateUrl: 'Contacts.html'
+                            templateUrl: '/templates/Contacts.html'
                             });
 
                             $routeProvider.otherwise({ redirectTo: '/' });
