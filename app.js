@@ -23,14 +23,14 @@
                             $routeProvider.otherwise({ redirectTo: "/" });
                             }]);
 
-    scotchApp.controller('HomeController', function($scope) {
+    app.controller('HomeController', function($scope) {
         // nista pametno sad zasad
     });
 
-    scotchApp.controller('AboutController', function($scope) {
+    app.controller('AboutController', function($scope) {
         
     });
 
-    scotchApp.controller('ContactsController', function($scope) {
+    app.controller('ContactsController', function($scope) {
         
     });
