@@ -280,18 +280,23 @@ footer a{
   width: 20%;
   padding: 5px;
   border: solid;
-  border-style: groove;
-  overflow: hidden;
+  height: 100%;
+  /*border-style: groove;*/
+  overflow: auto;
+  background-color: #172029;
+  clear: both;
 }
 
 #main-right{
-   margin: 9px;
+   
    margin-top: 0px;
   float: right;
-  width: 70%;
+  width: 80%;
+  height: auto;
   padding: 5px;
-  border: solid;
-  border-style: groove;
+  /*border: solid;?/
+	clear: both;
+  /*border-style: groove;*/
 }
 /*Home - END*/
 @media (min-width: 900px){
@@ -305,4 +310,9 @@ footer a{
 
 #PartnersList{
 	list-style-image: url('img/bullet02.png');
+}
+
+#project-list a, #editor a{
+	color: white;
+	text-decoration: none;
 }
