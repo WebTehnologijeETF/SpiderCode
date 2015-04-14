@@ -322,7 +322,7 @@ footer a{
 }
 
 #PartnersList{
-	list-style-image: url('img/bullet02.png');
+	list-style-image: url('/images/bullet02.png');
 }
 
 #project-list a, #editor a{
