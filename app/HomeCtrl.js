@@ -22,10 +22,10 @@
 
      
 
-        // ovo je onclick funkcija za sve elemente klase explist, liste koja se moze prosiriti
+        // ovo je onclick funkcija za sve elemente klase folder, liste koja se moze prosiriti
         //refElement nam je HTML objekat koji predstavlja prosirivu listu koja moze biti prosirena ili ne 
         //refFolder je javascript objekat koji ima u sebi nove foldere i fileove i cije ime i sadrzaj (ako je prosiren) prikazuje refElement
-        //refElement je element klase explist koji moze biti klase unexpanded ili expanded - ako je unexpanded on ce se prosiriti, ako je expanded skupit ce se
+        //refElement je element klase folder koji moze biti klase unexpanded ili expanded - ako je unexpanded on ce se prosiriti, ako je expanded skupit ce se
 
         $scope.list = function(refElement, refFolder){
             if(refElement.className.match(/(?:^|\s)unexpanded(?!\S)/) )
@@ -68,32 +68,41 @@
                                                               //ovi folderi ce biti lazy-loadani - odnosno dobavit ce se samo njihova imena i po potrebi pathovi
             {
                 var node = document.createElement("LI");
-                node.setAttribute("class", "explist unexpanded");               
-                var b = document.createElement("button");
-                b.setAttribute("class", "link");
-                b.innerHTML = refFolder.Folders[i].Name;
+                node.setAttribute("class", "folder unexpanded");  
+
+                var c = document.createElement("span");
+                c.setAttribute("class", "icon");
+                c.folder = refFolder.Folders[i];
+                c.addEventListener( "click", function() {
+                return $scope.list(this.parentNode, this.folder);
+                }, false);
+                node.appendChild(c);
+
+                var s = document.createElement("span");
+                s.setAttribute("class", "link");
+                s.innerHTML = refFolder.Folders[i].Name;
 
                 // dodajemo js objekat na html objekat, kako bi znali na koji folder se referencira
-                b.folder = refFolder.Folders[i];
+                s.folder = refFolder.Folders[i];
 
-                //dodajemo eventListener za onclick funkciju za unutarnje foldere - jer su i oni tipa prosirive liste
-                b.addEventListener( "click", function() {
+                //dodajemo eventListener za dblclick funkciju za unutarnje foldere - jer su i oni tipa prosirive liste
+                s.addEventListener( "dblclick", function() {
                 //u list funkciju saljemo element <li> kojeg smo tek napravili za ovaj folder i na kojeg ce se u buducnosti kaciti sadrzaj foldera unutar b
                 return $scope.list(this.parentNode, this.folder);
                 }, false);
-                node.appendChild(b);
+                node.appendChild(s);
                 lista.appendChild(node);//na novonapravljenu listu kacimo njenu "djecu"
             }
             for(var j = 0; j < refFolder.Files.length; j++) //radimo isto za unutarnje fileove, kao za foldere, samo sto oni nisu tipa prosirive liste
             {
                 var node = document.createElement("LI");
-                var b = document.createElement("button");
-                b.setAttribute("class", "link");
-                b.innerHTML = refFolder.Files[j].Name;
-                b.file = refFolder.Files[j];
-                b.addEventListener( "click", function() { //ovdje ce biti neka funkcija koja editoru daje file za ocitavanje
+                var s = document.createElement("span");
+                s.setAttribute("class", "link");
+                s.innerHTML = refFolder.Files[j].Name;
+                s.file = refFolder.Files[j];
+                s.addEventListener( "dblclick", function() { //ovdje ce biti neka funkcija koja editoru daje file za ocitavanje
                 alert('Upaljeno!'); }, false);
-                node.appendChild(b);
+                node.appendChild(s);
                 lista.appendChild(node);
             }
             refElement.appendChild(lista); //na nas folder u html-u -> refElement kacimo ul -> njegov sadrzaj
@@ -126,15 +135,25 @@
                 for(var i = 0; i < $scope.Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
                 {
                         var node = document.createElement("LI");
-                        node.setAttribute("class", "explist unexpanded");               
-                        var b = document.createElement("button");
-                        b.setAttribute("class", "link");
-                        b.innerHTML = $scope.Projects[i].Name;
-                        b.folder = $scope.Projects[i];
-                        b.addEventListener( "click", function() {
+                        node.setAttribute("class", "folder unexpanded");
+
+                        var c = document.createElement("span");
+                        c.setAttribute("class", "icon");
+                        c.folder = $scope.Projects[i];
+                        c.addEventListener( "click", function() {
                         return $scope.list(this.parentNode, this.folder);
                         }, false);
-                        node.appendChild(b);
+                        node.appendChild(c);
+
+                        var s = document.createElement("span");
+                        s.setAttribute("class", "link");
+                        s.innerHTML = $scope.Projects[i].Name;
+                        s.folder = $scope.Projects[i];
+                        s.addEventListener( "dblclick", function() {
+                        return $scope.list(this.parentNode, this.folder);
+                        }, false);
+                        node.appendChild(s);
+
                         list.appendChild(node);
                         
                 }

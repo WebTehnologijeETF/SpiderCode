@@ -230,7 +230,8 @@ footer a{
 
 .link  {
   color: white;
-  display: block;
+  cursor:pointer;
+  display:block;
   border-radius: 0px;
   padding: 10px;
   padding-top: 0px;
@@ -240,7 +241,6 @@ footer a{
   border-left: 1px solid #172029;
   background-color: #172029;
   border-top: 1px solid #172029;
-  cursor: pointer;
   font-size: medium;
   font-family: Lato, Arial, Sans-serif;
   background:url("https://cdn4.iconfinder.com/data/icons/linecon/512/file-20.png")no-repeat scroll left top transparent;
@@ -345,22 +345,36 @@ footer a{
 ul#projectTree{
 	list-style-image:none;
 	list-style-position:outside;
+	list-style-type: none;
 
 }
 ul#projectTree>li{
-		 display:initial;
+		 display:block;
 		 list-style-image:none;
 }
 
 
 /*Folder style - begin*/
-li.explist>li
-{
-	display: initial;
+
+.folder{
+	display:block;
+}
+
+.folder>ul{
+
+	list-style-image:none;
+	list-style-position:outside;
+	list-style-type: none;
+}
+
+.folder>ul>li
+	{
+	display: block;
 	list-style-image:none;
 
 }
-li.explist>button.link{
+
+.folder>span.link{
 
   text-decoration: underline;
   font-weight: bolder;
@@ -368,13 +382,21 @@ li.explist>button.link{
   background: url("https://cdn2.iconfinder.com/data/icons/thesquid-ink-40-free-flat-icon-pack/64/folder-20.png") no-repeat scroll left top transparent;
 }
 
-
-li.expanded{
+.folder>span.icon{
+	cursor:pointer;
 }
 
-li.unexpanded{
+.folder>span{
+	display:inline;
+}
 
-	/*background: url("https://cdn4.iconfinder.com/data/icons/linecon/512/add-20.png")no-repeat scroll left top transparent;*/
+.expanded>span.icon{
+content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png") no-repeat scroll left top transparent;
+
+}
+
+.unexpanded>span.icon{
+ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/add-20.png") no-repeat scroll left top transparent;
 }
 /*Folder style - END*/
 
