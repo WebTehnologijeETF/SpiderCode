@@ -1,23 +1,16 @@
-﻿<section onload = "onloadfunc()">
-     <div id="menu-left">
+﻿<section onload = "onloadfunc()" id="home-w">
+    <div id="menu-left">
+        <h2>Your projects</h2>
+        <ul class = "projectTree"></ul>
+    </div>
 
-      <h2>Your projects</h2>
-  
-        <ul class = "projectTree">
-           
-       </ul>
-
-        
-     </div>
-
-         <div id="main-right">
-         <div ng-controller="EditorsCtrl as e" id="editor">
-             {{e.name}}
+    <div ng-controller="EditorsCtrl as e" id="main-right" style="height= 500px; width=500px;">
+         <div id="editor">
+                #include &lt;iostream&gt;
+                int main(){
+                    cout << "lolo";
+                }
          </div>
      </div>
-     <img></img>
-
-     <img></img>
      
-     <img></img>
 </section>

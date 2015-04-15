@@ -282,7 +282,7 @@ footer a{
 
 /*Home**/
 #menu-left{
-   margin: 0px;
+  margin: 0px;
   float: left;
   width: 30%;
   padding: 5px;
@@ -291,25 +291,40 @@ footer a{
   /*border-style: groove;*/
   overflow: auto;
   background-color: #172029;
-  clear: both;
+  box-sizing: border-box;
+}
+
+#menu-left::after{
+	clear: both;
 }
 
 #menu-left>h2{
     margin-left: 5px;
 	color: white;
 }
+
 #main-right{
    
-   margin-top: 0px;
+  margin-top: 0px;
   float: right;
-  width: 80%;
-  height: auto;
+  width: 70%;
+  height: 100px;
   padding: 5px;
+  box-sizing: border-box;
+  border: 1px solid black;
   /*border: solid;?/
 	clear: both;
   /*border-style: groove;*/
 }
 
+#home-w, #template, #main{
+	position: relative;
+	min-height: 100%;
+}
+
+#main{
+	box-sizing: content-box;
+}
 
 /*Home - END*/
 @media (min-width: 900px){
@@ -328,4 +343,7 @@ footer a{
 #project-list a, #editor a{
 	color: white;
 	text-decoration: none;
+}
+#editor{
+	height: 200px;
 }

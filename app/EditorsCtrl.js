@@ -3,7 +3,9 @@
 
 	function EditorsCtrl($scope){
 
-		this.name = "Luka je bio ovdje.";
+		var editor = ace.edit("editor");
+		editor.setTheme("ace/theme/monokai");
+    	editor.getSession().setMode("ace/mode/javascript");
 	}
 
 })();
