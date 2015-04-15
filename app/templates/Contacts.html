@@ -1,46 +1,18 @@
 ﻿<div class="modal">
 	<div class="modal-content modal-tamni">
-		
-		<h1>Contact Owner</h1>
-		<h2>Send us message...</h2>
+		<hgroup>
+			<h1>Contact Owner</h1>
+			<h2>Send us message...</h2>
+		</hgroup>
 		
 		<form class="form-block" action="#/Home">
-			<div id="errors">Nesto</div>
-			
 			<div class="form-group">
 				<label for="usernameInput" class="form-label">Contact email</label>
-				<input type="text" id="usernameInput" class="text-box val" placeholder="Enter Your email...">
-				<img class="error-icon" id="mail_icon" src="http://www.liquidpixels.com/images/icon-error.png" alt="Error icon">
+				<input type="text" id="usernameInput" class="text-box" placeholder="Enter Your email...">
 			</div>
-			<!-- Dodano polje za subject da imamo nesto za cross validaciju-->
-			<div class="form-group">
-				<label for="subjectInput" class="form-label">Subject</label>
-				<input type="text" id="subjectInput" class="text-box val" placeholder="Enter Message Subject...">
-				<img class="error-icon" id="sub_icon" src="http://www.liquidpixels.com/images/icon-error.png" alt="Error icon">
-			</div>
-			<!-- Dodano radi Cross validacije-->
-			<div class="form-group">
-				<label class="form-label">You Are...</label>
-				<img class="error-icon" id="rad_icon" src="http://www.liquidpixels.com/images/icon-error.png" alt="Error icon">
-				
-				<input type="radio" class="radiobtn" name="g1" value="Person" id="r1"  checked>
-				<label for="r1" class="radio-label">Person</label>
-				
-				<input type="radio" class="radiobtn" name="g1" value="Company" id="r2">
-				<label for="r2" class="radio-label">Company</label>
-			</div>
-			<!-- Dodano radi Cross validacije-->
-			<div class="form-group">
-				<label for="phoneInput" class="form-label">Phone number</label>
-				<input type="text" id="phoneInput" class="text-box val" placeholder="Enter Your phone...">
-				<img class="error-icon" id="ph_icon" src="http://www.liquidpixels.com/images/icon-error.png" alt="Error icon">
-			</div>
-
-
 			<div class="form-group">
 				<label for="messageInput" class="form-label">Text</label>
-				<textarea rows="5" id="messageInput" class="text-box val" placeholder="Enter Message..."></textarea>
-				<img class="error-icon" id="msg_icon" src="http://www.liquidpixels.com/images/icon-error.png" alt="Error icon">
+				<textarea type="text" row="5" id="messageInput" class="text-box" placeholder="Enter Message..."></textarea>
 			</div>
 			<div class="form-group">
 				<input type="submit" class="btn btn-blue" value="Send" id="loginButton"></button>
