@@ -49,7 +49,26 @@
     });
  
     app.controller('ContactsCtrl', function($scope, $rootScope) {
-         
+
+        var val = document.getElementsByClassName("val");
+        for(var i = 0; i < val.length; i++ ){
+            val[i].addEventListener("blur", ValidateContacts);
+        }
+
+        function ValidateContacts(event){
+            var errors = [];
+            var mail_icon = document.getElementById("mail_icon");
+            mail_icon.style.display = "none";
+
+            var mail = document.getElementById("usernameInput");
+            if(validator.Mail(mail.value) == false){
+                errors.push("E-mail isn't correct");
+                mail_icon.style.display = "inline-block";
+            }
+            
+        }
+
+        
     });
 
     app.controller('LoginCtrl', function($scope, $rootScope) {

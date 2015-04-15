@@ -271,7 +271,10 @@ footer a{
 	}
 
 	.text-box{
-		width: 100%;
+		/*pravimo mjesto za ikonicu i stavljeno inline da moze u jednom redu biti prikazano*/
+		width: 90%;
+		display: inline-block;
+
 		border-radius: 6px;
 		padding: 8px 13px;
 		box-shadow: inset 0px 0px 0px;
@@ -420,4 +423,20 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png") no
 }
 #editor{
 	height: 200px;
+}
+
+#errors{
+	width: 100%;
+	border-radius: 6px;
+	background-color: red;
+	color: white;
+	padding: 10px 12px;
+	display: none;
+}
+
+.error-icon{
+	width: 32px;
+	max-width: 10%;
+	max-height: 32px;
+	display: inline-block;
 }
