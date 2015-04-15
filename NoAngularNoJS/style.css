@@ -1,0 +1,52 @@
+@import url("http://fonts.googleapis.com/css?family=Lato:400,700,400italic");
+
+/*mali fix za citace gdje nije implementiran HTML5*/
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+
+
+/*Whole Page*/
+html{
+	padding: 0;
+}
+body{
+	margin: 0;
+	font-size: 15px;
+	font-family: Lato, Arial,  Sans-serif;
+}
+a{
+	text-decoration: none;
+	color: inherit;
+}
+/*Whole page - END*/
+
+/*Navbar*/
+.navbar{
+	min-height: 60px;
+	font-size: 20px;
+}
+.navbar-tamni{
+	background-color: #2c3e50;
+	color: white;
+}
+
+.navbar ul{
+	margin: 0;
+	list-style-type: none; 
+}
+.navbar ul>li{
+	display: inline;
+}
+/*Navbar - END*/

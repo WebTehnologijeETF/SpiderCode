@@ -228,10 +228,21 @@ footer a{
 	border-top-right-radius: 0px;
 }
 
-.link{
-	display: block;
-	border-radius: 0px;
-	padding: 10px;
+.link  {
+  color: white;
+  display: block;
+  border-radius: 0px;
+  padding: 10px;
+  padding-top: 0px;
+  padding-left: 26px;
+  border-right: 1px solid #172029;
+  border-bottom: 1px solid #172029;
+  border-left: 1px solid #172029;
+  background-color: #172029;
+  border-top: 1px solid #172029;
+  cursor: pointer;
+  font-size: medium;
+  font-family: Lato, Arial, Sans-serif;
 }
 
 /*Buttons - END*/
@@ -325,6 +336,25 @@ footer a{
 #main{
 	box-sizing: content-box;
 }
+
+
+/*Folder style - begin*/
+li.explist>button.link{
+
+  text-decoration: underline;
+  font-weight: bolder;
+  list-style-type: none;
+  background: url("https://cdn2.iconfinder.com/data/icons/thesquid-ink-40-free-flat-icon-pack/64/folder-20.png") no-repeat scroll left top transparent;
+}
+
+li.expanded{
+}
+
+li.unexpanded{
+
+	/*background: url("https://cdn4.iconfinder.com/data/icons/linecon/512/add-20.png")no-repeat scroll left top transparent;*/
+}
+/*Folder style - END*/
 
 /*Home - END*/
 @media (min-width: 900px){
