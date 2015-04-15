@@ -1,4 +1,4 @@
-@import url("http://fonts.googleapis.com/css?family=Lato:400,700,400italic");
+﻿@import url("http://fonts.googleapis.com/css?family=Lato:400,700,400italic");
 
 /*mali fix za citace gdje nije implementiran HTML5*/
 article,
@@ -394,12 +394,12 @@ ul#projectTree>li{
 }
 
 .expanded>span.icon{
-content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png") no-repeat scroll left top transparent;
+content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 
 }
 
 .unexpanded>span.icon{
- content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/add-20.png") no-repeat scroll left top transparent;
+ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/add-20.png");
 }
 /*Folder style - END*/
 
