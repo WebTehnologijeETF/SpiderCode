@@ -243,6 +243,7 @@ footer a{
   cursor: pointer;
   font-size: medium;
   font-family: Lato, Arial, Sans-serif;
+  background:url("https://cdn4.iconfinder.com/data/icons/linecon/512/file-20.png")no-repeat scroll left top transparent;
 }
 
 /*Buttons - END*/
@@ -341,8 +342,24 @@ footer a{
 	box-sizing: content-box;
 }
 
+ul#projectTree{
+	list-style-image:none;
+	list-style-position:outside;
+
+}
+ul#projectTree>li{
+		 display:initial;
+		 list-style-image:none;
+}
+
 
 /*Folder style - begin*/
+li.explist>li
+{
+	display: initial;
+	list-style-image:none;
+
+}
 li.explist>button.link{
 
   text-decoration: underline;
@@ -350,6 +367,7 @@ li.explist>button.link{
   list-style-type: none;
   background: url("https://cdn2.iconfinder.com/data/icons/thesquid-ink-40-free-flat-icon-pack/64/folder-20.png") no-repeat scroll left top transparent;
 }
+
 
 li.expanded{
 }

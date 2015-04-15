@@ -117,7 +117,7 @@
         $scope.onloadfunc = function()
         {
         
-            var elements = document.querySelectorAll("ul.projectTree"); //dobavi osnovni project tree - listu za prikaz projekata
+            var elements = document.querySelectorAll("#projectTree"); //dobavi osnovni project tree - listu za prikaz projekata
 
             if(elements.length != 0)
             {
