@@ -280,7 +280,7 @@ footer a{
 		box-shadow: inset 0px 0px 0px;
 		outline: 0 none;
 		/*Promjena: ispravljeno čudno ponašanje na focus*/;
-		border: 4px solid inherit;
+		border: 4px solid;
 	}
 	.text-box:focus{
 		padding: 8px 13px;
@@ -438,5 +438,10 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png") no
 	width: 32px;
 	max-width: 10%;
 	max-height: 32px;
+	display: none;
+}
+
+#r1, #r2, .radio-label{
 	display: inline-block;
+	max-width: 100px;
 }
