@@ -62,6 +62,9 @@ a{
 	padding-left: 40px;
 	padding-right: 40px;
 }
+
+
+
 .navbar>ul>li{
 	float: left;
 	
@@ -77,6 +80,18 @@ a{
 	padding-top: 14px;
 	padding-bottom: 14px;
 }
+
+/*proba*/
+.navbar>ul>li>a:hover .ca-icon{
+    color: #fff;
+    font-size: 90px;
+}
+.navbar>ul>li>a:hover{
+    color: #00ccff;
+    animation: moveFromLeftRotate 300ms ease;
+}
+
+/*proba*/
 
 
 .navbar-tamni{
@@ -103,6 +118,15 @@ a{
 		padding-right: 0;
 	}
 	
+}
+
+@keyframes moveFromLeftRotate{
+    from {
+        transform: translateX(-100%) rotate(-90deg);
+    }
+    to {
+        transform: translateX(0%) rotate(0deg);
+    }
 }
 
 .logo{

@@ -3,24 +3,43 @@
 	angular.module('app').controller('HomeCtrl', HomeCtrl);
 
 	function HomeCtrl($scope, $rootScope) {
-               //dummmy dataa - ovo je glupo uradjeno, ali je samo privremeno, dok ne napravimo http gettere
 
-        $scope.Projects = [];
+    //menu on the right - begin
+
+        //editor
+
+        $scope.editor = ace.edit("editor");
+        $scope.editor.setTheme("ace/theme/tomorrow_night");
+        $scope.editor.getSession().setMode("ace/mode/javascript");
+    
+    //menu on the right - end
+
+    //menu on the left - begin
+
+        //dummmy dataa - ovo je glupo uradjeno, ali je samo privremeno, dok ne napravimo http gettere
+
+        var code = "function foo(items) { var x = 5;  return x;  }";
+
+        var Projects = [];
 
         for(var i = 0; i < 5; i++)
         {
             var f121 = {Name: 'Folder1.2.1', Files:[], Folders:[]};
             var f12 = {Name: 'Folder1.2', Files:[], Folders:[f121]};
             var f11 = {Name: 'Folder1.1', Files:[], Folders:[]};
-            var f1 =  {Name: 'Folder1', Files: [{Name : 'file1'},{Name: 'file2'}], Folders: [f11,f12] };
-            var f2 =  {Name: 'Folder2', Files: [{Name:'file1'},{Name:'file2'}],Folders:[]};
-            var f3 = {Name: 'Folder3', Files: [{Name:'file1'},{Name:'file2'}],Folders:[]};
+            var f1 =  {Name: 'Folder1', Files: [{Name : 'file1', Value:code},{Name: 'file2', Value:code}], Folders: [f11,f12] };
+            var f2 =  {Name: 'Folder2', Files: [{Name:'file1', Value:code},{Name:'file2', Value:code}],Folders:[]};
+            var f3 = {Name: 'Folder3', Files: [{Name:'file1', Value:code},{Name:'file2', Value:code}],Folders:[]};
 
-            $scope.Projects[i] = { Folders: [f1, f2, f3], 
-            Files: [{Name:'file1'},{Name:'file2'}, {Name:'file3'},{Name:'file4'}], Name: 'Project'+i, Path: 'Project'+i};
+            Projects[i] = { Folders: [f1, f2, f3], 
+            Files: [{Name:'file1', Value:code},{Name:'file2', Value:code}, {Name:'file3', Value:code},{Name:'file4', Value:code}], Name: 'Project'+i, Path: 'Project'+i};
         }
 
-     
+        $scope.openInEditor = function(file)
+        {
+            $scope.editor.setValue(file.Value);
+            $scope.openedFile = file; //ovo openedFile ce poslije  biti atribut od span-a od taba 
+        }
 
         // ovo je onclick funkcija za sve elemente klase folder, liste koja se moze prosiriti
         //refElement nam je HTML objekat koji predstavlja prosirivu listu koja moze biti prosirena ili ne 
@@ -101,7 +120,7 @@
                 s.innerHTML = refFolder.Files[j].Name;
                 s.file = refFolder.Files[j];
                 s.addEventListener( "dblclick", function() { //ovdje ce biti neka funkcija koja editoru daje file za ocitavanje
-                alert('Upaljeno!'); }, false);
+                return $scope.openInEditor(this.file);}, false);
                 node.appendChild(s);
                 lista.appendChild(node);
             }
@@ -131,15 +150,15 @@
             if(elements.length != 0)
             {
                 var list = elements[0];
-                if($scope.Projects.length != 0)
-                for(var i = 0; i < $scope.Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
+                if(Projects.length != 0)
+                for(var i = 0; i < Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
                 {
                         var node = document.createElement("LI");
                         node.setAttribute("class", "folder unexpanded");
 
                         var c = document.createElement("span");
                         c.setAttribute("class", "icon");
-                        c.folder = $scope.Projects[i];
+                        c.folder = Projects[i];
                         c.addEventListener( "click", function() {
                         return $scope.list(this.parentNode, this.folder);
                         }, false);
@@ -147,8 +166,8 @@
 
                         var s = document.createElement("span");
                         s.setAttribute("class", "link");
-                        s.innerHTML = $scope.Projects[i].Name;
-                        s.folder = $scope.Projects[i];
+                        s.innerHTML = Projects[i].Name;
+                        s.folder = Projects[i];
                         s.addEventListener( "dblclick", function() {
                         return $scope.list(this.parentNode, this.folder);
                         }, false);
@@ -158,7 +177,15 @@
                         
                 }
             }
-        }
+
+      
+}
+        
+
+    //menu on the left - end
+
+  
+
     }
 
 })();
