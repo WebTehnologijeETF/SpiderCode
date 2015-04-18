@@ -430,12 +430,12 @@ ul#projectTree>li{
 	display:inline;
 }
 
-.expanded>span.icon{
+.expanded>span.icon:after{
 content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 
 }
 
-.unexpanded>span.icon{
+.unexpanded>span.icon:after{
  content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/add-20.png");
 }
 /*Folder style - END*/
