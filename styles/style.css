@@ -88,7 +88,10 @@ a{
 }
 .navbar>ul>li>a:hover{
     color: #00ccff;
-    animation: moveFromLeftRotate 300ms ease;
+    -webkit-animation: moveFromLeftRotate 600ms ease;
+    animation: moveFromLeftRotate 600ms ease;
+    -webkit-animation-delay: 100ms;
+    animation-delay: 100ms;
 }
 
 /*proba*/
@@ -118,6 +121,16 @@ a{
 		padding-right: 0;
 	}
 	
+}
+
+
+@-webkit-keyframes moveFromLeftRotate{
+    from {
+        transform: translateX(-100%) rotate(-90deg);
+    }
+    to {
+        transform: translateX(0%) rotate(0deg);
+    }
 }
 
 @keyframes moveFromLeftRotate{
