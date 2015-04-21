@@ -3,20 +3,15 @@ if(typeof(ace) == 'undefined')
 
 //DOMElement: DOMElement
 //theme: String - OPTIONAL paramether
-function AceManager(DOMElement, mode, theme){
+function AceManager(DOMElement, theme){
 	if(typeof(ace) == 'undefined')
 		throw "Ace must be defined. Please include Ace Editor";
 	if(typeof(DOMElement) != 'object' && typeof(DOMElement) != 'string')
 		throw "DOMElement must be object or string.";
-	if(typeof(mode) !== 'string')
-		throw "mode must be string";
 
 	//including Ace moduls, these are constructors,
 	var VirtualRenderer = ace.require("ace/virtual_renderer").VirtualRenderer;
 	var Editor = ace.require("ace/editor").Editor;
-	this.UndoManager = ace.require("ace/undomanager").UndoManager;
-	this.EditSession = ace.require("ace/edit_session").EditSession;
-
 
 	var virtualRenderer;
 	if(typeof theme === "string")
@@ -25,7 +20,8 @@ function AceManager(DOMElement, mode, theme){
 		var virtualRenderer = new VirtualRenderer(DOMElement, "ace/theme/tomorrow_night");
 
 
-	this.sessions = [];
+	this.SessionManager = new SessionManager(this);
+
 	this.editor = new Editor(virtualRenderer);
 	this.editor.setReadOnly(true);
 }
@@ -38,20 +34,49 @@ AceManager.prototype.setTheme = function(theme){
 	this.editor.setTheme("ace/theme/"+theme);
 }
 
+
 AceManager.prototype.editor = function(){
 	return editor;
 }
 
-AceManager.prototype.addSession = function(document, mode){	
+
+//Session Manager
+function SessionManager(ace_manager){
+	this.sessions = [];
+	this.ace_manager = ace_manager;
+
+	this.UndoManager = ace.require("ace/undomanager").UndoManager;
+	this.EditSession = ace.require("ace/edit_session").EditSession;
+}
+
+//Add new session to manager and return session ID(index)
+SessionManager.prototype.addSession = function(document, mode){	
 	var editSession = new this.EditSession(document, "ace/mode/" + mode);
 	editSession.setUndoManager(new this.UndoManager());
 	return this.sessions.push(editSession); 
 }
 
 
-AceManager.prototype.showSession = function(index){
-	if(index < 0 || index > this.sessions.length)
+//show session with id sent by paramether in editor 
+SessionManager.prototype.showSession = function(id){
+	if(id < 0 || id > this.sessions.length)
 		throw "Index out of range in sessions";
-	this.editor.setReadOnly(false);
-	this.editor.setSession(this.sessions[index]);
+
+	if(!this.sessions[id])
+		throw "Session with id: " + id + " is deleted";
+	
+	this.ace_manager.editor.setReadOnly(false);
+	this.ace_manager.editor.setSession(this.sessions[id]);
+}
+
+//Delete session with id sent by paramether 
+//Other sessions still have same id
+SessionManager.prototype.deleteSession = function(id){
+	if(id < 0 || id > this.sessions.length)
+		throw "Index out of range in sessions";
+
+	if(!this.sessions[id])
+		throw "Session with id: " + id + " already deleted";
+
+	delete this.sessions[id];
 }
