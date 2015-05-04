@@ -2,7 +2,18 @@
     'use strict';
     
     var app = angular.module('app', ['ngRoute'])
+<<<<<<< HEAD
                     .run(['$rootScope', function($rootScope) {
+=======
+                    .run(function($rootScope) {
+                        
+                         $rootScope.ServerName = ''; // "DefaultServerName";
+                         $rootScope.Folder = 'Folder';
+                         $rootScope.DataMapper = 'DataMapper'; 
+                         $rootScope.ProjectFactory = 'ProjectFactory';       
+                         $rootScope.UrlGenerator = 'UrlGenerator'; 
+                       
+>>>>>>> origin/master
                         $rootScope.onloadfunc = function() //funkcija koja se pokrece nakon loadanja template html-a i overrideana je u svakom kontroleru za svaki template html
                         {
                             console.log('onload from root');
@@ -55,5 +66,20 @@
     app.controller('ChooseServerCtrl', function($scope, $rootScope){
 
     });
+
+    app.service('ServerInfo', [function(){
+   
+        var setServerName = function(value) {
+                $rootScope.ServerName = value;
+                $rootScope.Folder = $rootScope.$service(ServerName + 'Folder');
+                $rootScope.DataMapper = $rootScope.$service(ServerName + 'DataMapper');
+                $rootScope.ProjectFactory = $rootScope.$service(ServerName + 'ProjectFactory');
+                $rootScope.UrlGenerator = $rootScope.$service(ServerName + 'UrlGenerator');
+            };
+
+            }
+ 
+    ]);
+
 
 })();

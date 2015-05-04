@@ -1,9 +1,9 @@
-if(typeof(ace) == 'undefined')
-		throw "Ace must be defined. Please include Ace Editor";
+
 
 //DOMElement: DOMElement where AceManager would be rendered
 //theme: String - OPTIONAL paramether
 function AceManager(DOMElement, theme){
+	
 	if(typeof(ace) == 'undefined')
 		throw "Ace must be defined. Please include Ace Editor";
 	if(typeof(DOMElement) != 'object' && typeof(DOMElement) != 'string')
