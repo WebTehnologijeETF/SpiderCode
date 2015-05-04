@@ -7,10 +7,16 @@
     //menu on the right - begin
 
         //editor
+        var eDom = document.getElementById("editor");
 
-        $scope.editor = ace.edit("editor");
-        $scope.editor.setTheme("ace/theme/tomorrow_night");
-        $scope.editor.getSession().setMode("ace/mode/javascript");
+        if(!eDom)
+            throw "DOM with id=editor is missing.";
+
+        $scope.manager = new AceManager(eDom);
+
+    //$scope.editor = ace.edit("editor");
+    //$scope.editor.setTheme("ace/theme/tomorrow_night");
+    //$scope.editor.getSession().setMode("ace/mode/javascript");
     
     //menu on the right - end
 
@@ -37,7 +43,8 @@
 
         $scope.openInEditor = function(file)
         {
-            $scope.editor.setValue(file.Value);
+            file.type = "javascript";
+            $scope.manager.getSessionManager().addAndShowSession(file.Value, file.type);
             $scope.openedFile = file; //ovo openedFile ce poslije  biti atribut od span-a od taba 
         }
 
@@ -177,15 +184,37 @@
                         
                 }
             }
-
-      
-}
+        }
         
+        //this is temporary solution
+        var file_manager_resizer = {
+            resize : function(width, height, left, top){
+                this.dom_element = document.getElementById("menu-left");
+                this.dom_element.style.width = width + "px";
+                this.dom_element.style.height = height + "px";
+                this.dom_element.style.left = left + "px";
+                this.dom_element.style.top = top + "px";
+            }
+        }
+
+        this.main_resizer = new ResizerHorizontal(file_manager_resizer, $scope.manager, 0.30);
+        
+        var res = this.main_resizer;
+        window.onresize = function(){
+            //think about using for cross-browser solution: https://github.com/ryanve/verge
+            var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+            //var viewport_width = Math.max(document.documentElement.clientWidth;
+            //var viewport_height = document.documentElement.clientHeight;
+            
+            res.resize(x, y-61, 0, 60);
+        } 
 
     //menu on the left - end
-
-  
-
     }
 
 })();
