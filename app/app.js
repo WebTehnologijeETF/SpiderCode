@@ -2,18 +2,14 @@
     'use strict';
     
     var app = angular.module('app', ['ngRoute'])
-<<<<<<< HEAD
                     .run(['$rootScope', function($rootScope) {
-=======
-                    .run(function($rootScope) {
                         
                          $rootScope.ServerName = ''; // "DefaultServerName";
                          $rootScope.Folder = 'Folder';
                          $rootScope.DataMapper = 'DataMapper'; 
                          $rootScope.ProjectFactory = 'ProjectFactory';       
                          $rootScope.UrlGenerator = 'UrlGenerator'; 
-                       
->>>>>>> origin/master
+
                         $rootScope.onloadfunc = function() //funkcija koja se pokrece nakon loadanja template html-a i overrideana je u svakom kontroleru za svaki template html
                         {
                             console.log('onload from root');

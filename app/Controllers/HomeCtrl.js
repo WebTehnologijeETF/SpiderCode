@@ -211,8 +211,18 @@
             //var viewport_width = Math.max(document.documentElement.clientWidth;
             //var viewport_height = document.documentElement.clientHeight;
             
+            
             res.resize(x, y-61, 0, 60);
         } 
+
+        var w = window,
+                d = document,
+                e = d.documentElement,
+                g = d.getElementsByTagName('body')[0],
+                x = w.innerWidth || e.clientWidth || g.clientWidth,
+                y = w.innerHeight|| e.clientHeight|| g.clientHeight;
+            
+            res.resize(x, y-61, 0, 60); 
 
     //menu on the left - end
     }
