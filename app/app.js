@@ -2,9 +2,8 @@
     'use strict';
     
     var app = angular.module('app', ['ngRoute'])
-                    .run(function($rootScope) {
+         .run(['$rootScope', function($rootScope) {
                         
-                                        
                         $rootScope.onloadfunc = function() //funkcija koja se pokrece nakon loadanja template html-a i overrideana je u svakom kontroleru za svaki template html
                         {
                             console.log('onload from root');
