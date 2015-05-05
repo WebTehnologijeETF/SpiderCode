@@ -8,7 +8,7 @@
                         {
                             console.log('onload from root');
                         };
-                    })
+                    }])
                     .config(['$routeProvider', function ($routeProvider) {
                         //Setting routes
                         $routeProvider.when("/", {
