@@ -1,6 +1,6 @@
 (function(){
 
-	angular.module('app').factory('Folder', 'ServerInfo', [ function(service){
+	angular.module('app').service('Folder', ['ServiceProvider', function(service){
 
 	}]);
 

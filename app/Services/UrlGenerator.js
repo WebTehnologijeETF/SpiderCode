@@ -1,6 +1,6 @@
 (function(){
 
-	angular.module('app').factory('UrlGenerator', 'ServerInfo', [ function(service){
+	angular.module('app').factory('UrlGenerator', ['ServiceProvider',  function(service){
 
 		return{
 			getFolderContentsUrl: function(somestuff){

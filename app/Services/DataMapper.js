@@ -1,8 +1,8 @@
 (function(){
 
-	angular.module('app').factory('DataMapper', [ function($rootScope){
+	angular.module('app').factory('DataMapper', ['ServiceProvider', function(service){
 
-		var Project = $rootScope.Folder;
+		var Project = service.getService('Folder', undefined);
 		return{
 			FetchFolderContent: function(data){
 				return data; //TO DO: this

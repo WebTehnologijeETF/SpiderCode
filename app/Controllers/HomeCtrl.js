@@ -1,8 +1,12 @@
 (function(){
    
-	angular.module('app').controller('HomeCtrl', HomeCtrl);
 
-	function HomeCtrl($scope, $rootScope) {
+	var HomeCtrl = function($scope, service) {
+
+    //services - begin
+        var ProjectFactory = service.getService('ProjectFactory', undefined);
+        var Folder = service.getService('Folder', undefined);
+    //services - end
 
     //menu on the right - begin
 
@@ -216,5 +220,8 @@
 
     //menu on the left - end
     }
+
+    HomeCtrl.$inject = ['$scope', 'ServiceProvider'];
+    angular.module('app').controller('HomeCtrl', HomeCtrl);
 
 })();

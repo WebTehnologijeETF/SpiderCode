@@ -1,9 +1,9 @@
 (function(){
 
-	angular.module('app').factory('ProjectFactory', ['$http', function($http, $rootScope){
+	angular.module('app').factory('ProjectFactory', ['$http', 'ServiceProvider', function($http, service){
 
-		mapper = $rootScope.DataMapper;
-		url = $rootScope.UrlGenerator;
+		 var mapper = service.getService('DataMapper', undefined);
+		 var url = service.getService('UrlGenerator', undefined);
 		
 		return{
 
