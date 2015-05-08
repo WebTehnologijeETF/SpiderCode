@@ -360,26 +360,6 @@ footer a{
 	color: white;
 }
 
-#main-right{
-   
-  margin-top: 0px;
-  float: right;
-  width: 70%;
-  height: 100px;
-  padding: 5px;
-  box-sizing: border-box;
-  border: 1px solid black;
-  /*border: solid;?/
-	clear: both;
-  /*border-style: groove;*/
-}
-
-.editor{
-	position: absolute;
-	top: 0px;
-	left: 0px;
-}
-
 #home-w, #template, #main{
 	position: relative;
 	min-height: 100%;
@@ -399,6 +379,54 @@ ul#projectTree>li{
 		 display:block;
 		 list-style-image:none;
 }
+
+/*ACEM - begin*/
+.acem{
+	position: absolute;
+}
+
+.acem-tabs {
+	background-color: #1D1F21;
+	color: #C5C8C6;
+	height: 38px;
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 6px #25282c;
+}
+
+.acem-tab {
+	color: #C5C8C6;
+	margin: 4px 4px 0 0;
+	height: 34px;
+	width: 130px;
+	display: inline-block;
+	padding: 6px 8px 0px 8px;
+}
+
+.acem-ribon, .acem-tab {
+	background-color: #25282c;
+}
+
+.acem-ribon {
+	height: 2px;
+	width: 100%;
+	bottom: 0;
+}
+
+.acem-tab-title {
+	display: inline-block;
+	height: 22px;
+	width: 92px;
+}
+
+.acem-tab-x {
+	display: inline-block;
+	height: 22px;
+	width: 22px;
+	text-align: center;
+	visibility: hidden;
+}
+/*ACEM - end*/
 
 
 /*Folder style - begin*/
@@ -461,12 +489,9 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 	list-style-image: url('/images/bullet02.png');
 }
 
-#project-list a, #editor a{
+#project-list a{
 	color: white;
 	text-decoration: none;
-}
-#editor{
-	height: 200px;
 }
 
 #errors{
@@ -489,3 +514,5 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 	display: inline-block;
 	max-width: 100px;
 }
+
+

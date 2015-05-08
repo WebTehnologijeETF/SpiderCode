@@ -204,7 +204,7 @@
         this.main_resizer = new ResizerHorizontal(file_manager_resizer, $scope.manager, 0.30);
         
         var res = this.main_resizer;
-        window.onresize = function(){
+        var f = function(){
             //think about using for cross-browser solution: https://github.com/ryanve/verge
             var w = window,
                 d = document,
@@ -215,18 +215,14 @@
             //var viewport_width = Math.max(document.documentElement.clientWidth;
             //var viewport_height = document.documentElement.clientHeight;
             
+            var a = document.getElementById("header");
+            var b = a.clientHeight;
             
-            res.resize(x, y-61, 0, 60);
-        } 
+            res.resize(x, y-b, 0, 60);
+        };
 
-        var w = window,
-                d = document,
-                e = d.documentElement,
-                g = d.getElementsByTagName('body')[0],
-                x = w.innerWidth || e.clientWidth || g.clientWidth,
-                y = w.innerHeight|| e.clientHeight|| g.clientHeight;
-            
-            res.resize(x, y-61, 0, 60); 
+        window.onresize = f;
+        f();
 
     //menu on the left - end
     }

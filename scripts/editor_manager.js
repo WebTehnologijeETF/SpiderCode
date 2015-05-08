@@ -1,5 +1,3 @@
-
-
 //DOMElement: DOMElement where AceManager would be rendered
 //theme: String - OPTIONAL paramether
 function AceManager(DOMElement, theme){
@@ -24,28 +22,31 @@ function AceManager(DOMElement, theme){
 AceManager.prototype.setTheme = function(theme){
 	if(typeof theme !== "string")
 		throw "Theme must be string";
-	this.editor.setTheme("ace/theme/"+theme);
+	this.getEditor().setTheme("ace/theme/"+theme);
 }
 
-
-AceManager.prototype.editor = function(){
+AceManager.prototype.getEditor = function(){
 	return editor;
 }
 
 
 AceManager.prototype.resize = function(width, height, left, top){
 	//alert("ACEM-w:" + width + ", h:" + height + ", l:" + left + ", t:" + top);
-	this.VirtualRenderer.resize(width, height, left, top);
+	this.getVirtualRenderer().resize(width, height, left, top);
+}
+
+AceManager.prototype.getVirtualRenderer = function(){
+	return this.VirtualRenderer;
 }
 
 AceManager.prototype.getSessionManager = function(){
 	return this.SessionManager;
 }
+//END - AceManager
 
 
 
-
-//Session Manager
+//START - Session Manager
 function SessionManager(ace_manager){
 	this.sessions = [];
 	this.ace_manager = ace_manager;
@@ -97,31 +98,4 @@ SessionManager.prototype.deleteSession = function(id){
 	delete this.sessions[id];
 }
 
-
-//VirtualRenderer
-function VirtualRenderer(ace_manager, DOMElement, theme){
-	this.ace_manager = ace_manager;
-	this.dom_element = DOMElement;
-
-	//including Ace moduls, these are constructors,
-	var EditorRenderer = ace.require("ace/virtual_renderer").VirtualRenderer;
-
-	var virtualRenderer;
-	if(typeof theme === "string")
-		virtualRenderer = new EditorRenderer(DOMElement, "ace/theme/" + theme);
-	else
-		virtualRenderer = new EditorRenderer(DOMElement, "ace/theme/tomorrow_night");
-
-	this.editor_renderer = virtualRenderer;
-}
-
-VirtualRenderer.prototype.getEditorRenderer = function(){
-	return this.editor_renderer;
-}
-
-VirtualRenderer.prototype.resize = function(width, height, left, top){
-	this.dom_element.style.width = width + "px";
-	this.dom_element.style.height = height + "px";
-	this.dom_element.style.left = left + "px";
-	this.dom_element.style.top = top + "px";
-}
+//END - SessionManager
