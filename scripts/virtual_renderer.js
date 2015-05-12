@@ -104,7 +104,7 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 	}, false);
 
 
-	el.addEventListener('mouseout',function(event){
+	el.addEventListener('mouseout',function(event){ 
 		x.style.visibility = 'hidden';
 	}, false);
 
@@ -113,9 +113,9 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 	}, false);
 
 	x.addEventListener('click', function(event){
-
-		t.removeTab(tab_id);
-	}, true);
+		t.ace_manager.getTabManager().closeTab(tab_id);
+		event.stopPropagation();
+	}, false);
 
 	return el;
 }

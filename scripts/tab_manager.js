@@ -38,20 +38,34 @@ TabManager.prototype.getModeFromName = function getModeFromName(name){
 	return this.mapper.get(ext);
 }
 
-TabManager.prototype.showTab = function showTab(tab_id){
+TabManager.prototype.$getTabById = function(tab_id){
 	if(tab_id < 0 || tab_id > this.tabs.length - 1)
 		throw "Tab_id is out of range";
 
 	for(var i = 0; i < this.tabs.length; i++){
-		if(this.tabs[i].id === tab_id){
-			this.ace_manager.getVirtualRenderer().showTab(tab_id);
-			this.ace_manager.getSessionManager().showSession(this.tabs[i].session_id);
-			return;
-		}
+		if(this.tabs[i].id === tab_id)
+			return this.tabs[i];
 	}
 
 	throw "tab_id is wrong";
 }
+
+TabManager.prototype.showTab = function showTab(tab_id){
+	var tab = this.$getTabById(tab_id);
+
+	this.ace_manager.getVirtualRenderer().showTab(tab_id);
+	this.ace_manager.getSessionManager().showSession(tab.session_id);
+	
+}
+
+TabManager.prototype.closeTab = function closeTab(tab_id){
+	var tab = this.$getTabById(tab_id);
+
+	this.ace_manager.getVirtualRenderer().removeTab(tab_id);
+	this.ace_manager.getSessionManager().deleteSession(tab.session_id);
+	
+}
+
 
 //Mapper
 TabManager.prototype.mapper = new Map();
