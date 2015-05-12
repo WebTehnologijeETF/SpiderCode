@@ -12,9 +12,15 @@ function AceManager(DOMElement, theme){
 
 	this.SessionManager = new SessionManager(this);
 	this.VirtualRenderer = new VirtualRenderer(this, DOMElement, theme);
+	this.TabManager = new TabManager(this);
 
 	this.editor = new Editor(this.VirtualRenderer.getEditorRenderer());
 	this.editor.setReadOnly(true);
+	//this.editor.setAutoScrollEditorIntoView(true);
+
+	/*this.editor.setOptions({
+		maxLines: Infinity
+	});*/
 }
 
 
@@ -41,6 +47,10 @@ AceManager.prototype.getVirtualRenderer = function(){
 
 AceManager.prototype.getSessionManager = function(){
 	return this.SessionManager;
+}
+
+AceManager.prototype.getTabManager = function(){
+	return this.TabManager;
 }
 //END - AceManager
 

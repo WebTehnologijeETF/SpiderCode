@@ -6,6 +6,7 @@ function VirtualRenderer(ace_manager, DOMElement, theme){
 	this.theme = theme;
 
 	this.render();	
+
 }
 
 VirtualRenderer.prototype.render = function(){
@@ -39,20 +40,33 @@ VirtualRenderer.prototype.render = function(){
 	this.editor_renderer = virtualRenderer;
 	this.tabs = tabs;
 	this.editor = editor;
-
-	tabs.appendChild(this.makeTab());
-	tabs.appendChild(this.makeTab());
 }
 
+VirtualRenderer.prototype.addTab = function addTab(DOMElement){
+	this.tabs.appendChild(DOMElement);
+}
+ 
+VirtualRenderer.prototype.removeTab = function removeTab(tab_id){
+	var tab;
+	var a =  this.tabs.childNodes;
+	for(tab in this.tabs.childNodes){
+		if(this.tabs.childNodes[tab].tab_id == tab_id){
+			this.tabs.removeChild(this.tabs.childNodes[tab]);
+		} 
+	}
+}
 
 //make tab DOM element and return DOMElement, <li> element to be precise
-VirtualRenderer.prototype.makeTab = function(tab){
+VirtualRenderer.prototype.makeTab = function(name, tab_id){
+
 	var el = document.createElement("li");
 	el.classList.add("acem-tab");
-
+	el.classList.add("not-selectable");
+	
 	var title = document.createElement("div");
 	title.classList.add("acem-tab-title");
-	var t_text = document.createTextNode("Luka.txt");
+	//title.classList.add("not-selectable");
+	var t_text = document.createTextNode(name);
 	title.appendChild(t_text);
 
 	el.appendChild(title);
@@ -63,15 +77,28 @@ VirtualRenderer.prototype.makeTab = function(tab){
 
 	el.appendChild(x);
 
-	el.addEventListener('mouseover',function(){
+	el.tab_id = tab_id;
+	
+	var t = this;
+
+	el.addEventListener('mouseover',function(event){
 		x.style.visibility = 'visible';
 	}, false);
 
 
-	el.addEventListener('mouseout',function(){
+	el.addEventListener('mouseout',function(event){
 		x.style.visibility = 'hidden';
 	}, false);
 
+	el.addEventListener('click', function(event){
+		alert('Pritisnut tab: ' + tab_id);
+
+	}, false);
+
+	x.addEventListener('click', function(event){
+
+		t.removeTab(tab_id);
+	}, true);
 	return el;
 }
 
@@ -100,5 +127,9 @@ VirtualRenderer.prototype.resize = function(width, height, left, top){
 	this.editor.style.height = pom + "px";
 	this.editor.style.left = 0 + "px";
 	this.editor.style.top = tabs_height + "px";
+
+	//this.onResize(true,100,100,100);
+
+	this.editor_renderer.onResize(true);
 }
 //END - VirtualRenderer

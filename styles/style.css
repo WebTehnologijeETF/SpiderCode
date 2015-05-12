@@ -405,6 +405,7 @@ ul#projectTree>li{
 
 .acem-ribon, .acem-tab {
 	background-color: #25282c;
+	
 }
 
 .acem-ribon {
@@ -414,17 +415,31 @@ ul#projectTree>li{
 }
 
 .acem-tab-title {
+	vertical-align: top;
+	overflow: hidden;
 	display: inline-block;
 	height: 22px;
 	width: 92px;
 }
 
 .acem-tab-x {
+	vertical-align: top;	
 	display: inline-block;
 	height: 22px;
 	width: 22px;
 	text-align: center;
 	visibility: hidden;
+}
+
+.not-selectable{
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	
+	cursor: pointer;
 }
 /*ACEM - end*/
 
