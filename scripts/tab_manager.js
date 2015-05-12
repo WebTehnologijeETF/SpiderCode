@@ -7,7 +7,7 @@ function TabManager(ace_manager){
 	//this.initializeMapper();
 }
  
-TabManager.prototype.openTab = function(file){
+TabManager.prototype.addTab = function(file){
 	for(var i = 0; i < this.tabs.length; i++){
 		if(this.tabs[i].getPath() === file.path)
 			return;
@@ -20,12 +20,14 @@ TabManager.prototype.openTab = function(file){
 	//ading new session
 	var sessionManager = this.ace_manager.getSessionManager();
 	var ses_id = sessionManager.addSession(new_tab.getContent(), this.getModeFromName(new_tab.getName()));
-	sessionManager.showSession(ses_id);
+	//sessionManager.showSession(ses_id);
 	new_tab.session_id = ses_id;
 
 	var vRender = this.ace_manager.getVirtualRenderer();
 	var tabDOM = vRender.makeTab(new_tab.getName(),id);
 	vRender.addTab(tabDOM);
+
+	return id;
 }
 
 
@@ -36,6 +38,22 @@ TabManager.prototype.getModeFromName = function getModeFromName(name){
 	return this.mapper.get(ext);
 }
 
+TabManager.prototype.showTab = function showTab(tab_id){
+	if(tab_id < 0 || tab_id > this.tabs.length - 1)
+		throw "Tab_id is out of range";
+
+	for(var i = 0; i < this.tabs.length; i++){
+		if(this.tabs[i].id === tab_id){
+			this.ace_manager.getVirtualRenderer().showTab(tab_id);
+			this.ace_manager.getSessionManager().showSession(this.tabs[i].session_id);
+			return;
+		}
+	}
+
+	throw "tab_id is wrong";
+}
+
+//Mapper
 TabManager.prototype.mapper = new Map();
 (function(){
 	var mapper = TabManager.prototype.mapper;
@@ -64,11 +82,12 @@ TabManager.prototype.mapper = new Map();
 //END - TabManager
 
 
+
 //START - Tab
 function Tab(file, id, session_id){
 	this.file = file;
 	this.id = id;
-	this.session_id;
+	this.session_id = session_id;
 }
 
 Tab.prototype.getName = function getName(){

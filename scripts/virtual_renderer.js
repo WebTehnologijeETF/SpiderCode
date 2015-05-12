@@ -47,15 +47,33 @@ VirtualRenderer.prototype.addTab = function addTab(DOMElement){
 }
  
 VirtualRenderer.prototype.removeTab = function removeTab(tab_id){
+	var tab = this.$getTabById(tab_id);
+	this.tabs.removeChild(tab);
+}
+
+VirtualRenderer.prototype.showTab = function showTab(tab_id){
+	for(tab in this.tabs.childNodes){
+		if(this.tabs.childNodes[tab].classList){
+			this.tabs.childNodes[tab].classList.remove("acem-tab-active");
+		} 
+	}
+
+	var tab = this.$getTabById(tab_id);
+	tab.classList.add("acem-tab-active");
+
+}
+
+VirtualRenderer.prototype.$getTabById = function(tab_id){
 	var tab;
 	var a =  this.tabs.childNodes;
 	for(tab in this.tabs.childNodes){
 		if(this.tabs.childNodes[tab].tab_id == tab_id){
-			this.tabs.removeChild(this.tabs.childNodes[tab]);
+			return this.tabs.childNodes[tab];
 		} 
 	}
-}
 
+	return null;
+}
 //make tab DOM element and return DOMElement, <li> element to be precise
 VirtualRenderer.prototype.makeTab = function(name, tab_id){
 
@@ -91,14 +109,14 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 	}, false);
 
 	el.addEventListener('click', function(event){
-		alert('Pritisnut tab: ' + tab_id);
-
+		t.ace_manager.getTabManager().showTab(tab_id);
 	}, false);
 
 	x.addEventListener('click', function(event){
 
 		t.removeTab(tab_id);
 	}, true);
+
 	return el;
 }
 

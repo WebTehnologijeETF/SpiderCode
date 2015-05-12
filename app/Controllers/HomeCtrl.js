@@ -155,9 +155,9 @@ Tab.prototype.getName = function getName(){
             var file3 = new File("t10 Z1-b.js", "/var/tp/t10 z1-b.js", codejs3, "ad2sasa12edasddd23d3")
             var tm = $scope.manager.getTabManager();     
 
-            tm.openTab(file);     
-            tm.openTab(file2);
-            tm.openTab(file3);     
+            tm.addTab(file);     
+            tm.addTab(file2);
+            tm.addTab(file3);     
         }()) 
         
     //$scope.editor = ace.edit("editor");

@@ -386,7 +386,7 @@ ul#projectTree>li{
 }
 
 .acem-tabs {
-	background-color: #1D1F21;
+	background-color: rgba(14, 15, 16, 1);
 	color: #C5C8C6;
 	height: 38px;
 	margin: 0;
@@ -396,16 +396,16 @@ ul#projectTree>li{
 
 .acem-tab {
 	color: #C5C8C6;
+	background-color: #1D1F21;
 	margin: 4px 4px 0 0;
-	height: 34px;
+	height: 28px;
 	width: 130px;
 	display: inline-block;
 	padding: 6px 8px 0px 8px;
 }
 
-.acem-ribon, .acem-tab {
-	background-color: #25282c;
-	
+.acem-ribon {
+	background-color: red;
 }
 
 .acem-ribon {
@@ -440,6 +440,10 @@ ul#projectTree>li{
 	user-select: none;
 	
 	cursor: pointer;
+}
+
+.acem-tab-active{
+	background-color: #25282c;
 }
 /*ACEM - end*/
 
