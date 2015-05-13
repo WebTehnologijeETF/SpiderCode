@@ -392,6 +392,7 @@ ul#projectTree>li{
 	margin: 0;
 	padding: 0;
 	border-bottom: solid 6px #25282c;
+	font-size: 13px;
 }
 
 .acem-tab {
