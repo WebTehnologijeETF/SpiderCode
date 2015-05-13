@@ -9,8 +9,8 @@ function TabManager(ace_manager){
  
 TabManager.prototype.addTab = function(file){
 	for(var i = 0; i < this.tabs.length; i++){
-		if(this.tabs[i].getPath() === file.path)
-			return;
+		if(this.tabs[i] && this.tabs[i].getPath() === file.path)
+			return this.tabs[i].id;
 	}
 
 	var new_tab = new Tab(file);
@@ -31,6 +31,26 @@ TabManager.prototype.addTab = function(file){
 }
 
 
+TabManager.prototype.showTab = function showTab(tab_id){
+	var tab = this.$getTabById(tab_id);
+
+	this.ace_manager.getVirtualRenderer().showTab(tab_id);
+	this.ace_manager.getSessionManager().showSession(tab.session_id);
+	
+}
+
+TabManager.prototype.closeTab = function closeTab(tab_id){
+	var tab = this.$getTabById(tab_id);
+	for(var i = 0; i < this.tabs.length; i++){
+		if(this.tabs[i] === tab){
+			delete this.tabs[i];
+		} 
+	}
+
+	this.ace_manager.getVirtualRenderer().removeTab(tab_id);
+	this.ace_manager.getSessionManager().deleteSession(tab.session_id);
+}
+ 
 TabManager.prototype.getModeFromName = function getModeFromName(name){
 	var ext = name.substr(Math.max(0, name.lastIndexOf(".")) || Infinity);
 	//alert(ext);
@@ -43,28 +63,13 @@ TabManager.prototype.$getTabById = function(tab_id){
 		throw "Tab_id is out of range";
 
 	for(var i = 0; i < this.tabs.length; i++){
-		if(this.tabs[i].id === tab_id)
+		if(this.tabs[i] && this.tabs[i].id === tab_id)
 			return this.tabs[i];
 	}
 
 	throw "tab_id is wrong";
 }
 
-TabManager.prototype.showTab = function showTab(tab_id){
-	var tab = this.$getTabById(tab_id);
-
-	this.ace_manager.getVirtualRenderer().showTab(tab_id);
-	this.ace_manager.getSessionManager().showSession(tab.session_id);
-	
-}
-
-TabManager.prototype.closeTab = function closeTab(tab_id){
-	var tab = this.$getTabById(tab_id);
-
-	this.ace_manager.getVirtualRenderer().removeTab(tab_id);
-	this.ace_manager.getSessionManager().deleteSession(tab.session_id);
-	
-}
 
 
 //Mapper
@@ -128,4 +133,5 @@ function File(name, path, content, sha){
 	this.content = content;
 	this.sha = sha;
 }
+
 //END - Tab
