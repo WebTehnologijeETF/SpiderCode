@@ -16,6 +16,7 @@
             throw "DOM with id=editor is missing.";
  
         $scope.manager = new AceManager(eDom);
+
  
         /*(function(){
  
@@ -33,13 +34,155 @@
             tm.addTab(file3);     
         }())*/
          
+
+        (function(){
+            var code1 = `#include <iostream>
+#include <cmath>
+
+using std::cout;
+
+
+class Ugao {
+
+    double _rad;
+    static const double PI;
+
+
+    void Reduciraj(){ _rad = _rad - int(_rad/(2*PI))*2*PI;}
+public:
+    Ugao(double radijani = 0){ Postavi(radijani); }
+
+    Ugao(int stepeni, int minute, int sekunde){ Postavi(stepeni, minute, sekunde); }
+
+    void Postavi(double radijani){ _rad = radijani; Reduciraj(); }
+
+    void Postavi(int stepeni, int minute, int sekunde){
+        double u_stepeni = stepeni + minute/60.0 + sekunde/3600.0;
+        _rad = u_stepeni / 180 * PI;
+
+        Reduciraj();
+    }
+
+    double DajRadijane() const { return _rad; }
+    void OcitajKlasicneJedinice(int &stepeni, int &minute, int &sekunde) const;
+
+    int DajStepene() const;
+    int DajMinute() const;
+    int DajSekunde() const;
+
+    void Ispisi() const;
+    void IspisiKlasicno() const;
+
+    Ugao &SaberiSa(const Ugao &u){
+
+        _rad += u._rad;
+        Reduciraj();
+
+        return *this;
+    }
+    Ugao &PomnoziSa(double x){
+
+        _rad *= x;
+        Reduciraj();
+
+        return *this;
+    }
+
+    friend Ugao ZbirUglova(const Ugao &u1, const Ugao &u2);
+    friend Ugao ProduktUglaSaBrojem(const Ugao &u, double x);
+
+
+};
+
+const double Ugao::PI(3.1415926535);`;
+    var code2 = `void Ugao::OcitajKlasicneJedinice(int &stepeni, int &minute, int &sekunde) const{
+    double u_step = _rad / PI * 180;
+
+    stepeni = u_step;
+    minute = (u_step - stepeni) * 60;
+    sekunde = (u_step -  stepeni - minute/60.) * 3600.;
+}
+
+inline int Ugao::DajStepene() const{
+    return _rad / PI * 180;
+}
+
+int Ugao::DajMinute() const{
+    double u_step = _rad / PI * 180;
+    return (u_step - int(u_step)) * 60;
+}
+
+int Ugao::DajSekunde() const{
+    int deg, min, sec;
+    OcitajKlasicneJedinice(deg, min, sec);
+    return sec;
+}
+
+
+void Ugao::Ispisi() const{
+    cout << _rad;
+}
+void Ugao::IspisiKlasicno() const{
+
+    int deg, min, sec;
+    OcitajKlasicneJedinice(deg, min, sec);
+    cout << deg << "deg " << min << "min " << sec << "sec";
+    //cout << DajStepene() << "deg " << DajMinute() << "min " << DajSekunde() << " sec";
+}
+
+
+Ugao ZbirUglova(const Ugao &u1, const Ugao &u2){
+    return {u1._rad + u2._rad};
+}
+
+Ugao ProduktUglaSaBrojem(const Ugao &u, double x){
+    Ugao rez(u._rad * x);
+    return rez;
+}
+
+void nl(){
+    cout << std::endl;
+}
+int main(){
+
+    Ugao u1(3*3.1415926), u2(1,1,1);
+    u1.IspisiKlasicno(); nl();
+
+    u1.SaberiSa(u2).PomnoziSa(2).Ispisi(); nl();
+    u1.Ispisi();
+
+    ZbirUglova(u1, u2).Ispisi();
+    ProduktUglaSaBrojem(u1, 2).Ispisi();
+}`;
+
+var codejs3 = `//THIS is ineditor example
+function Tab(file, id, session_id){
+    this.file = file;
+    this.id = id;
+    this.session_id;
+}
+
+Tab.prototype.getName = function getName(){
+    return this.file.name;
+}`;
+            var file = new File("t10 Z1-a.cpp", "/var/tp/t10 z1-a.cpp", code1, "ad212edasddd23d3")
+
+            var file2 = new File("t10 Z1-b.cpp", "/var/tp/t10 z1-b.cpp", code2, "ad2sasa12edasddd23d3")
+
+            var file3 = new File("t10 Z1-b.js", "/var/tp/t10 z1-b.js", codejs3, "ad2sasa12edasddd23d3")
+            var tm = $scope.manager.getTabManager();     
+
+            tm.addTab(file);     
+            tm.addTab(file2);
+            tm.addTab(file3);     
+        }()) 
+        
     //$scope.editor = ace.edit("editor");
     //$scope.editor.setTheme("ace/theme/tomorrow_night");
     //$scope.editor.getSession().setMode("ace/mode/javascript");
      
     //menu on the right - end
  
-    //menu on the left - begin
  
         //dummmy dataa - ovo je glupo uradjeno, ali je samo privremeno, dok ne napravimo http gettere
  
@@ -307,7 +450,7 @@
                 y = w.innerHeight|| e.clientHeight|| g.clientHeight;
             //var viewport_width = Math.max(document.documentElement.clientWidth;
             //var viewport_height = document.documentElement.clientHeight;
-             
+
             var a = document.getElementById("header");
             var b = a.clientHeight;
              
@@ -317,7 +460,16 @@
         window.onresize = f;
         f();
  
-    //menu on the left - end
+
+            
+            var a = document.getElementById("header");
+            var b = a.clientHeight;
+            
+            res.resize(x, y-b, 0, 60);
+        };
+
+        window.onresize = f;
+        f();
     }
  
     HomeCtrl.$inject = ['$scope', 'ServiceProvider'];

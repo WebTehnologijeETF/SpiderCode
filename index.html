@@ -6,7 +6,7 @@
 	<meta charset="UTF-8">	
 
 	<!-- AceEditor Script-->
-    <script src="scripts/ace-builds/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script src="scripts/ace-builds/src-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
 	
 	<!-- Library Scripts -->
 	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.25/angular.min.js"></script>
@@ -14,8 +14,8 @@
 	<script src="scripts/validator.js" type="text/javascript" ></script>
     <script src="scripts/editor_manager.js" type="text/javascript" ></script>
     <script src="scripts/resizer_horizontal.js" type="text/javascript" ></script>
-
-
+	<script src="scripts/virtual_renderer.js" type="text/javascript" ></script>
+	<script src="scripts/tab_manager.js" type="text/javascript" ></script>
 
 	<!-- Application Script -->
     <script src="app/app.js"></script>
@@ -36,8 +36,8 @@
    
 </head>
 <body>
-	<header id="header">
-		<nav class="navbar navbar-tamni">
+	<header>
+		<nav class="navbar navbar-tamni" id="header">
 			<ul>
 				<li class="no-hover"><a href="#" class="logo"><img src="/images/Logo_white.png" alt="SpiderCode logo">Code</a></li>
 				<li class="active"><a href="#/">Home</a></li>
