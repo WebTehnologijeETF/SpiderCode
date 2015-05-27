@@ -49,14 +49,6 @@
          
     });
 
-    app.controller('LoginCtrl', function($scope, $rootScope) {
-         
-    });
-
-    app.controller('ChooseServerCtrl', function($scope, $rootScope){
-
-    });
-
     app.service('ServiceProvider', [function(){
 
        var injector = angular.injector(['app', 'ng']);
@@ -70,7 +62,7 @@
 
         return{
             getService : function(serviceName, altName){
-return injector.get(serviceName);
+return injector.get(ServerName + serviceName);
                 }
                 
 
