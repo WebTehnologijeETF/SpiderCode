@@ -1,6 +1,6 @@
 (function(){
 
-	angular.module('app').service('Folder', ['ServiceProvider', function(service){
+	angular.module('app').service('ZamgerFolder', ['ServiceProvider', function(service){
 
 	}]);
 

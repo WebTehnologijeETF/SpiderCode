@@ -3,7 +3,8 @@
     
     var app = angular.module('app', ['ngRoute'])
          .run(['$rootScope', function($rootScope) {
-                        
+            
+                        $rootScope.Username = undefined;
                         $rootScope.onloadfunc = function() //funkcija koja se pokrece nakon loadanja template html-a i overrideana je u svakom kontroleru za svaki template html
                         {
                             console.log('onload from root');
@@ -53,7 +54,7 @@
 
        var injector = angular.injector(['app', 'ng']);
 
-       var ServerName = ''; // "DefaultServerName";
+       var ServerName = "Zamger"; // "DefaultServerName";
 
         var setServerName = function(serverName) {
 
@@ -62,13 +63,14 @@
 
         return{
             getService : function(serviceName, altName){
-return injector.get(ServerName + serviceName);
+            return injector.get(ServerName + serviceName);
                 }
                 
 
             };
  }
     ]);
+
 
 
 })();

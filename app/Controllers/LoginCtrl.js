@@ -1,12 +1,20 @@
 (function(){
     
  
-    var LoginCtrl = function($scope, service) {
+    var LoginCtrl = function($scope, $rootScope, service) {
+
     //services - begin
-        var ProjectFactory = service.getService('ProjectFactory', undefined);
-        var Folder = service.getService('Folder', undefined);
+        var loginService = service.getService('LoginService', undefined);
     //services - end
 
+    //methods it provides
+
+    $scope.Login = function(Username, Pass){
+    	var r = loginService.login({login: Username, pass: Pass}).success(function(data)
+    	{
+    		$rootScope.Username = Username;
+    	})
+    }
     
    }
  

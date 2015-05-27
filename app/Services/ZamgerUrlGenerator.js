@@ -3,6 +3,9 @@
 	angular.module('app').factory('ZamgerUrlGenerator', ['ServiceProvider',  function(service){
 
 		return{
+			LoginUrl: function($params){
+				return:
+			}
 			getFolderContentsUrl: function(somestuff){
 				return ''; //TO DO: this
 			},
