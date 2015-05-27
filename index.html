@@ -32,8 +32,8 @@
     <script src="app/Services/ZamgerProjectFactory.js"></script>
     <script src="app/Services/ZamgerDataMapper.js"></script>
     <script src="app/Services/ZamgerUrlGenerator.js"></script>
-
     <script src="app/Classes/ZamgerFolder.js"></script>  
+    <script src="app/Services/ZamgerLoginService.js"></script>  
 
    
 </head>
@@ -51,7 +51,10 @@
 				<li><a href="">Jos Nesto</a></li>-->
 			</ul>
 			<ul style="float:right;">
-				<li><a href="#/ChooseServer">Please, <em>Log in!</em></a></li>
+				<li ng-hide = "LoggedIn"><a href="#/ChooseServer">Please, <em>Log in!</em></a></li>
+
+				<li ng-show = "LoggedIn"> Hello, {{Username}}! </li>
+
 			</ul>
 		</nav>
 	</header>

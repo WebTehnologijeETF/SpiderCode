@@ -4,8 +4,8 @@
 
 		return{
 			LoginUrl: function($params){
-				return:
-			}
+				return "http://zamger.etf.unsa.ba/zadaceApi/auth.php";
+			},
 			getFolderContentsUrl: function(somestuff){
 				return ''; //TO DO: this
 			},

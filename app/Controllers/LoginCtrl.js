@@ -7,18 +7,37 @@
         var loginService = service.getService('LoginService', undefined);
     //services - end
 
+    $scope.Username = '';
+    $scope.Password = '';
+
     //methods it provides
 
-    $scope.Login = function(Username, Pass){
-    	var r = loginService.login({login: Username, pass: Pass}).success(function(data)
+     $scope.Login = function(Username, Pass){
+    	var r = loginService.login({login: Username, pass: Pass}).then(function(data)
     	{
+    		alert('I am here!' + Username);
+    		if(data.success = true){
     		$rootScope.Username = Username;
+    		$rootScope.LoggedIn = true;
+    		alert(data.message);}
+    		else
+    		{
+    			$scope.Username = '';
+    			$scope.Password = '';
+    			alert(data.message);
+    		}
     	})
-    }
-    
+    }    
+
+     $scope.submit = function() {
+
+        $scope.Login(this.Username, this.Password);
+      };
+
+   
    }
  
-    LoginCtrl.$inject = ['$scope', 'ServiceProvider'];
+    LoginCtrl.$inject = ['$scope', '$rootScope', 'ServiceProvider'];
     angular.module('app').controller('LoginCtrl', LoginCtrl);
  
 })();

@@ -6,10 +6,11 @@
 	return{
 
 			login: function($params){
+				alert('I am here! @ loginservice ' + $params.login + ' ' + $params.pass);
 				return $http({
 					url: url.LoginUrl(),
 					method: "POST",
-					data: mapper.getParamsForLogin($params);
+					data: mapper.getParamsForLogin($params)
 				});
 			},
 			
