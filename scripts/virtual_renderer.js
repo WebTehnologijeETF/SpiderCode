@@ -7,6 +7,10 @@ function VirtualRenderer(ace_manager, DOMElement, theme){
 
 	this.render();	
 
+	var context_menu = this.makeContextMenu();
+
+	this.dom_element.appendChild(context_menu);
+
 }
 
 VirtualRenderer.prototype.render = function(){
@@ -124,6 +128,31 @@ VirtualRenderer.prototype.getEditorRenderer = function(){
 	return this.editor_renderer;
 }
 
+VirtualRenderer.prototype.makeContextMenu = function(){
+	var el = document.createElement("div");
+	el.classList.add("context-menu");
+
+	var list = document.createElement("ul");
+	list.classList.add("context-menu-list");
+	el.appendChild(list);
+
+	var save = document.createElement("li");
+	save.classList.add("context-menu-item");
+	save.innerHTML="Save";
+	list.appendChild(save);
+
+	var saveAs = document.createElement("li");
+	saveAs.classList.add("context-menu-item");
+	saveAs.innerHTML = "SaveAs...";
+	list.appendChild(saveAs);
+
+	var discardChanges = document.createElement("li");
+	discardChanges.classList.add("context-menu-item");
+	discardChanges.innerHTML = "Discard Changes";
+	list.appendChild(discardChanges);
+
+	return el;
+}
 
 VirtualRenderer.prototype.resize = function(width, height, left, top){
 	this.dom_element.style.width = width + "px";

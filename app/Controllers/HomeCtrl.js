@@ -4,7 +4,7 @@
     var HomeCtrl = function($scope, service) {
     //services - begin
         var ProjectFactory = service.getService('ProjectFactory', undefined);
-        var Folder = service.getService('Folder', undefined);
+//        var Folder = service.getService('Folder', undefined);
     //services - end
  
     //menu on the right - begin
@@ -98,7 +98,7 @@
  
         var code211 = '//THIS is ineditor example\nfunction Tab(file, id, session_id){\n    this.file = file;\n    this.id = id;\n    this.session_id;\n}\n\n' +
              
-                'Tab.prototype.getName = function getName(){\n    return this.file.name;\n}\n';
+                'Tab.prototype.getName = function getName(){\n    return this.file.Name;\n}\n';
          
         var file211 = new File('index.html','/Moji projekti/Spidercode/index.html', code211, '???');
  
@@ -152,7 +152,7 @@
                 var className = refElement.className.replace( /(?:^|\s)unexpanded(?!\S)/ , ' expanded' ); //zelimo da zamijenimo unexpanded sa expanded, jer smo kliknuli, ali ne zelimo izbrisati ostale klase
                 refElement.setAttribute("class", className);  
  
-                if(refFolder.Folders === [] && refFolder.Files === [])
+                if(!refFolder.getContent())
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
                 }
@@ -180,10 +180,11 @@
         };
  
         //napravi clanove liste u refElementu - prikazi sadrzaj refFolder-a, na osnovu dobavljenih podataka
-        var  appear = function(refElement, refFolder)
+        var appear = function(refElement, refFolder)
         {
             var lista = document.createElement("ul"); //lista koju ce u sebi sadrzavati refElement - to je njegov content
-            for(var i = 0; i < refFolder.Folders.length; i++) //za svaki folder koji sadrzi u sebi pravimo li element koji je tipa prosirive liste
+            var folders = refFolder.getFolders();
+            for(var i = 0; i < folders.length; i++) //za svaki folder koji sadrzi u sebi pravimo li element koji je tipa prosirive liste
                                                               //ovi folderi ce biti lazy-loadani - odnosno dobavit ce se samo njihova imena i po potrebi pathovi
             {
                 var node = document.createElement("LI");
@@ -191,7 +192,7 @@
  
                 var c = document.createElement("span");
                 c.setAttribute("class", "icon");
-                c.folder = refFolder.Folders[i];
+                c.folder = folders[i];
                 c.addEventListener( "click", function() {
                 return $scope.list(this.parentNode, this.folder);
                 }, false);
@@ -199,10 +200,10 @@
  
                 var s = document.createElement("span");
                 s.setAttribute("class", "link");
-                s.innerHTML = refFolder.Folders[i].Name;
+                s.innerHTML = folders[i].getName();
  
                 // dodajemo js objekat na html objekat, kako bi znali na koji folder se referencira
-                s.folder = refFolder.Folders[i];
+                s.folder = folders[i];
  
                 //dodajemo eventListener za dblclick funkciju za unutarnje foldere - jer su i oni tipa prosirive liste
                 s.addEventListener( "dblclick", function() {
@@ -213,13 +214,15 @@
                 node.appendChild(s);
                 lista.appendChild(node);//na novonapravljenu listu kacimo njenu "djecu"
             }
-            for(var j = 0; j < refFolder.Files.length; j++) //radimo isto za unutarnje fileove, kao za foldere, samo sto oni nisu tipa prosirive liste
+
+            var files = refFolder.getFiles();
+            for(var j = 0; j < files.length; j++) //radimo isto za unutarnje fileove, kao za foldere, samo sto oni nisu tipa prosirive liste
             {
                 var node = document.createElement("LI");
                 var s = document.createElement("span");
                 s.setAttribute("class", "link");
-                s.innerHTML = refFolder.Files[j].name;
-                s.file = refFolder.Files[j];
+                s.innerHTML = files[i].getName();
+                s.file = files[i];
                  
                 s.addEventListener( "dblclick", function() { //ovdje ce biti neka funkcija koja editoru daje file za ocitavanje
                     return $scope.openInEditor(this.file);
@@ -270,7 +273,7 @@
  
                         var s = document.createElement("span");
                         s.setAttribute("class", "link");
-                        s.innerHTML = Projects[i].Name;
+                        s.innerHTML = Projects[i].getName();
                         s.folder = Projects[i];
                         s.addEventListener( "dblclick", function() {
                         return $scope.list(this.parentNode, this.folder);

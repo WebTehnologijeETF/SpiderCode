@@ -2,51 +2,54 @@ function File (name, path, content, id){
 
 	this.Name = name;
 	if(id != undefined)
-	this.Id = id;
+		this.Id = id;
+	
 	if(path != undefined)
-	this.Path = path;
+		this.Path = path;
+	
 	if(content != undefined)
-	this.Content = content;
-
-	}
+		this.Content = content;
+	
+	this.type = "file";
+}
 
 	File.prototype.getName = function(){
-		return Name;
+		return this.Name;
 	}
 
 
 	File.prototype.getPath = function(){
-		return Path;
+		return this.Path;
 	}
 
 
 	File.prototype.getId = function(){
-		return Id;
+		return this.Id;
 	}
 
 
 	File.prototype.getContent = function(){
-		return Content;
+		return this.Content;
 	}
 
 
 	File.prototype.setName = function(name){
-		Name = name;
+		this.Name = name;
 	}
 
 
 	File.prototype.setPath = function(p){
-		Path = p;
+		this.Path = p;
 	}
 
 
 	File.prototype.setId = function(id){
-		Id = id;
+		this.Id = id;
 	}
 
 
 	File.prototype.setContent = function(content){
-		Content = content;
+		this.Content = content;
 	}
 
 

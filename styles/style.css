@@ -536,3 +536,27 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 }
 
 
+
+/*Context - Menu*/
+.context-menu{
+	position: absolute;
+	background-color: #C8A32E;
+	width: 200px;
+	z-index: 1000;
+	color: white;
+}
+
+.context-menu-list{
+	list-style-type: none;
+	padding: 5px;
+	margin: 0px;
+}
+
+.context-menu-item{
+	padding: 6px 4px 5px 4px;
+	border-bottom: 1px solid #C8A32E;
+}
+
+.context-menu-item:hover{
+	border-bottom: 1px solid white;
+}
