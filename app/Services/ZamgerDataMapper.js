@@ -2,7 +2,6 @@
 
 	angular.module('app').factory('ZamgerDataMapper', ['ServiceProvider', function(service){
 
-		var Project = service.getService('Folder', undefined);
 		return{
 			getParamsForLogin: function(data){
 				return {login: data.login, pass: data.pass};

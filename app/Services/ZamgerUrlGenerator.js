@@ -4,26 +4,30 @@
 
 		return{
 			LoginUrl: function($params){
-				return "http://zamger.etf.unsa.ba/zadaceApi/auth.php";
+				return "https://zamger.etf.unsa.ba/zadaceApi/auth.php";
 			},
-			getFolderContentsUrl: function(somestuff){
-				return ''; //TO DO: this
+			getFolderContentsUrl: function($params){
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getFolderContents&filepath=' + $params.path;
 			},
-			getFileUrl: function(somestuff){
+			getFileUrl: function($params){
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getFile&filepath=' + $params.path;
+			},
+			getCreateFolderUrl: function($params){
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=createFolder&filepath=' + $params.path + '&name=' + $params.name;
+			},
+			getCreateFileUrl: function($params){
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=createFile&filepath=' + $params.path + '&name=' + $params.name + '&filecontents=' + $params.content;
+			},
+			getUpdateFileUrl: function($params){
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=updateFile&filepath=' + $params.path + '&filecontents=' + path.content;
+			},
+			getDeleteFileUrl: function($params){
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=deleteFile&filepath=' + $params.path;
+			},
+			getDeleteFolderUrl: function($params){
 				return '';
-			},
-			getCreateFolderUrl: function(somestuff){
-				return '';
-			},
-			getCreateFileUrl: function(somestuff){
-				return '';
-			},
-			getUpdateFileUrl: function(somestuff){
-				return '';
-			},
-			getDeleteFileUrl: function(somestuff){
-				return '';
-			}			
+			}
+
 		};
 		}]);
 

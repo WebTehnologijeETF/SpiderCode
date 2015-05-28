@@ -1,4 +1,4 @@
-function Folder (name, path, content, id){
+function File (name, path, content, id){
 
 	this.Name = name;
 	if(id != undefined)
@@ -6,15 +6,7 @@ function Folder (name, path, content, id){
 	if(path != undefined)
 	this.Path = path;
 	if(content != undefined)
-		{
-			this.Content = content;
-			this.IsLoaded = true;
-		}
-    else 
-    	{
-    		this.Content = [];
-    		this.IsLoaded = false;
-    	}
+	this.Content = content;
 
 	}
 
@@ -58,3 +50,11 @@ function Folder (name, path, content, id){
 	}
 
 
+	File.prototype.getFileExtension = function(){
+		// TODO: this;
+	}
+
+
+	File.prototype.setFileExtension = function(){
+		// TODO: this;
+	}

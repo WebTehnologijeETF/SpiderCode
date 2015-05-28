@@ -4,6 +4,7 @@
     var app = angular.module('app', ['ngRoute'])
          .run(['$rootScope', function($rootScope) {
 
+                        $rootScope.PHPSESSID = undefined;
                         $rootScope.LoggedIn = false;
                         $rootScope.Username = undefined;
                         $rootScope.onloadfunc = function() //funkcija koja se pokrece nakon loadanja template html-a i overrideana je u svakom kontroleru za svaki template html

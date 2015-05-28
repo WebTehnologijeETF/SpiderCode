@@ -4,10 +4,9 @@
     var ChooseServerCtrl = function($scope, service) {
     //services - begin
         var ProjectFactory = service.getService('ProjectFactory', undefined);
-        var Folder = service.getService('Folder', undefined);
-    //services - end
+     //services - end
 
-    
+
    }
  
     ChooseServerCtrl.$inject = ['$scope', 'ServiceProvider'];

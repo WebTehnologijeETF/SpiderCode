@@ -16,10 +16,13 @@
     	var r = loginService.login({login: Username, pass: Pass}).then(function(data)
     	{
     		alert('I am here!' + Username);
-    		if(data.success = true){
-    		$rootScope.Username = Username;
-    		$rootScope.LoggedIn = true;
-    		alert(data.message);}
+    		if(data.success = true)
+    		{
+    			$rootScope.PHPSESSID = data.sid;
+    			$rootScope.Username = Username;
+    			$rootScope.LoggedIn = true;
+    			alert(data.message);
+    		}
     		else
     		{
     			$scope.Username = '';

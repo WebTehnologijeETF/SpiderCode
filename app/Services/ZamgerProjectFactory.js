@@ -20,38 +20,23 @@
 				});				
 				},
 			createFolder: function($params){ //params = content, base_tree
-				return $http({
-					url: url.getCreateFolderUrl($params),
-					method: "POST",
-					data: mapper.getParamsToCreateFolder($params)
-				}).success(function(response){
+				return $http.get(url.getCreateFolderUrl($params))
+					.success(function(response){
 					return mapper.FetchCreateFolderResponse(response);
 				});
 			},
 			createFile: function(){
-				return $http({
-					url: url.getCreateFileUrl($params),
-					method: "POST",
-					data: mapper.getParamsToCreateFile($params)
-				}).success(function(response){
+				return $http.get(url.getCreateFileUrl($params)).success(function(response){
 					return mapper.FetchCreateFileResponse(response);
 				});
 			},
 			updateFile: function($params){
-				return $http({
-					url:url.getUpdateFileUrl($params),
-					method: "PATCH",
-					data: mapper.getParamsToUpdateFile($params)
-				}).success(function(response){
+				return $http.get(url.getUpdateFileUrl($params)).success(function(response){
 					return mapper.FetchUpdateFileResponse(response)
 				});
 			},
 			deleteFile: function($params){
-				return $http({
-					url:url.getDeleteFileUrl($params),
-					method: "DELETE",
-					data: mapper.getParamsToDeleteFile($params)
-				}).success(function(response){
+				return $http(url.getDeleteFileUrl($params)).success(function(response){
 					return mapper.FetchDeleteFileResponse(response)
 				});
 			}
