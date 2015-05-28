@@ -11,7 +11,7 @@
 				return $http.get(url.getFolderContentsUrl($params))
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchFolderContent(response.data.data);
+					return mapper.FetchFolderContent(response.data.data, $params.path);
 					else
 						alert(data.message);
 					//TO DO: this

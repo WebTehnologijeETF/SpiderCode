@@ -78,8 +78,8 @@
  
             $scope.openedFile = file; //ovo openedFile ce poslije  biti atribut od span-a od taba 
         }
-  
-   var getTree = function(){
+
+         var getTree = function(){
             return ProjectFactory.getTree(); //ovo treba bit u mngr
         }
 
@@ -91,11 +91,9 @@
             return ProjectFactory.getFile({path: path}); //ovo treba bit u mngr
         }
 
-         var updateFile = function(path, content){
-            return ProjectFactory.File({path: path, content: content}); //ovo treba bit u mngr
+         var getFile = function(path){
+            return ProjectFactory.getFile({path: path}); //ovo treba bit u mngr
         }
-        
- 
         
  
         // ovo je onclick funkcija za sve elemente klase folder, liste koja se moze prosiriti
