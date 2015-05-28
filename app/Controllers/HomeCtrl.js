@@ -78,6 +78,23 @@
  
             $scope.openedFile = file; //ovo openedFile ce poslije  biti atribut od span-a od taba 
         }
+
+         var getTree = function(){
+            return ProjectFactory.getTree(); //ovo treba bit u mngr
+        }
+
+        var getFolderContents = function(path){
+            return ProjectFactory.getFolderContents({path: path}); //ovo treba bit u mngr
+        }
+
+        var getFile = function(path){
+            return ProjectFactory.getFile({path: path}); //ovo treba bit u mngr
+        }
+
+         var getFile = function(path){
+            return ProjectFactory.getFile({path: path}); //ovo treba bit u mngr
+        }
+        
  
         // ovo je onclick funkcija za sve elemente klase folder, liste koja se moze prosiriti
         //refElement nam je HTML objekat koji predstavlja prosirivu listu koja moze biti prosirena ili ne 
@@ -93,7 +110,7 @@
                 if(!refFolder.getIsLoad())
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
-                    refFolder.SetContent = getFolderContent(refFolder.getPath());
+                    refFolder.SetContent = getFolderContents(refFolder.getPath());
 
                 }
                 else
@@ -189,14 +206,7 @@
             refElement.querySelector("ul").style.display = "none";
         }
 
-        var getTree = function(){
-            return ProjectFactory.getTree(); //ovo treba bit u mngr
-        }
-
-        var getFolderContent = function(path){
-            return ProjectFactory.getFolderContents({path: path}); //ovo treba bit u mngr
-        }
- 
+       
         $scope.onloadfunc = function()
         {
          

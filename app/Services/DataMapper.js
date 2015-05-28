@@ -5,6 +5,8 @@
 		var Project = service.getService('Folder', undefined);
 		return{
 			FetchFolderContent: function(data){
+				var content = [];
+				
 				return data;
 			},
 			FetchTree:  function(data){
