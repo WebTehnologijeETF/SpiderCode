@@ -19,10 +19,10 @@ VirtualRenderer.prototype.getContextMenu = function(){
 
 VirtualRenderer.prototype.showContextMenu = function(x, y){
 	var con = this.getContextMenu();
-	alert("X:"+x + ", Y:" + y );
+	//alert("X:"+x + ", Y:" + y );
 	con.style.visibility = "visible";
-	con.style.left = x;
-	con.style.top = y;
+	con.style.left = x + "px";
+	con.style.top = y + "px";
 	con.style.position = "absolute";
 }
 
@@ -143,7 +143,10 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 	}, false);
 
 	carret.addEventListener('click', function(event){
-		t.showCarret(event.clientX, event.clientY);
+		var le = document.getElementById("menu-left");
+
+		var w = parseInt(le.style.width);
+		t.showContextMenu(event.clientX - w, event.clientY - 60);
 
 		event.stopPropagation();
 	}, false);
