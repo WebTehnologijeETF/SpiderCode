@@ -13,7 +13,7 @@
     //methods it provides
 
      $scope.Login = function(Username, Pass){
-    	var r = loginService.login({login: Username, pass: Pass}).then(function(data)
+    	var r = loginService.login({login: Username, pass: Pass}).success(function(data)
     	{
     		alert('I am here!' + Username);
     		if(data.success = true)
@@ -30,6 +30,10 @@
     			alert(data.message);
     		}
     	})
+        .error(function(data, status, headers, config){
+                    alert('status: ' + status);
+                    //TO DO: this
+                });
     }    
 
      $scope.submit = function() {

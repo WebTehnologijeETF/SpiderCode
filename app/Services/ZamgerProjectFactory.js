@@ -16,8 +16,8 @@
 						alert(data.message);
 					//TO DO: this
 				})
-				.error(function(data, status, headers, config){
-					alert(data.message);
+				.error(function(status, headers, config){
+					alert('status: ' + status);
 					//TO DO: this
 				});
 			},
@@ -30,8 +30,8 @@
 						alert(data.message);
 					//TO DO: this
 				})
-				.error(function(data, status, headers, config){
-					alert(data.message);
+				.error(function(status, headers, config){
+					alert('status: ' + status);
 					//TO DO: this
 				});
 			},
@@ -44,8 +44,8 @@
 						alert(data.message);
 					//TO DO: this
 				})
-				.error(function(data, status, headers, config){
-					alert(data.message);
+				.error(function(status, headers, config){
+					alert('status: ' + status);
 					//TO DO: this
 				
 				});;				
@@ -60,7 +60,7 @@
 					//TO DO: this
 				})
 				.error(function(data, status, headers, config){
-					alert(data.message);
+					alert('status: ' + status);
 					//TO DO: this
 				
 				});;
@@ -75,7 +75,7 @@
 					//TO DO: this
 				})
 				.error(function(data, status, headers, config){
-					alert(data.message);
+					alert('status: ' + status);
 					//TO DO: this
 				
 				});;
@@ -90,7 +90,7 @@
 					//TO DO: this
 				})
 				.error(function(data, status, headers, config){
-					alert(data.message);
+					alert('status: ' + status);
 					//TO DO: this
 				
 				});;
@@ -105,7 +105,7 @@
 					//TO DO: this
 				})
 				.error(function(data, status, headers, config){
-					alert(data.message);
+					alert('status: ' + status);
 					//TO DO: this
 				
 				});;
