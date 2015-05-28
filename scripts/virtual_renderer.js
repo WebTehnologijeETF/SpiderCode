@@ -7,10 +7,23 @@ function VirtualRenderer(ace_manager, DOMElement, theme){
 
 	this.render();	
 
-	var context_menu = this.makeContextMenu();
+	this.context_menu = this.makeContextMenu();
 
-	this.dom_element.appendChild(context_menu);
+	this.dom_element.appendChild(this.context_menu);
 
+}
+
+VirtualRenderer.prototype.getContextMenu = function(){
+	return this.context_menu;
+}
+
+VirtualRenderer.prototype.showContextMenu = function(x, y){
+	var con = this.getContextMenu();
+	alert("X:"+x + ", Y:" + y );
+	con.style.visibility = "visible";
+	con.style.left = x;
+	con.style.top = y;
+	con.style.position = "absolute";
 }
 
 VirtualRenderer.prototype.render = function(){
@@ -49,6 +62,7 @@ VirtualRenderer.prototype.render = function(){
 VirtualRenderer.prototype.addTab = function addTab(DOMElement){
 	this.tabs.appendChild(DOMElement);
 }
+
  
 VirtualRenderer.prototype.removeTab = function removeTab(tab_id){
 	var tab = this.$getTabById(tab_id);
@@ -93,8 +107,13 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 
 	el.appendChild(title);
 
+	var carret = document.createElement("div");
+	carret.innerHTML ="&#9660;";
+	carret.classList.add("acem-tab-x");
+	el.appendChild(carret);
+
 	var x = document.createElement("div");
-	x.innerHTML = "x";
+	x.innerHTML = "&#10006;";
 	x.classList.add("acem-tab-x");
 
 	el.appendChild(x);
@@ -105,11 +124,13 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 
 	el.addEventListener('mouseover',function(event){
 		x.style.visibility = 'visible';
+		carret.style.visibility = 'visible';
 	}, false);
 
 
 	el.addEventListener('mouseout',function(event){ 
 		x.style.visibility = 'hidden';
+		carret.style.visibility = 'hidden';
 	}, false);
 
 	el.addEventListener('click', function(event){
@@ -121,6 +142,11 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 		event.stopPropagation();
 	}, false);
 
+	carret.addEventListener('click', function(event){
+		t.showCarret(event.clientX, event.clientY);
+
+		event.stopPropagation();
+	}, false);
 	return el;
 }
 

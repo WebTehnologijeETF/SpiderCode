@@ -37,3 +37,35 @@ function FMVirtualRender(FileManager, DOMElement){
 	this.dom_element = DOMElement;
 }
 
+FMVirtualRender.prototype.renderFolder = function(refElement, refFolder){
+	if(refElement.className.match(/(?:^|\s)unexpanded(?!\S)/) )
+    {
+        var className = refElement.className.replace( /(?:^|\s)unexpanded(?!\S)/ , ' expanded' ); //zelimo da zamijenimo unexpanded sa expanded, jer smo kliknuli, ali ne zelimo izbrisati ostale klase
+        refElement.setAttribute("class", className);  
+
+        if(!refFolder.getContent())
+        {
+            //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
+        }
+        else
+        {
+
+            if( refElement.querySelectorAll("ul").length === 0) //ako djeca nisu napravljena nikako prije, odnosno ul html element je prazan - stoji samo IME za folder, a ne njegov sadrzaj, a js objekti JESU dobavljeni
+            {
+
+                //napravi djecu na osnovu dobavljenih foldera i fajlova - dodaj clanove u html element ul
+                appear(refElement, refFolder);
+            }
+            else
+            { // postoje djeca - postoje i js objekti i html objekti - samo ih treba prikazati
+                refElement.querySelector("ul").style.display = "block";
+            }
+        }
+    }
+    else
+    {
+
+        dissappear(refElement);
+    }
+    return false;
+}

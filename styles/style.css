@@ -400,7 +400,7 @@ ul#projectTree>li{
 	background-color: #1D1F21;
 	margin: 4px 4px 0 0;
 	height: 28px;
-	width: 130px;
+	width: 140px;
 	display: inline-block;
 	padding: 6px 8px 0px 8px;
 }
@@ -427,9 +427,14 @@ ul#projectTree>li{
 	vertical-align: top;	
 	display: inline-block;
 	height: 22px;
-	width: 22px;
+	width: 15px;
 	text-align: center;
 	visibility: hidden;
+	font-size: 12px;
+}
+.acem-tab-x:hover{
+	font-size: 14px;
+	margin-top: -2px;
 }
 
 .not-selectable{
@@ -544,6 +549,7 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 	width: 200px;
 	z-index: 1000;
 	color: white;
+	visibility: hidden;
 }
 
 .context-menu-list{
