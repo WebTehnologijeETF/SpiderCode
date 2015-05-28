@@ -70,51 +70,26 @@
  
                 'p a:hover{\ntext-decoration:underline;\n}';
  
-        var file111 = new File('Zadatak 1.html', '/Web tehnologije/Tutorijal 1/Zadatak 1.html', code111, '???');
-        var file112 = new File('Zadatak 2.js', '/Web tehnologije/Tutorijal 1/Zadatak 1.js', code112, '???');
+        var file111 = new File('Zadatak 1.html', '/Web tehnologije/Tutorijal 1/Zadatak 1.html', code111, '/Web tehnologije/Tutorijal 1/Zadatak 1.html');
+        var file112 = new File('Zadatak 2.js', '/Web tehnologije/Tutorijal 1/Zadatak 1.js', code112, '/Web tehnologije/Tutorijal 1/Zadatak 1.js');
  
-        var file121 = new File('Zadatak 1.css',"/Web tehnologije/Tutorijal 2/Zadatak 1.css",code121, '???');
+        var file121 = new File('Zadatak 1.css',"/Web tehnologije/Tutorijal 2/Zadatak 1.css",code121, '/Web tehnologije/Tutorijal 2/Zadatak 1.css');
  
-        var f11 = {
-            Name: 'Tutorijal 1',
-            Path: '/Web tehnologije/Tutorijal 1',
-            Folders: [],
-            Files: [file111, file112]
-        };
+        var f11 = new Folder('Tutorijal 1','/Web tehnologije/Tutorijal 1', [file111, file112], '/Web tehnologije/Tutorijal 1');
  
-        var f12 = {
-            Name: 'Tutorijal 2',
-            Path: '/Web tehnologije/Tutorijal 2',
-            Folders: [],
-            Files: [file121]
-        };
+        var f12 = new Folder('Tutorijal 2', '/Web tehnologije/Tutorijal 2', [file121], '/Web tehnologije/Tutorijal 2');
  
-        var f1 = {
-            Name: 'Web tehnologije',
-            Path: '/Web tehnologije',
-            Folders: [f11, f12],
-            Files: []
-        };
+        var f1 = new Folder('Web tehnologije', '/Web tehnologije', [f11, f12], '/Web tehnologije');
  
         var code211 = '//THIS is ineditor example\nfunction Tab(file, id, session_id){\n    this.file = file;\n    this.id = id;\n    this.session_id;\n}\n\n' +
              
                 'Tab.prototype.getName = function getName(){\n    return this.file.Name;\n}\n';
          
-        var file211 = new File('index.html','/Moji projekti/Spidercode/index.html', code211, '???');
+        var file211 = new File('index.html','/Moji projekti/Spidercode/index.html', code211, '/Moji projekti/Spidercode/index.html');
  
-        var f21 = {
-            Name: 'Spidercode',
-            Path: '/Moji projekti/Spidercode',
-            Folders: [],
-            Files: [file211]
-        };
+        var f21 = new Folder('Spidercode', '/Moji projekti/Spidercode', [file211], '/Moji projekti/Spidercode');
  
-        var f2 = {
-            Name: 'Moji projekti',
-            Path: '/Moji projekti',
-            Folders: [f21],
-            Files: []
-        };
+        var f2 = new Folder('Moji projekti', '/Moji projekti', [f21], '/Moji projekti');
  
         var Projects = [f1, f2];
   

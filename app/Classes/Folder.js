@@ -61,7 +61,7 @@ Folder.prototype.getFiles = function(){
 	var files = [];
 
 	for(var item in this.getContent()){
-		if(item.type  && item.type == "file")
+		if(item.type == "file")
 			files.push(item);
 	}
 
