@@ -11,7 +11,7 @@
 				return $http.get(url.getFolderContentsUrl($params))
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchFolderContent(response.data);
+					return mapper.FetchFolderContent(response.data.data);
 					else
 						alert(data.message);
 					//TO DO: this
@@ -25,7 +25,7 @@
 				return $http.get(url.getTreeUrl())
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchTree(response.data);
+					return mapper.FetchTree(response.data.data);
 					else
 						alert(data.message);
 					//TO DO: this
@@ -39,7 +39,7 @@
 				return $http.get(url.getFileUrl($params))
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchFileContent(response.data);
+					return mapper.FetchFileContent(response.data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -54,7 +54,7 @@
 				return $http.get(url.getCreateFolderUrl($params))
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchCreateFolderResponse(response.data);
+					return mapper.FetchCreateFolderResponse(response.data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -69,7 +69,7 @@
 				return $http.get(url.getCreateFileUrl($params))
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchCreateFileResponse(response.data);
+					return mapper.FetchCreateFileResponse(response.data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -84,7 +84,7 @@
 				return $http.get(url.getUpdateFileUrl($params))
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchUpdateFileResponse(response.data);
+					return mapper.FetchUpdateFileResponse(response.data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -99,7 +99,7 @@
 				return $http.get(url.getDeleteFileUrl($params))
 				.success(function(response){
 					if(response.data.success === "true")
-					return mapper.FetchDeleteFileResponse(response.data);
+					return mapper.FetchDeleteFileResponse(response.data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
