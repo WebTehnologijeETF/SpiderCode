@@ -12,10 +12,15 @@ function Folder (name, path, content, id){
     	this.Content = [];
 
     this.type = "folder";
+    this.IsLoad = false;
 }
 
 Folder.prototype.getName = function(){
 	return this.Name;
+}
+
+Folder.prototype.getIsLoad = function(){
+	return this.IsLoad;
 }
 
 Folder.prototype.getPath = function(){
@@ -44,6 +49,11 @@ Folder.prototype.setId = function(id){
 
 Folder.prototype.setContent = function(content){
 	this.Content = content;
+}
+
+
+Folder.prototype.setIsLoad = function(isLoad){
+	this.IsLoad = isLoad;
 }
 
 Folder.prototype.getFolders = function(){

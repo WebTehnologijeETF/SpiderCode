@@ -9,6 +9,9 @@
 			getFolderContentsUrl: function($params){
 				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getFolderContents&filepath=' + $params.path;
 			},
+			getTreeUrl: function(){
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getTree';
+			},
 			getFileUrl: function($params){
 				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getFile&filepath=' + $params.path;
 			},

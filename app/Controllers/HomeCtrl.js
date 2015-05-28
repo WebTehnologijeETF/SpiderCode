@@ -17,33 +17,8 @@
  
         $scope.manager = new AceManager(eDom);
  
-        /*(function(){
- 
- 
-           
-            var file = new File("t10 Z1-a.cpp", "/var/tp/t10 z1-a.cpp", code1, "ad212edasddd23d3")
- 
-            var file2 = new File("t10 Z1-b.cpp", "/var/tp/t10 z1-b.cpp", code2, "ad2sasa12edasddd23d3")
- 
-            var file3 = new File("t10 Z1-b.js", "/var/tp/t10 z1-b.js", codejs3, "ad2sasa12edasddd23d3")
-            var tm = $scope.manager.getTabManager();     
- 
-            tm.addTab(file);     
-            tm.addTab(file2);
-            tm.addTab(file3);     
-        }())*/
-         
-    //$scope.editor = ace.edit("editor");
-    //$scope.editor.setTheme("ace/theme/tomorrow_night");
-    //$scope.editor.getSession().setMode("ace/mode/javascript");
-     
-    //menu on the right - end
- 
-    //menu on the left - begin
- 
-        //dummmy dataa - ovo je glupo uradjeno, ali je samo privremeno, dok ne napravimo http gettere
- 
-        //var code = "function foo(items) { var x = 5;  return x;  }";
+        // dummy DATA - BEGIN
+
         var code111 = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <HTML>
 <HEAD>
@@ -93,20 +68,8 @@
  
         var Projects = [f1, f2];
   
-        /*
-        for(var i = 0; i < 5; i++)
-        {
-            var f121 = {Name: 'Folder1.2.1', Files:[], Folders:[]};
-            var f12 = {Name: 'Folder1.2', Files:[], Folders:[f121]};
-            var f11 = {Name: 'Folder1.1', Files:[], Folders:[]};
-            var f1 =  {Name: 'Folder1', Files: [{Name : 'file1', Value:code},{Name: 'file2', Value:code}], Folders: [f11,f12] };
-            var f2 =  {Name: 'Folder2', Files: [{Name:'file1', Value:code},{Name:'file2', Value:code}],Folders:[]};
-            var f3 = {Name: 'Folder3', Files: [{Name:'file1', Value:code},{Name:'file2', Value:code}],Folders:[]};
  
-            Projects[i] = { Folders: [f1, f2, f3], 
-            Files: [{Name:'file1', Value:code},{Name:'file2', Value:code}, {Name:'file3', Value:code},{Name:'file4', Value:code}], Name: 'Project'+i, Path: 'Project'+i};
-        }*/
- 
+ // DUMMY DATA END 
         $scope.openInEditor = function(file)
         {
             //file.type = "javascript";
@@ -127,9 +90,11 @@
                 var className = refElement.className.replace( /(?:^|\s)unexpanded(?!\S)/ , ' expanded' ); //zelimo da zamijenimo unexpanded sa expanded, jer smo kliknuli, ali ne zelimo izbrisati ostale klase
                 refElement.setAttribute("class", className);  
  
-                if(!refFolder.getContent())
+                if(!refFolder.getIsLoad())
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
+                    refFolder.SetContent = getFolderContent(refFolder.getPath());
+
                 }
                 else
                 {
@@ -223,6 +188,14 @@
                 }
             refElement.querySelector("ul").style.display = "none";
         }
+
+        var getTree = function(){
+            return ProjectFactory.getTree(); //ovo treba bit u mngr
+        }
+
+        var getFolderContent = function(path){
+            return ProjectFactory.getFolderContents({path: path}); //ovo treba bit u mngr
+        }
  
         $scope.onloadfunc = function()
         {
@@ -232,7 +205,8 @@
             if(elements.length != 0)
             {
                 var list = elements[0];
-                if(Projects.length != 0)
+                if(Projects.length === 0)
+                    Projects = getTree();
                 for(var i = 0; i < Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
                 {
                         var node = document.createElement("LI");
