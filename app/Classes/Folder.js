@@ -12,7 +12,7 @@ function Folder (name, path, content, id){
     	this.Content = [];
 
     this.type = "folder";
-    this.IsLoad = true;
+    this.IsLoad = false;
 }
 
 Folder.prototype.getName = function(){
