@@ -49,9 +49,10 @@ Folder.prototype.setContent = function(content){
 Folder.prototype.getFolders = function(){
 	var folders = [];
 
-	for(var item in this.getContent()){
-		if(item.type == "folder")
-			folders.push(item);
+	var cont = this.getContent();
+	for(var item in cont){
+		if(cont[item].type == "folder")
+			folders.push(cont[item]);
 	}
 
 	return folders;
@@ -60,9 +61,10 @@ Folder.prototype.getFolders = function(){
 Folder.prototype.getFiles = function(){
 	var files = [];
 
-	for(var item in this.getContent()){
-		if(item.type == "file")
-			files.push(item);
+	var cont = this.getContent();
+	for(var item in cont){
+		if(cont[item].type == "file")
+			files.push(cont[item]);
 	}
 
 	return files;

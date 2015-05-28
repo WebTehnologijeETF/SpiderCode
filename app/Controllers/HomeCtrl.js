@@ -71,7 +71,7 @@
                 'p a:hover{\ntext-decoration:underline;\n}';
  
         var file111 = new File('Zadatak 1.html', '/Web tehnologije/Tutorijal 1/Zadatak 1.html', code111, '/Web tehnologije/Tutorijal 1/Zadatak 1.html');
-        var file112 = new File('Zadatak 2.js', '/Web tehnologije/Tutorijal 1/Zadatak 1.js', code112, '/Web tehnologije/Tutorijal 1/Zadatak 1.js');
+        var file112 = new File('Zadatak 2.js', '/Web tehnologije/Tutorijal 1/Zadatak 1.js', code112, '/Web tehnologije/Tutorijal 1/Zadatak 2.js');
  
         var file121 = new File('Zadatak 1.css',"/Web tehnologije/Tutorijal 2/Zadatak 1.css",code121, '/Web tehnologije/Tutorijal 2/Zadatak 1.css');
  
@@ -191,7 +191,7 @@
             }
 
             var files = refFolder.getFiles();
-            for(var j = 0; j < files.length; j++) //radimo isto za unutarnje fileove, kao za foldere, samo sto oni nisu tipa prosirive liste
+            for(var i = 0; i < files.length; i++) //radimo isto za unutarnje fileove, kao za foldere, samo sto oni nisu tipa prosirive liste
             {
                 var node = document.createElement("LI");
                 var s = document.createElement("span");
