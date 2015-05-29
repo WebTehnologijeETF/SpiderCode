@@ -182,6 +182,13 @@ VirtualRenderer.prototype.makeContextMenu = function(){
 		tb.saveTab(el.tab_id);
 	}, false);
 
+	saveAs.addEventListener('click', function(event){
+		alert('Nije jos implementirano');
+	}, false);
+
+	discardChanges.addEventListener('click', function(event){
+		alert('Nije jos implementirano');
+	}, false);
 
 	return el;
 }

@@ -150,7 +150,7 @@
                                                               //ovi folderi ce biti lazy-loadani - odnosno dobavit ce se samo njihova imena i po potrebi pathovi
             {
                 var node = document.createElement("LI");
-                node.setAttribute("class", "folder unexpanded");  
+                node.setAttribute("class", "folder not-selectable unexpanded");  
  
                 var c = document.createElement("span");
                 c.setAttribute("class", "icon");
@@ -225,7 +225,7 @@
                 for(var i = 0; i < Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
                 {
                         var node = document.createElement("LI");
-                        node.setAttribute("class", "folder unexpanded");
+                        node.setAttribute("class", "folder not-selectable unexpanded");
  
                         var c = document.createElement("span");
                         c.setAttribute("class", "icon");
