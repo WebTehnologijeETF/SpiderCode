@@ -10,8 +10,9 @@
 			getFolderContents: function($params){
 				return $http.get(url.getFolderContentsUrl($params))
 				.success(function(response){
-					if(response.data.success === "true")
-					return mapper.FetchFolderContent(response.data.data, $params.path);
+					var data = angular.fromJson(response.data);
+					if(data.success === "true")
+					return mapper.FetchFolderContent(data.data, $params.path);
 					else
 						alert(data.message);
 					//TO DO: this
@@ -24,8 +25,9 @@
 			getTree: function(){
 				return $http.get(url.getTreeUrl())
 				.success(function(response){
-					if(response.data.success === "true")
-					return mapper.FetchTree(response.data.data);
+					var data = angular.fromJson(response.data);
+					if(data.success === "true")
+					return mapper.FetchTree(data.data);
 					else
 						alert(data.message);
 					//TO DO: this
@@ -38,8 +40,9 @@
 			getFile: function($params){
 				return $http.get(url.getFileUrl($params))
 				.success(function(response){
-					if(response.data.success === "true")
-					return mapper.FetchFileContent(response.data.data);
+					var data = angular.fromJson(response.data);
+					if(data.success === "true")
+					return mapper.FetchFileContent(data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -53,8 +56,9 @@
 			createFolder: function($params){ //params = content, base_tree
 				return $http.get(url.getCreateFolderUrl($params))
 				.success(function(response){
-					if(response.data.success === "true")
-					return mapper.FetchCreateFolderResponse(response.data.data);
+					var data = angular.fromJson(response.data);
+					if(data.success === "true")
+					return mapper.FetchCreateFolderResponse(data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -68,8 +72,9 @@
 			createFile: function($params){
 				return $http.get(url.getCreateFileUrl($params))
 				.success(function(response){
-					if(response.data.success === "true")
-					return mapper.FetchCreateFileResponse(response.data.data);
+					var data = angular.fromJson(response.data);
+					if(data.success === "true")
+					return mapper.FetchCreateFileResponse(data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -83,8 +88,9 @@
 			updateFile: function($params){
 				return $http.get(url.getUpdateFileUrl($params))
 				.success(function(response){
-					if(response.data.success === "true")
-					return mapper.FetchUpdateFileResponse(response.data.data);
+					var data = angular.fromJson(response.data);
+					if(data.success === "true")
+					return mapper.FetchUpdateFileResponse(data.data);
 				    else
 						alert(data.message);
 					//TO DO: this
@@ -98,8 +104,9 @@
 			deleteFile: function($params){
 				return $http.get(url.getDeleteFileUrl($params))
 				.success(function(response){
-					if(response.data.success === "true")
-					return mapper.FetchDeleteFileResponse(response.data.data);
+					var data = angular.fromJson(response.data);
+					if(data.success === "true")
+					return mapper.FetchDeleteFileResponse(data.data);
 				    else
 						alert(data.message);
 					//TO DO: this

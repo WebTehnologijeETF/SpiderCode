@@ -6,6 +6,7 @@
 	return{
 
 			login: function($params){
+				alert('Saying hi from ZamgerLoginService!');
 				return $http({
 					url: url.LoginUrl(),
 					method: "POST",

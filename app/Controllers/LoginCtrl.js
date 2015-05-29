@@ -13,8 +13,9 @@
     //methods it provides
 
      $scope.Login = function(Username, Pass){
-    	var r = loginService.login({login: Username, pass: Pass}).success(function(data)
+    	var r = loginService.login({login: Username, pass: Pass}).success(function(response)
     	{
+            var data = angular.fromJson(response.data);
     		alert('I am here!' + Username);
     		if(data.success = true)
     		{
@@ -30,7 +31,7 @@
     			alert(data.message);
     		}
     	})
-        .error(function(data, status, headers, config){
+        .error(function(status, headers, config){
                     alert('status: ' + status);
                     //TO DO: this
                 });

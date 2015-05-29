@@ -55,7 +55,10 @@
 				return content;
 			},
 			FetchFileContent: function(data){
-				return data;
+				var content = [];
+				content = getContent(data, content, path);
+
+				return content; // ako je ispravan file path onda bi trebalo content[0]
 			},
 			FetchCreateFolderResponse: function(data){
 				return data;
