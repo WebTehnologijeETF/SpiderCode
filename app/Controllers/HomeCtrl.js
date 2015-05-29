@@ -254,6 +254,8 @@
         var file_manager_resizer = {
             resize : function(width, height, left, top){
                 this.dom_element = document.getElementById("menu-left");
+                if(!this.dom_element)
+                    return;
                 this.dom_element.style.width = width + "px";
                 this.dom_element.style.height = height + "px";
                 this.dom_element.style.left = left + "px";
