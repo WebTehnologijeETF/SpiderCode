@@ -16,7 +16,11 @@
             throw "DOM with id=editor is missing.";
  
         $scope.manager = new AceManager(eDom);
- 
+        $scope.fileManager = new FileManager("#projectTree");
+
+        //Povezivanje jednog s drugim, jer ako bi ubacivali u kontroler od jednog onda bi se postavljalo pitanje koka ili jaje
+        $scope.manager.setFileManager($scope.fileManager);
+        $scope.fileManager.setAceManager($scope.manager);
         // dummy DATA - BEGIN
 
         var code111 = `<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
@@ -91,10 +95,11 @@
             return ProjectFactory.getFile({path: path}); //ovo treba bit u mngr
         }
 
-         var updateFile = function(path, content){
-            return ProjectFactory.File({path: path, content: content}); //ovo treba bit u mngr
+        var updateFile = function(path, content){
+            return ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
         }
         
+        $scope.fileManager.updateFile = updateFile; 
  
         // ovo je onclick funkcija za sve elemente klase folder, liste koja se moze prosiriti
         //refElement nam je HTML objekat koji predstavlja prosirivu listu koja moze biti prosirena ili ne 

@@ -52,6 +52,21 @@ AceManager.prototype.getSessionManager = function(){
 AceManager.prototype.getTabManager = function(){
 	return this.TabManager;
 }
+
+AceManager.prototype.getFileManager = function(){
+	if(!this.file_manager)
+		throw "FileManager isn't set";
+
+
+	return this.file_manager;
+}
+
+AceManager.prototype.setFileManager = function(fileManager){
+	if(!fileManager instanceof FileManager)
+		throw "FileManager must be object";
+
+	this.file_manager = fileManager;
+}
 //END - AceManager
 
 
@@ -108,4 +123,12 @@ SessionManager.prototype.deleteSession = function(id){
 	delete this.sessions[id];
 }
 
+SessionManager.prototype.getContent = function getContent(session_id){
+	if(session_id < 0 || session_id > this.sessions.length)
+		throw "Index out of range in sessions";
+	
+	if(!this.sessions[session_id])
+		throw "Session with id: " + id + " already deleted";
+	return this.sessions[session_id].getValue();
+}
 //END - SessionManager

@@ -17,14 +17,7 @@ VirtualRenderer.prototype.getContextMenu = function(){
 	return this.context_menu;
 }
 
-VirtualRenderer.prototype.showContextMenu = function(x, y){
-	var con = this.getContextMenu();
-	//alert("X:"+x + ", Y:" + y );
-	con.style.visibility = "visible";
-	con.style.left = x + "px";
-	con.style.top = y + "px";
-	con.style.position = "absolute";
-}
+
 
 VirtualRenderer.prototype.render = function(){
 	var el = this.dom_element;
@@ -78,7 +71,6 @@ VirtualRenderer.prototype.showTab = function showTab(tab_id){
 
 	var tab = this.$getTabById(tab_id);
 	tab.classList.add("acem-tab-active");
-
 }
 
 VirtualRenderer.prototype.$getTabById = function(tab_id){
@@ -120,7 +112,7 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 
 	el.tab_id = tab_id;
 	
-	var t = this;
+	var t = this; 
 
 	el.addEventListener('mouseover',function(event){
 		x.style.visibility = 'visible';
@@ -146,7 +138,7 @@ VirtualRenderer.prototype.makeTab = function(name, tab_id){
 		var le = document.getElementById("menu-left");
 
 		var w = parseInt(le.style.width);
-		t.showContextMenu(event.clientX - w, event.clientY - 60);
+		t.showContextMenu(event.clientX - w, event.clientY - 60, el.tab_id);
 
 		event.stopPropagation();
 	}, false);
@@ -160,6 +152,7 @@ VirtualRenderer.prototype.getEditorRenderer = function(){
 VirtualRenderer.prototype.makeContextMenu = function(){
 	var el = document.createElement("div");
 	el.classList.add("context-menu");
+	el.setAttribute("tabstop", 4);
 
 	var list = document.createElement("ul");
 	list.classList.add("context-menu-list");
@@ -180,9 +173,30 @@ VirtualRenderer.prototype.makeContextMenu = function(){
 	discardChanges.innerHTML = "Discard Changes";
 	list.appendChild(discardChanges);
 
+	var t = this;
+	window.addEventListener('click',function(event){el.style.visibility = 'hidden';	}, false);
+
+	save.addEventListener('click', function(event){
+		var tb= t.ace_manager.getTabManager();
+		//el.tab_id je postavljen pri showContextMenu
+		tb.saveTab(el.tab_id);
+	}, false);
+
+
 	return el;
 }
 
+
+VirtualRenderer.prototype.showContextMenu = function(x, y, tab_id){
+	var con = this.getContextMenu();
+	//alert("X:"+x + ", Y:" + y );
+	con.style.visibility = "visible";
+	con.style.left = x + "px";
+	con.style.top = y + "px";
+	con.style.position = "absolute";
+
+	con.tab_id = tab_id;
+}
 VirtualRenderer.prototype.resize = function(width, height, left, top){
 	this.dom_element.style.width = width + "px";
 	this.dom_element.style.height = height + "px";

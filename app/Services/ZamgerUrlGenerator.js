@@ -22,7 +22,7 @@
 				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=createFile&filepath=' + $params.path + '&name=' + $params.name + '&filecontents=' + $params.content;
 			},
 			getUpdateFileUrl: function($params){
-				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=updateFile&filepath=' + $params.path + '&filecontents=' + path.content;
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=updateFile&filepath=' + $params.path + '&filecontents=' + $params.content;
 			},
 			getDeleteFileUrl: function($params){
 				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=deleteFile&filepath=' + $params.path;

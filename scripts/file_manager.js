@@ -9,11 +9,11 @@ function FileManager(DOMElement){
 
 }
 
-FileManager.prototype.setAceManager = function(AceManager){
-	if(typeof(AceManager) !== 'object')
+FileManager.prototype.setAceManager = function(aceManager){
+	if(typeof(aceManager) !== 'object')
 		throw "AceManager must be object";
 
-	this.ace_manager = AceManager;
+	this.ace_manager = aceManager;
 }
 
 FileManager.prototype.getAceManager = function(){
@@ -28,10 +28,10 @@ FileManager.prototype.openInEditor = function(file)
     //file.type = "javascript";
     var id = this.getAceManager.getTabManager().addTab(file);
     this.getAceManager.getTabManager().showTab(id);
-
-    //this.openedFile = file; //ovo openedFile ce poslije  biti atribut od span-a od taba 
 }
 
+
+//FMVirtualRender - START
 function FMVirtualRender(FileManager, DOMElement){
 	this.file_manager = FileManager;
 	this.dom_element = DOMElement;

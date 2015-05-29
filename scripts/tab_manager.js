@@ -50,6 +50,8 @@ TabManager.prototype.closeTab = function closeTab(tab_id){
 	this.ace_manager.getVirtualRenderer().removeTab(tab_id);
 	this.ace_manager.getSessionManager().deleteSession(tab.session_id);
 }
+
+
  
 TabManager.prototype.getModeFromName = function getModeFromName(name){
 	var ext = name.substr(Math.max(0, name.lastIndexOf(".")) || Infinity);
@@ -68,6 +70,14 @@ TabManager.prototype.$getTabById = function(tab_id){
 	}
 
 	throw "tab_id is wrong";
+}
+
+TabManager.prototype.saveTab = function saveTab(tab_id){
+	var tab = this.$getTabById(tab_id);
+
+	//alert("tab");
+	var newContent = this.ace_manager.getSessionManager().getContent(tab.getSessionId());
+	this.ace_manager.getFileManager().updateFile(tab.getPath(), newContent);
 }
 
 
@@ -123,5 +133,9 @@ Tab.prototype.setFile = function setFile(file){
 
 Tab.prototype.getContent = function getContent(){
 	return this.file.getContent();
+}
+
+Tab.prototype.getSessionId = function getSessionId(){
+	return this.session_id;
 }
 //END - Tab
