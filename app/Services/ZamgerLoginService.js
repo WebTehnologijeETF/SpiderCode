@@ -11,7 +11,7 @@
 				return $http({
 					url: url.LoginUrl(),
 					method: "POST",
-					data: {"login" = JSONdata.login, "pass" = JSONdata.pass}
+					data: {"login" : JSONdata.login, "pass" : JSONdata.pass}
 				});
 			},
 			
