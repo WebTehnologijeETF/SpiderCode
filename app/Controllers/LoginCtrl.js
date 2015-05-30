@@ -13,24 +13,23 @@
     //methods it provides
 
      $scope.Login = function(Username, Pass){
-    	var r = loginService.login({login: Username, pass: Pass}).success(function(response)
-    	{
-            var data = angular.fromJson(response.data);
-    		alert('I am here!' + Username);
-    		if(data.success = true)
-    		{
-    			$rootScope.PHPSESSID = data.sid;
-    			$rootScope.Username = Username;
-    			$rootScope.LoggedIn = true;
-    			alert(data.message);
-    		}
-    		else
-    		{
-    			$scope.Username = '';
-    			$scope.Password = '';
-    			alert(data.message);
-    		}
-    	})
+        var r = loginService.login({login: Username, pass: Pass}).success(function(data)
+        {
+            alert('I am here!' + Username);
+            if(data.success = true)
+            {
+                $rootScope.PHPSESSID = data.sid;
+                $rootScope.Username = Username;
+                $rootScope.LoggedIn = true;
+                alert(data.message);
+            }
+            else
+            {
+                $scope.Username = '';
+                $scope.Password = '';
+                alert(data.message);
+            }
+        })
         .error(function(status, headers, config){
                     alert('status: ' + status);
                     //TO DO: this
