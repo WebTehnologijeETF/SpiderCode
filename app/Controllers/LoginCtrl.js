@@ -27,7 +27,7 @@
             {
                 $scope.Username = '';
                 $scope.Password = '';
-                alert(data.message);
+                alert(data.server_message);
             }
         })
         .error(function(status, headers, config){

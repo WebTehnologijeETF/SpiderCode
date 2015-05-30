@@ -40,7 +40,7 @@
 		}
 		return{
 			getParamsForLogin: function(data){
-				return {"login": data.login, "pass": data.pass};
+				return {login: data.login, pass: data.pass};
 			},
 			FetchTree:  function(data){
 					var content = [];
