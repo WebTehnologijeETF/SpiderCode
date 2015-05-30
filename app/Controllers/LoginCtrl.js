@@ -21,7 +21,7 @@
                 $rootScope.PHPSESSID = data.sid;
                 $rootScope.Username = Username;
                 $rootScope.LoggedIn = true;
-                alert(data.message);
+                alert(data.server_message);
             }
             else
             {
