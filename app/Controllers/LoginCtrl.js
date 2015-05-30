@@ -13,7 +13,7 @@
     //methods it provides
 
      $scope.Login = function(Username, Pass){
-        var r = loginService.login({"login": Username, "pass": Pass}).success(function(data)
+        var r = loginService.login({login: Username, pass: Pass}).success(function(data)
         {
             alert('I am here!' + Username);
             if(data.success = true)
