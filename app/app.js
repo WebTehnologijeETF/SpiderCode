@@ -12,7 +12,7 @@
                             console.log('onload from root');
                         };
                     }])
-                    .config(['$routeProvider', function ($routeProvider) {
+                    .config(['$routeProvider', '$httpProvider' function ($routeProvider, $httpProvider) {
                         //Setting routes
                         $routeProvider.when("/", {
                             controller: "HomeCtrl",
@@ -45,6 +45,8 @@
                         });
 
                         $routeProvider.otherwise({ redirectTo: "/" });
+
+                        $httpProvider.defaults.headers.common['Content-Type'] = 'application/x-www-form-urlencoded';
                     }]);
 
  

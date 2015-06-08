@@ -6,14 +6,10 @@
 	return{
 
 			login: function($params){
-				alert('Saying hi from ZamgerLoginService!');
-				var JSONdata = mapper.getParamsForLogin($params);
-				var dataAsURL = 'login='+ JSONdata.login +"&pass=" + JSONdata.pass;
 				return $http({
 					url: url.LoginUrl(),
 					method: "POST",
-					data: dataAsURL,
-					headers: {'Content-Type': 'application/x-www-form-urlencoded'}
+					data: mapper.getParamsForLogin($params)
 				});
 			},
 			
