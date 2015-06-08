@@ -32,7 +32,7 @@ AceManager.prototype.setTheme = function(theme){
 }
 
 AceManager.prototype.getEditor = function(){
-	return editor;
+	return this.editor;
 }
 
 
@@ -109,6 +109,13 @@ SessionManager.prototype.addAndShowSession = function(document, mode){
 	this.showSession(ses_id);
 
 	return ses_id;
+}
+
+SessionManager.prototype.showBlankSession = function(){
+	var editSession = new this.EditSession("");
+	editSession.setUndoManager(new this.UndoManager());
+	this.ace_manager.getEditor().setSession(editSession);
+	this.ace_manager.getEditor().setReadOnly(true);
 }
 
 //Delete session with id sent by paramether 
