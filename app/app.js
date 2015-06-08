@@ -12,7 +12,7 @@
                             console.log('onload from root');
                         };
                     }])
-                    .config(['$routeProvider', '$httpProvider' function ($routeProvider, $httpProvider) {
+                    .config(['$routeProvider', '$httpProvider', function ($routeProvider, $httpProvider) {
                         //Setting routes
                         $routeProvider.when("/", {
                             controller: "HomeCtrl",
