@@ -7,7 +7,7 @@
 
 			login: function($params){
 				alert('Saying hi from ZamgerLoginService!');
-				var JSONdata = getParamsForLogin($params);
+				var JSONdata = mapper.getParamsForLogin($params);
 				return $http({
 					url: url.LoginUrl(),
 					method: "POST",
