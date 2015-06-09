@@ -6,7 +6,7 @@
 		 var url = service.getService('UrlGenerator', undefined);
 		 var Projects = [];
 
-		 this.setProjects = function(contents){
+		 var setProjects = function(contents){
 		 	Projects = contents;
 		 };
 		
@@ -35,7 +35,7 @@
 				.success(function(data){
 					if(data.success === "true")
 						{
-							this.setProjects(mapper.FetchTree(data.data));
+							setProjects(mapper.FetchTree(data.data));
 						}
 					else
 						alert(data.message);
