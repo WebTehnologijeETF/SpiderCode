@@ -11,7 +11,8 @@
 			 			var c = [];
 			 			getContent(data[i].contents, c,  parentPath + "\\" + data[i].id);
 
-			 			var folder = new Folder(data[i].name, parentPath + "\\" + data[i].id, c, id);
+			 			var folder = new Folder(data[i].name, parentPath + "\\" + data[i].id, c, data[i].id);
+			 			if(data[i].id.indexOf("task") > -1)
 			 			folder.setIsLoad(true);
 			 			content.push(folder);
 			 		}
@@ -26,9 +27,10 @@
 			 for(var i = 0; i < data.length; i++){
 			 	if(data[i].type === "folder"){
 			 			var c = [];
-			 			getContent(data[i].contents, c,  parentPath + "\\" + data[i].id);
+			 			getTreeContent(data[i].contents, c,  parentPath + "\\" + data[i].id);
 
-			 			var folder = new Folder(data[i].name, parentPath + "\\" + data[i].id, c, id);
+			 			var folder = new Folder(data[i].name, parentPath + "\\" + data[i].id, c, data[i].id);
+			 			if(data[i].id.indexOf("task") > -1)
 			 			folder.setIsLoad(false);
 			 			content.push(folder);
 			 		}
@@ -44,7 +46,7 @@
 			},
 			FetchTree:  function(data){
 					var content = [];
-				content = getContent(data, content, '');
+				content = getTreeContent(data, content, '');
 
 				return content;
 			},
