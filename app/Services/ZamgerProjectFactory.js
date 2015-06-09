@@ -4,8 +4,17 @@
 
 		 var mapper = service.getService('DataMapper', undefined);
 		 var url = service.getService('UrlGenerator', undefined);
+		 var Projects = [];
+
+		 this.setProjects = function(contents){
+		 	Projects = contents;
+		 };
 		
 		return{
+
+			getProjects: function(){
+				return Projects;
+			},
 
 			getFolderContents: function($params){
 				return $http.get(url.getFolderContentsUrl($params))
@@ -25,7 +34,9 @@
 				return $http.get(url.getTreeUrl())
 				.success(function(data){
 					if(data.success === "true")
-					return mapper.FetchTree(data.data);
+						{
+							this.setProjects(mapper.FetchTree(data.data));
+						}
 					else
 						alert(data.message);
 					//TO DO: this

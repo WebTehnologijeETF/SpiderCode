@@ -3,7 +3,7 @@
  
     var HomeCtrl = function($scope, service) {
     //services - begin
-        var ProjectFactory = service.getService('ProjectFactory', undefined);
+        $scope.ProjectFactory = service.getService('ProjectFactory', undefined);
 //        var Folder = service.getService('Folder', undefined);
     //services - end
  
@@ -37,7 +37,7 @@
 
        
         var updateFile = function(path, content){
-            return ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
+            return $scope.ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
         }
         
         $scope.fileManager.updateFile = updateFile; 
@@ -56,7 +56,7 @@
                 if(!refFolder.getIsLoad())
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
-                    refFolder.SetContent = ProjectFactory.getFolderContents({path: refFolder.getPath()});
+                    refFolder.SetContent = $scope.ProjectFactory.getFolderContents({path: refFolder.getPath()});
 
                 }
                 else
@@ -153,6 +153,9 @@
         }
 
         var Projects = [];
+
+        $scope.$watch($scope.ProjectFactory.getProjects, 
+             showProjects);
        
         $scope.onloadfunc = function()
         {
@@ -163,8 +166,13 @@
             {
                 var list = elements[0];
                 if(Projects.length === 0)
-                    Projects =  ProjectFactory.getTree();
-                for(var i = 0; i < Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
+                    Projects =  $scope.ProjectFactory.getTree();
+                showProjects();
+            }
+        }
+
+        var showProjects = function(){
+            for(var i = 0; i < Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
                 {
                         var node = document.createElement("LI");
                         node.setAttribute("class", "folder not-selectable unexpanded");
@@ -189,8 +197,7 @@
                         list.appendChild(node);
                          
                 }
-            }
-        }
+            };
          
         //this is temporary solution
         var file_manager_resizer = {

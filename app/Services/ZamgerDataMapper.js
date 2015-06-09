@@ -9,11 +9,14 @@
 			 	else
 			 		if(data[i].type === "folder"){
 			 			var c = [];
-			 			getContent(data[i].contents, c,  parentPath + "\\" + data[i].id);
+			 			c = getContent(data[i].contents, c,  parentPath + "\\" + data[i].id);
 
 			 			var folder = new Folder(data[i].name, parentPath + "\\" + data[i].id, c, data[i].id);
 			 			if(data[i].id.indexOf("task") > -1)
-			 			folder.setIsLoad(true);
+			 			folder.setIsLoad(false);
+			 		    else
+			 		    	folder.setIsLoad(true);
+			 		  
 			 			content.push(folder);
 			 		}
 
@@ -27,11 +30,14 @@
 			 for(var i = 0; i < data.length; i++){
 			 	if(data[i].type === "folder"){
 			 			var c = [];
-			 			getTreeContent(data[i].contents, c,  parentPath + "\\" + data[i].id);
+			 			c = getTreeContent(data[i].contents, c,  parentPath + "\\" + data[i].id);
 
 			 			var folder = new Folder(data[i].name, parentPath + "\\" + data[i].id, c, data[i].id);
 			 			if(data[i].id.indexOf("task") > -1)
 			 			folder.setIsLoad(false);
+			 		    else
+			 		    	folder.setIsLoad(true);
+			 		  
 			 			content.push(folder);
 			 		}
 
