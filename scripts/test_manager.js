@@ -36,8 +36,8 @@ function Test(){
 	this.id = null;
 	this.require_symbols = [ ];
 	this.replace_symbols = [ ];
-	this.code = "TabelarnaFunkcija tf;\r\n\r\nfor (double x = 100.0; x >= 0.0; x -= 0.1)\r\n{\r\n\ttf.DodajPar(x, 2 * x);\r\n\ttf.DodajPar(100.0 + x, 2 * (100.0 + x));\r\n\ttf.DodajPar(-100.0 + x, 2 * (-100.0 + x));\r\n}\r\n\r\ncout << fixed << setprecision(2) << tf(1.0) << endl;\r\ncout << fixed << setprecision(2) << tf(1.05) << endl;\r\ncout << fixed << setprecision(2) << tf(1.1) << endl;";
-	this.global_above_main = "#include <iomanip>";
+	this.code = "";
+	this.global_above_main = "";
 	this.global_top = "";
 	this.running_params = { "timeout": 10, "vmem": 1000000, "stdin": "" };
 	this.expected = [ "2.00\\n2.10\\n2.20\\n" ]; 
