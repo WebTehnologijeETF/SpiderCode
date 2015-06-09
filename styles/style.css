@@ -566,3 +566,163 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 .context-menu-item:hover{
 	border-bottom: 1px solid white;
 }
+
+/*Test*/
+#test-panel{
+	position: fixed;
+	width: 70%;
+	height: 100%;
+	left:100%;
+	top:0px;
+	overflow: auto;
+
+	background-color: black;
+	color: white;
+	z-index: 501;
+
+	padding: 10px;
+}
+
+#test-panel h1{
+	font-size: 18px;
+}
+#test-panel h2{
+	font-size: 20px;
+}
+
+#test-panel h2>em{
+	font-size: 26px;
+	font-style: normal;
+}
+
+#test-panel hr{
+	width: 90%;
+	border-color: #1A1A1A;
+}
+
+
+#test-panel v-div{
+	width: 1px;
+	height: 90%;
+	background-color: #1A1A1A;
+}
+
+.action-list{
+	margin: 0;
+	list-style-type: none; 
+	padding: 0;
+}
+
+
+.action-list>li{
+	margin-right: 8px;
+	list-style-type: none; 
+	padding: 20px;
+
+	display: inline-block;
+	background-color: #1A1A1A;
+}
+
+.action-list>li:hover{
+	background-color: #2A2A2A;
+}
+
+#test-panel .panel{
+	margin: 10px 0px;
+}
+#test-btn{
+	position: fixed;
+	top: 80px;
+	right: 10px;
+	z-index: 500;
+}
+
+#test-x-btn{
+	position: absolute;
+	top: 4px;
+	right: 4px;
+	color: white;
+	background-color: #1A1A1A;
+	display: block;
+	padding: 4px 12px;
+	font-size: 26px;
+}
+#test-x-btn:hover{
+	background-color: #2A2A2A;
+}
+
+
+#tests-list{
+	width: 29%;
+	background-color: #1A1A1A;
+	height: 100%;
+	float: left;
+	border: 1px solid #2a9fd6;
+
+}
+
+#tests-list>.heading, #tests-list>.heading *{
+	background-color: #2a9fd6; 
+	margin: 0;
+}
+
+#tests-list>.heading, #tests-list>ul>li{
+	padding: 10px;
+
+}
+#tests-list>ul{
+	padding: 0px;
+	margin: 0px;
+	list-style: none;
+}
+#tests-list>ul>li:hover{
+	background-color: #2A2A2A;
+}
+#tests-show{
+	width: 69%;
+	float: right;
+	height: 100%;
+}
+
+.input-inline-group{
+	display: block;
+	margin: 4px;
+}
+
+.input-inline-group>*{
+	display: inline-block;
+}
+
+.input-inline-group>input[type="text"], .input-inline-group>.editor{
+		width: 75%;
+		display: inline-block;
+		padding: 8px 13px;
+		border-radius: 6px;
+		float: right;
+}
+
+.input-inline-group>input[type="text"]{
+		box-shadow: inset 0px 0px 0px;
+		outline: 0 none;
+}
+.input-inline-group>label, .input-inline-group>p{
+		width: 25%;
+		display: inline-block;
+
+		border-radius: 6px;
+		padding: 8px 13px;
+		text-align: right;
+		float: left;
+		/*pravimo mjesto za ikonicu i stavljeno inline da moze u jednom redu biti prikazano*/
+		top : 0px;
+}
+
+.input-inline-group>label, .input-inline-group>p, .input-inline-group>input[type="text"], .input-inline-group>.editor{
+		margin-top: 4px;
+		margin-bottom: 4px;
+}
+
+#codeEditor{
+	height: 330px;
+}
+

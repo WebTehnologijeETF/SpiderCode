@@ -5,4 +5,50 @@
     </div>
 
     <div id="editor" class="editor"></div>
+
+    <div id="test-panel">
+    	<div id="test-x-btn">&#10006;</div>
+
+    	<header>
+    		<h1>Tests Manager</h1>
+    		<h2>Task name: <em>{{task.name}}</em><h2>
+    	</header>
+    	
+    	<hr class="h-div"/>
+		<ul class="action-list">
+			<li class="not-selectable" ng-click="taskTab = 1">Mange task</li>
+			<li class="not-selectable" ng-click="taskTab = 2">Manage tests</li>
+			<li class="not-selectable" ng-click="taskTab = 3">Add test</li>
+			<li class="not-selectable" ng-click="taskTab = 4">Run task</li>
+		</ul>
+		<div class="panel">
+			<div ng-show="taskTab === 1">
+				<span>Modify name:  </span><input type="text" ng-model="task.name"/>
+	    	</div>
+	    	<div ng-show="taskTab === 2">
+				<div id="tests-list">
+					<div class="heading">
+						<h1>Tests</h1>
+					</div>
+					
+					<ul>
+						<li>Test 1</li>
+						<li>Test 2</li>
+						<li>Test 3</li>
+						<li>Test 4</li>
+					</ul>
+				</div>
+				<div class="v-div"></div>
+				<div id="tests-show">
+					<div class="input-inline-group"><label for="req-sim">Require simbols</label><input name="req-sim" type="text"></div>
+					<div class="input-inline-group"><p>Code</p><div id="codeEditor" class="editor"></div></div>
+				</div>
+	    	</div>
+	    	<div ng-show="taskTab === 3">
+				<p>Nesto trece</p>
+	    	</div>
+		</div>
+		
+    </div>
+    <div id="test-btn" class="btn btn-blue">Testovi</div>
 </section>

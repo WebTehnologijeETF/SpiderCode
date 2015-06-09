@@ -21,6 +21,27 @@
         //Povezivanje jednog s drugim, jer ako bi ubacivali u kontroler od jednog onda bi se postavljalo pitanje koka ili jaje
         $scope.manager.setFileManager($scope.fileManager);
         $scope.fileManager.setAceManager($scope.manager);
+
+        document.getElementById("test-btn").addEventListener('click', function(e){
+            var panel = document.getElementById("test-panel");
+            panel.style.left = "30%";
+
+        }, false);
+
+        document.getElementById("test-x-btn").addEventListener('click', function(e){
+            var panel = document.getElementById("test-panel");
+            panel.style.left = "100%";
+
+        }, false);
+        $scope.task = new TestManager();
+        $scope.taskTab = 1;
+        var codeEditor = ace.edit("codeEditor");
+        codeEditor.setTheme("ace/theme/tomorrow_night");
+        codeEditor.getSession().setMode("ace/mode/c_cpp");
+        codeEditor.setOption("minLines", 6);
+        codeEditor.setAutoScrollEditorIntoView(true);
+    
+        codeEditor.resize(true);
         // dummy DATA - BEGIN
 
        
