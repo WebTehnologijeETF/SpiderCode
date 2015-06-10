@@ -106,8 +106,9 @@
                 if(!refFolder.getIsLoad())
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
-                    refFolder.SetContent = $scope.ProjectFactory.getFolderContents({path: refFolder.getPath()});
+                    $scope.ProjectFactory.getFolderContents({path: refFolder.getPath(), folder: refFolder});
                     refFolder.setIsLoad(true);
+                    appear(refElement, refFolder);
 
                 }
                 else
@@ -222,6 +223,9 @@
         };
 
         var showProjects = function(){
+
+            alert('I am at showProjects!');
+
             var elements = document.querySelectorAll("#projectTree"); //dobavi osnovni project tree - listu za prikaz projekata
  
             if(elements.length != 0)
