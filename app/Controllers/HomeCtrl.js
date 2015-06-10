@@ -22,12 +22,20 @@
         $scope.manager.setFileManager($scope.fileManager);
         $scope.fileManager.setAceManager($scope.manager);
 
-        document.getElementById("test-btn").addEventListener('click', function(e){
+        var testBtn = $scope.manager.getVirtualRenderer().makeTab("Tests");
+        testBtn.style.backgroundColor = "rgb(136, 21, 136)";
+        testBtn.style.color = "white";
+        testBtn.style.float = "right";
+
+        var xs = testBtn.getElementsByClassName("acem-tab-x");
+        testBtn.removeChild(xs[1]);
+        testBtn.removeChild(xs[0]);
+        testBtn.addEventListener('click', function(e){
             var panel = document.getElementById("test-panel");
             panel.style.left = "30%";
 
         }, false);
-
+        $scope.manager.getVirtualRenderer().addTab(testBtn);
         document.getElementById("test-x-btn").addEventListener('click', function(e){
             var panel = document.getElementById("test-panel");
             panel.style.left = "100%";
