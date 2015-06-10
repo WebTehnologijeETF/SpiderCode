@@ -251,6 +251,7 @@ footer a{
 .btn-blue{
 	background-color: #1A74AB;
 	color: white;
+	cursor: pointer;
 }
 
 .btn-group-vertical>.btn:not(:first-child):not(:last-child){
