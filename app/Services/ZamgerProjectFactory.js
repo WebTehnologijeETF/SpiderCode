@@ -36,6 +36,7 @@
 					if(data.success === "true")
 						{
 							setProjects(mapper.FetchTree(data.data));
+							return Projects;
 						}
 					else
 						alert(data.message);

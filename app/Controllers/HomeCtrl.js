@@ -173,9 +173,10 @@
             refElement.querySelector("ul").style.display = "none";
         }
 
-        var Projects = [];
+        $scope.Projects = [];
 
-        $scope.$watch($scope.ProjectFactory.getProjects, 
+        $scope.$watch(function() {
+    return $scope.Projects;},
              showProjects);
        
         $scope.onloadfunc = function()
@@ -186,21 +187,24 @@
             if(elements.length != 0)
             {
                 var list = elements[0];
-                if(Projects.length === 0)
-                    Projects =  $scope.ProjectFactory.getTree();
+                if($scope.Projects.length === 0)
+                {
+                    $scope.ProjectFactory.getTree();
+                    $scope.Projects =  $scope.ProjectFactory.getProjects();
+                }
                 showProjects();
             }
         }
 
         var showProjects = function(){
-            for(var i = 0; i < Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
+            for(var i = 0; i < $scope.Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
                 {
                         var node = document.createElement("LI");
                         node.setAttribute("class", "folder not-selectable unexpanded");
  
                         var c = document.createElement("span");
                         c.setAttribute("class", "icon");
-                        c.folder = Projects[i];
+                        c.folder = $scope.Projects[i];
                         c.addEventListener( "click", function() {
                         return $scope.list(this.parentNode, this.folder);
                         }, false);
@@ -208,8 +212,8 @@
  
                         var s = document.createElement("span");
                         s.setAttribute("class", "link");
-                        s.innerHTML = Projects[i].getName();
-                        s.folder = Projects[i];
+                        s.innerHTML = $scope.Projects[i].getName();
+                        s.folder = $scope.Projects[i];
                         s.addEventListener( "dblclick", function() {
                         return $scope.list(this.parentNode, this.folder);
                         }, false);
