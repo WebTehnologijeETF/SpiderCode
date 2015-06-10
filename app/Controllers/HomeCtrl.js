@@ -22,14 +22,22 @@
         $scope.manager.setFileManager($scope.fileManager);
         $scope.fileManager.setAceManager($scope.manager);
 
-        var testBtn = $scope.manager.getVirtualRenderer().makeTab("Tests");
+        var testBtn = document.createElement("li");
+        testBtn.classList.add("acem-tab");
+        testBtn.classList.add("not-selectable");
+        
+        var title = document.createElement("div");
+        title.classList.add("acem-tab-title");
+        //title.classList.add("not-selectable");
+        var t_text = document.createTextNode("Tests");
+        title.appendChild(t_text);
+
+        testBtn.appendChild(title);
+
         testBtn.style.backgroundColor = "rgb(136, 21, 136)";
         testBtn.style.color = "white";
-        testBtn.style.float = "right";
+        testBtn.style.float = "right"; 
 
-        var xs = testBtn.getElementsByClassName("acem-tab-x");
-        testBtn.removeChild(xs[1]);
-        testBtn.removeChild(xs[0]);
         testBtn.addEventListener('click', function(e){
             var panel = document.getElementById("test-panel");
             panel.style.left = "30%";
