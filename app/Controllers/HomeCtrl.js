@@ -89,8 +89,10 @@
 
         document.getElementById('tests-add').addEventListener('click',function(){
             var id = $scope.task.addTest(new Test());
-            $scope.task.showTest(id);
+            $scope.task.showTest(id,"test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
+                            "excCB", "iwsCB", "regCB", "subCB");
             curTest = id;
+            refreshTestList();
         }, false)
         // dummy DATA - BEGIN
 
