@@ -65,6 +65,39 @@ Task.prototype.showTest = function(test,test_id,req_sim, exp_sim, code, gam, gt,
 	document.getElementById(sub).checked = test.substring || false;
 }
 
+ 
+Task.prototype.saveTest = function(test,test_id,req_sim, exp_sim, code, gam, gt, exc, iws, reg, sub){
+	if(typeof(test) != "Object"){
+		var nasao = false
+		for(var i = 0; i < this.test_specifications.length; i++)
+			if(this.test_specifications[i] && this.test_specifications[i].id == test){
+				test = this.test_specifications[i];
+				nasao = true;
+				break;
+			}
+		if(nasao === false)
+			throw "Test s tim ID-em ne postoji";
+	}
+	
+	if(!test.require_symbols[0]){
+		test.require_symbols.push("");
+	}
+	test.require_symbols[0] = document.getElementById(req_sim).value || "";
+
+	if(!test.expected[0]){
+		test.expected.push("");
+	}
+	test.expected[0] = document.getElementById(exp_sim).value || "";
+	
+	test.code = document.getElementById(code).env.editor.getValue();
+	test.global_above_main = document.getElementById(gam).env.editor.getValue();
+	test.global_top = document.getElementById(gt).env.editor.getValue();
+	test.expected_exception = document.getElementById(exc).checked;
+	test.ignore_whitespace = document.getElementById(iws).checked;
+	test.regex = document.getElementById(reg).checked ;
+	test.substring = document.getElementById(sub).checked;
+}
+
 Task.prototype.resetFields = function(test_id,req_sim, exp_sim, code, gam, gt, exc, iws, reg, sub){
 	
 	document.getElementById(test_id).innerHTML = "";

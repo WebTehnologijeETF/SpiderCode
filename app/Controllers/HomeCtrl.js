@@ -87,6 +87,15 @@
             }
         },false);
 
+        document.getElementById('tests-save').addEventListener('click', function(){
+            if(!curTest){
+                alert("Please select test first");
+            } else {
+                $scope.task.saveTest(curTest, "test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
+                            "excCB", "iwsCB", "regCB", "subCB");
+            }
+        },false);
+
         document.getElementById('tests-add').addEventListener('click',function(){
             var id = $scope.task.addTest(new Test());
             $scope.task.showTest(id,"test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
