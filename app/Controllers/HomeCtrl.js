@@ -192,25 +192,25 @@
         $scope.onloadfunc = function()
         {
          
-            var elements = document.querySelectorAll("#projectTree"); //dobavi osnovni project tree - listu za prikaz projekata
- 
-            if(elements.length != 0)
-            {
-                var list = elements[0];
-
                 if($scope.Projects.length === 0)
                 {
                     $scope.ProjectFactory.getTree();
                     $scope.Projects =  $scope.ProjectFactory.getProjects();
                 }
                 showProjects();
-            }
+            
         };
 
         var showProjects = function(){
-            for(var i = 0; i < $scope.Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
+            var elements = document.querySelectorAll("#projectTree"); //dobavi osnovni project tree - listu za prikaz projekata
+ 
+            if(elements.length != 0)
+            {
+                   var list = elements[0];
 
-                {
+                   for(var i = 0; i < $scope.Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
+
+                    {
                         var node = document.createElement("LI");
                         node.setAttribute("class", "folder not-selectable unexpanded");
  
@@ -233,7 +233,8 @@
  
                         list.appendChild(node);
                          
-                }
+                    }
+            }
             };
         
          
