@@ -35,6 +35,7 @@
         }, false);
         $scope.task = new Task();
         $scope.task.addTest(new Test());
+        $scope.task.addTest(new Test());
         $scope.taskTab = 1;
         var codeEditor = ace.edit("codeEditor");
         codeEditor.setTheme("ace/theme/tomorrow_night");
@@ -63,18 +64,18 @@
                     el.innerHTML = "Test " + el.id;
                     list.appendChild(el);
 
-                    el.addEventListener('click', function(){
-                        $scope.task.showTest(el.id, "test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
+                    el.addEventListener('click', function(e){
+                        $scope.task.showTest(e.target.id, "test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
                             "excCB", "iwsCB", "regCB", "subCB");
-                        curTest = el.id;
+                        curTest = e.target.id;
                     }, false);
                 }       
             }
-        }
+        } 
 
         refreshTestList();
 
-        document.getElementById('tests-rem').addEventListener('click', function(){
+        document.getElementById('tests-rm').addEventListener('click', function(){
             if(!curTest){
                 alert("Please select test first");
             } else {
@@ -84,7 +85,13 @@
                             "excCB", "iwsCB", "regCB", "subCB");
                 curTest=null;
             }
-        });
+        },false);
+
+        document.getElementById('tests-add').addEventListener('click',function(){
+            var id = $scope.task.addTest(new Test());
+            $scope.task.showTest(id);
+            curTest = id;
+        }, false)
         // dummy DATA - BEGIN
 
        

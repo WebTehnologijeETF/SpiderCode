@@ -18,8 +18,7 @@
 		<ul class="action-list">
 			<li class="not-selectable" ng-click="taskTab = 1">Mange task</li>
 			<li class="not-selectable" ng-click="taskTab = 2">Manage tests</li>
-			<li class="not-selectable" ng-click="taskTab = 3">Add test</li>
-			<li class="not-selectable" ng-click="taskTab = 4">Run task</li>
+			<li class="not-selectable" ng-click="taskTab = 3">Run task</li>
 		</ul>
 		<div class="panel">
 			<div ng-show="taskTab === 1">
@@ -40,7 +39,7 @@
 
 
 				</div>
-				<div id="tests-rem" class"btn btn-blue">Remove test</div>
+				
 				<div class="v-div"></div>
 				<div id="tests-show">
 					<div class="input-inline-group"><p>Id</p><p id="test-id"></p></div>
@@ -53,7 +52,13 @@
 					<div class="input-inline-group"><label for="iwsCB">Ignore whitespaces</label><input id="iwsCB" name="iwsCB" type="checkbox" ></div>
 					<div class="input-inline-group"><label for="regCB">Regex</label><input id="regCB" name="regCB" type="checkbox" ></div>
 					<div class="input-inline-group"><label for="subCB">Substring</label><input id="subCB" name="subCB" type="checkbox" ></div>
-				
+					<div class="input-inline-group">
+						<div id="tests-add" class="btn btn-blue">Add new test</div>
+						<div id="tests-save" class="btn btn-blue">Save changes</div>
+						<div id="tests-rm" class="btn btn-blue">Remove test</div>
+					</div>
+					
+					
 				</div>
 	    	</div>
 	    	<div ng-show="taskTab === 3">
