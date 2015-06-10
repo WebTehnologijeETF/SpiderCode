@@ -9,7 +9,18 @@
 		 var setProjects = function(contents){
 		 	Projects = contents;
 		 };
+
+		 var getTreeObserverCallbacks = [];
+		 var  getFolderContentsObserverCallbacks = [];
+
+		 this.registerGetTreeObserverCallback = function(callback){
+         getTreeObserverCallbacks.push(callback);
+         };
 		
+		 this.registerGetFolderContentsObserverCallback = function(callback){
+         getFolderContentsObserverCallbacks.push(callback);
+         };
+
 		return{
 
 			getProjects: function(){
@@ -21,6 +32,9 @@
 				.success(function(data){
 					if(data.success === "true"){
 						$params.folder.setContent(mapper.FetchFolderContent(data.data, $params.path));
+						 angular.forEach(getFolderContentsObserverCallbacks, function(callback){
+                        	callback($params.folder, $params.refElement);
+                        }
 					}
 					else
 						alert(data.message);
@@ -36,8 +50,9 @@
 				.success(function(data){
 					if(data.success === "true")
 						{
-							setProjects(mapper.FetchTree(data.data));
-							scopeVar.Projects = Projects;
+							scopeVar = mapper.FetchTree(data.data);
+							 angular.forEach(getTreeObserverCallbacks, function(callback){
+                        	callback(scopeVar);}
 						}
 					else
 						alert(data.message);

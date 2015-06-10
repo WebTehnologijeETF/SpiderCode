@@ -137,10 +137,10 @@
  
                 if(!refFolder.getIsLoad())
                 {
+                    $scope.ProjectFactory.registerGetFolderContentsObserverCallback(appear);
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
-                    $scope.ProjectFactory.getFolderContents({path: refFolder.getPath(), folder: refFolder});
+                    $scope.ProjectFactory.getFolderContents({path: refFolder.getPath(), folder: refFolder, refElement: refElement});
                     refFolder.setIsLoad(true);
-                    appear(refElement, refFolder);
 
                 }
                 else
@@ -249,15 +249,15 @@
          
                 if($scope.Projects.length === 0)
                 {
-                    $scope.ProjectFactory.getTree($scope);
-                    $scope.Projects = $scope.ProjectFactory.getProjects();
+                    $scope.ProjectFactory.registerGetTreeObserverCallback(showProjects); 
+                    $scope.ProjectFactory.getTree($scope.Projects);
                 }
-            showProjects();
         };
 
-        var showProjects = function(){
+        var showProjects = function(Projects){
 
             alert('I am at showProjects!');
+
 
             var elements = document.querySelectorAll("#projectTree"); //dobavi osnovni project tree - listu za prikaz projekata
  
