@@ -61,7 +61,7 @@
 					alert('status: ' + status);
 					//TO DO: this
 				
-				});;				
+				});				
 				},
 			createFolder: function($params){ //params = content, base_tree
 				return $http.get(url.getCreateFolderUrl($params))
@@ -76,7 +76,7 @@
 					alert('status: ' + status);
 					//TO DO: this
 				
-				});;
+				});
 			},
 			createFile: function($params){
 				return $http.get(url.getCreateFileUrl($params))
@@ -91,7 +91,7 @@
 					alert('status: ' + status);
 					//TO DO: this
 				
-				});;
+				});
 			},
 			updateFile: function($params){
 				return $http.get(url.getUpdateFileUrl($params))
@@ -106,7 +106,7 @@
 					alert('status: ' + status);
 					//TO DO: this
 				
-				});;
+				});
 			},
 			deleteFile: function($params){
 				return $http.get(url.getDeleteFileUrl($params))
@@ -121,7 +121,7 @@
 					alert('status: ' + status);
 					//TO DO: this
 				
-				});;
+				});
 			}
 		};
 
