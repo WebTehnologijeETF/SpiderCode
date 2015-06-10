@@ -32,14 +32,14 @@ Task.prototype.addTest = function(test){
 
 Task.prototype.removeTest = function(test){
 	for(var i = 0; i < this.test_specifications.length; i++)
-		if(this.test_specifications[i] && this.test_specifications[i].id == test.id){
-			this.test_specifications = this.test_specifications.splice(i,1);
+		if(this.test_specifications[i] && this.test_specifications[i].id == test){
+			this.test_specifications.splice(i,1);
 			return;
-		}
+		} 
 			
-	throw "Test with this ID already exist";
+	throw "Test with this ID doesn't exist";
 }
-
+ 
 Task.prototype.showTest = function(test,test_id,req_sim, exp_sim, code, gam, gt, exc, iws, reg, sub){
 	if(typeof(test) != "Object"){
 		var nasao = false

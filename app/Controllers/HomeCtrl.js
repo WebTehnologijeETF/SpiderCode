@@ -51,6 +51,7 @@
         gtEditor.getSession().setMode("ace/mode/c_cpp");
         gtEditor.resize(true)
 
+        var curTest = null;
         var refreshTestList = function(){
             var list = document.getElementById("tests-list-list");
             list.innerHTML ="";
@@ -65,12 +66,25 @@
                     el.addEventListener('click', function(){
                         $scope.task.showTest(el.id, "test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
                             "excCB", "iwsCB", "regCB", "subCB");
+                        curTest = el.id;
                     }, false);
                 }       
             }
         }
 
         refreshTestList();
+
+        document.getElementById('tests-rem').addEventListener('click', function(){
+            if(!curTest){
+                alert("Please select test first");
+            } else {
+                $scope.task.removeTest(curTest);
+                refreshTestList();
+                $scope.task.resetFields("test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
+                            "excCB", "iwsCB", "regCB", "subCB");
+                curTest=null;
+            }
+        });
         // dummy DATA - BEGIN
 
        
