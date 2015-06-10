@@ -7,7 +7,7 @@
 				return "https://zamger.etf.unsa.ba/zadaceApi/auth.php";
 			},
 			getFolderContentsUrl: function($params){
-				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getFolderContents&filepath=' + $params.path;
+				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getFolderContents&filepath=' + $params.refFolder.getPath();
 			},
 			getTreeUrl: function(){
 				return 'https://zamger.etf.unsa.ba/zadaceApi/index.php?action=getTree';
