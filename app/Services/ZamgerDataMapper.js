@@ -6,7 +6,7 @@
 			 for(var i = 0; i < data.length; i++){
 	 			var path;
 	 			if(parentPath != '')
-	 			path = parentPath + "\\" + data[i].id;
+	 			path = parentPath + "/" + data[i].id;
 	 		    else
 	 		    path = data[i].id;
 
@@ -36,7 +36,7 @@
 			 for(var i = 0; i < data.length; i++){
 	 			var path;
 	 			if(parentPath != '')
-	 			path = parentPath + "\\" + data[i].id;
+	 			path = parentPath + "/" + data[i].id;
 	 		    else
 	 		    path = data[i].id;
 
