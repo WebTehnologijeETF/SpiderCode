@@ -33,7 +33,8 @@
 				return $http.get(url.getFolderContentsUrl($params))
 				.success(function(data){
 					if(data.success === "true"){
-						$params.refFolder.setContent(mapper.FetchFolderContent(data.data, $params.refFolder.getPath()));
+						$params.refFolder.setContent(mapper.FetchFolderContent(data.data, $params.refFolder.getPath()));//this
+						var e = 1;
 						 angular.forEach(getFolderContentsObserverCallbacks, function(callback){
                         	callback($params);
                         });
