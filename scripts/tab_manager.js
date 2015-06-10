@@ -123,6 +123,7 @@ TabManager.prototype.mapper = new Map();
 	mapper.set(".mysql", "mysql");
 	mapper.set(".sql", "sql");
 	mapper.set(".txt", "text");
+	mapper.set(".php", "php")
 }())
 
 //END - TabManager
