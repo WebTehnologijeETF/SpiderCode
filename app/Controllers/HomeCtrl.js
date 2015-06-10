@@ -231,7 +231,7 @@
          
                 if($scope.Projects.length === 0)
                 {
-                    $scope.ProjectFactory.getTree($scope.Projects);
+                    $scope.ProjectFactory.getTree($scope);
                 }
             
         };

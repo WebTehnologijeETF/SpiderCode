@@ -37,7 +37,7 @@
 					if(data.success === "true")
 						{
 							setProjects(mapper.FetchTree(data.data));
-							scopeVar = Projects;
+							scopeVar.Projects = Projects;
 						}
 					else
 						alert(data.message);
