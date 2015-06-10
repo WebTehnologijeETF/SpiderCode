@@ -241,7 +241,7 @@
                     $scope.ProjectFactory.getTree($scope);
                     $scope.Projects = $scope.ProjectFactory.getProjects();
                 }
-            
+            showProjects();
         };
 
         var showProjects = function(){
