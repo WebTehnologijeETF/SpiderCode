@@ -139,7 +139,7 @@
                 {
                     $scope.ProjectFactory.registerGetFolderContentsObserverCallback(appear);
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
-                    $scope.ProjectFactory.getFolderContents({path: refFolder.getPath(), folder: refFolder, refElement: refElement});
+                    $scope.ProjectFactory.getFolderContents({refFolder: refFolder, refElement: refElement});
                     refFolder.setIsLoad(true);
 
                 }
@@ -150,7 +150,7 @@
                     {
  
                         //napravi djecu na osnovu dobavljenih foldera i fajlova - dodaj clanove u html element ul
-                        appear(refElement, refFolder);
+                        appear({refElement: refElement, refFolder: refFolder});
                     }
                     else
                     { // postoje djeca - postoje i js objekti i html objekti - samo ih treba prikazati
@@ -167,8 +167,11 @@
         };
  
         //napravi clanove liste u refElementu - prikazi sadrzaj refFolder-a, na osnovu dobavljenih podataka
-        var appear = function(refElement, refFolder)
+        var appear = function($params)
         {
+            var refElement = $params.refElement;
+            var refFolder = $params.refFolder;
+
             var lista = document.createElement("ul"); //lista koju ce u sebi sadrzavati refElement - to je njegov content
             var folders = refFolder.getFolders();
             for(var i = 0; i < folders.length; i++) //za svaki folder koji sadrzi u sebi pravimo li element koji je tipa prosirive liste
@@ -237,26 +240,27 @@
         }
 
      $scope.Projects = [];
-
-        $scope.$watch(function() {
-    return $scope.Projects;},
-             showProjects);
-
       
        
         $scope.onloadfunc = function()
         {
+             $scope.Projects = $scope.ProjectFactory.getProjects();
          
                 if($scope.Projects.length === 0)
                 {
+
                     $scope.ProjectFactory.registerGetTreeObserverCallback(showProjects); 
                     $scope.ProjectFactory.getTree($scope.Projects);
                 }
+                else
+                    showProjects();
         };
 
-        var showProjects = function(Projects){
+        var showProjects = function(){
 
             alert('I am at showProjects!');
+
+            $scope.Projects = $scope.ProjectFactory.getProjects();
 
 
             var elements = document.querySelectorAll("#projectTree"); //dobavi osnovni project tree - listu za prikaz projekata
