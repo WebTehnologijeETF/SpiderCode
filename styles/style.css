@@ -693,7 +693,7 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 	display: inline-block;
 }
 
-.input-inline-group>input[type="text"], .input-inline-group>.editor{
+.input-inline-group>input[type="text"], .input-inline-group>.editor, .input-inline-group>textarea{
 		width: 75%;
 		display: inline-block;
 		padding: 8px 13px;
@@ -705,7 +705,7 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 
 		display: inline-block;
 }
-.input-inline-group>input[type="text"]{
+.input-inline-group>input[type="text"], .input-inline-group>textarea{
 		box-shadow: inset 0px 0px 0px;
 		outline: 0 none;
 }

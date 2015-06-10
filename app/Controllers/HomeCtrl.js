@@ -33,7 +33,8 @@
             panel.style.left = "100%";
 
         }, false);
-        $scope.task = new TestManager();
+        $scope.task = new Task();
+        $scope.task.addTest(new Test());
         $scope.taskTab = 1;
         var codeEditor = ace.edit("codeEditor");
         codeEditor.setTheme("ace/theme/tomorrow_night");

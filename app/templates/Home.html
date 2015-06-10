@@ -31,7 +31,7 @@
 						<h1>Tests</h1>
 					</div>
 					
-					<ul>
+					<ul id="tests-list-list">
 						<li>Test 1</li>
 						<li>Test 2</li>
 						<li>Test 3</li>
@@ -41,11 +41,15 @@
 				<div class="v-div"></div>
 				<div id="tests-show">
 					<div class="input-inline-group"><label for="req-sim">Require simbols</label><input id="req-sim" name="req-sim" type="text"></div>
+					<div class="input-inline-group"><label for="exp-sim">Require simbols</label><textarea id="exp-sim" name="exp-sim" type="text"></textarea></div>
 					<div class="input-inline-group"><p>Code</p><div id="codeEditor" class="editor"></div></div>
 					<div class="input-inline-group"><p>Global above main</p><div id="gamEditor" class="editor"></div></div>
 					<div class="input-inline-group"><p>Global top</p><div id="gtEditor" class="editor"></div></div>
-					<div class="input-inline-group"><label for="excCB">Expect exception</label><input id="excCB" name="excCB" type="checkbox" value="true"></div>
-					
+					<div class="input-inline-group"><label for="excCB">Expect exception</label><input id="excCB" name="excCB" type="checkbox" ></div>
+					<div class="input-inline-group"><label for="iwsCB">Ignore whitespaces</label><input id="iwsCB" name="iwsCB" type="checkbox" ></div>
+					<div class="input-inline-group"><label for="regCB">Regex</label><input id="regCB" name="regCB" type="checkbox" ></div>
+					<div class="input-inline-group"><label for="subCB">Substring</label><input id="subCB" name="subCB" type="checkbox" ></div>
+				
 				</div>
 	    	</div>
 	    	<div ng-show="taskTab === 3">
