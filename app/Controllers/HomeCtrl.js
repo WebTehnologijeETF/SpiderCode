@@ -3,7 +3,7 @@
  
     var HomeCtrl = function($scope, service) {
     //services - begin
-        var ProjectFactory = service.getService('ProjectFactory', undefined);
+        $scope.ProjectFactory = service.getService('ProjectFactory', undefined);
 //        var Folder = service.getService('Folder', undefined);
     //services - end
  
@@ -66,7 +66,7 @@
 
        
         var updateFile = function(path, content){
-            return ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
+            return $scope.ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
         }
         
         $scope.fileManager.updateFile = updateFile; 
@@ -85,7 +85,7 @@
                 if(!refFolder.getIsLoad())
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
-                    refFolder.SetContent = ProjectFactory.getFolderContents({path: refFolder.getPath()});
+                    refFolder.SetContent = $scope.ProjectFactory.getFolderContents({path: refFolder.getPath()});
 
                 }
                 else
