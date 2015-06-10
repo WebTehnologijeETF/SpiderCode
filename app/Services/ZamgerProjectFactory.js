@@ -13,15 +13,15 @@
 		 var getTreeObserverCallbacks = [];
 		 var  getFolderContentsObserverCallbacks = [];
 
-		 this.registerGetTreeObserverCallback = function(callback){
-         getTreeObserverCallbacks.push(callback);
-         };
 		
-		 this.registerGetFolderContentsObserverCallback = function(callback){
-         getFolderContentsObserverCallbacks.push(callback);
-         };
-
 		return{
+
+			registerGetTreeObserverCallback: function(callback){
+         		getTreeObserverCallbacks.push(callback);
+         	},
+         	registerGetFolderContentsObserverCallback: function(callback){
+         		getFolderContentsObserverCallbacks.push(callback);
+         	},
 
 			getProjects: function(){
 				return Projects;
