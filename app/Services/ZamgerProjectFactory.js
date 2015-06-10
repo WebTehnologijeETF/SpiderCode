@@ -19,8 +19,9 @@
 			getFolderContents: function($params){
 				return $http.get(url.getFolderContentsUrl($params))
 				.success(function(data){
-					if(data.success === "true")
-					return mapper.FetchFolderContent(data.data, $params.path);
+					if(data.success === "true"){
+						$params.folder.setContent(mapper.FetchFolderContent(data.data, $params.path));
+					}
 					else
 						alert(data.message);
 					//TO DO: this
