@@ -197,7 +197,7 @@
             if(elements.length != 0)
             {
                 var list = elements[0];
-                
+
                 if($scope.Projects.length === 0)
                 {
                     $scope.ProjectFactory.getTree();
@@ -205,7 +205,7 @@
                 }
                 showProjects();
             }
-        }
+        };
 
         var showProjects = function(){
             for(var i = 0; i < $scope.Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
@@ -234,8 +234,8 @@
                         list.appendChild(node);
                          
                 }
-            }
-        }
+            };
+        
          
         //this is temporary solution
         var file_manager_resizer = {
