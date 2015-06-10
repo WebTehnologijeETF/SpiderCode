@@ -698,9 +698,13 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 		display: inline-block;
 		padding: 8px 13px;
 		border-radius: 6px;
-		float: right;
+		
 }
+.input-inline-group>input[type="checkbox"]{
+		margin: 14px 14px;
 
+		display: inline-block;
+}
 .input-inline-group>input[type="text"]{
 		box-shadow: inset 0px 0px 0px;
 		outline: 0 none;
@@ -712,9 +716,10 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 		border-radius: 6px;
 		padding: 8px 13px;
 		text-align: right;
-		float: left;
+		
 		/*pravimo mjesto za ikonicu i stavljeno inline da moze u jednom redu biti prikazano*/
 		top : 0px;
+		vertical-align: top;
 }
 
 .input-inline-group>label, .input-inline-group>p, .input-inline-group>input[type="text"], .input-inline-group>.editor{
@@ -723,6 +728,9 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 }
 
 #codeEditor{
-	height: 330px;
+	height: 150px;
 }
 
+#gamEditor, #gtEditor{
+	height: 60px;
+}

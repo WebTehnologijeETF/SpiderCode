@@ -3,7 +3,7 @@
  
     var HomeCtrl = function($scope, service) {
     //services - begin
-        $scope.ProjectFactory = service.getService('ProjectFactory', undefined);
+        var ProjectFactory = service.getService('ProjectFactory', undefined);
 //        var Folder = service.getService('Folder', undefined);
     //services - end
  
@@ -38,10 +38,18 @@
         var codeEditor = ace.edit("codeEditor");
         codeEditor.setTheme("ace/theme/tomorrow_night");
         codeEditor.getSession().setMode("ace/mode/c_cpp");
-        codeEditor.setOption("minLines", 6);
-        codeEditor.setAutoScrollEditorIntoView(true);
-    
         codeEditor.resize(true);
+
+        var gamEditor = ace.edit("gamEditor");
+        gamEditor.setTheme("ace/theme/tomorrow_night");
+        gamEditor.getSession().setMode("ace/mode/c_cpp");
+        gamEditor.resize(true);
+
+        var gtEditor = ace.edit("gtEditor");
+        gtEditor.setTheme("ace/theme/tomorrow_night");
+        gtEditor.getSession().setMode("ace/mode/c_cpp");
+        gtEditor.resize(true)
+
         // dummy DATA - BEGIN
 
        
@@ -58,7 +66,7 @@
 
        
         var updateFile = function(path, content){
-            return $scope.ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
+            return ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
         }
         
         $scope.fileManager.updateFile = updateFile; 
@@ -77,7 +85,7 @@
                 if(!refFolder.getIsLoad())
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
-                    refFolder.SetContent = $scope.ProjectFactory.getFolderContents({path: refFolder.getPath()});
+                    refFolder.SetContent = ProjectFactory.getFolderContents({path: refFolder.getPath()});
 
                 }
                 else
@@ -173,11 +181,13 @@
             refElement.querySelector("ul").style.display = "none";
         }
 
-        $scope.Projects = [];
+     $scope.Projects = [];
 
         $scope.$watch(function() {
     return $scope.Projects;},
              showProjects);
+
+      
        
         $scope.onloadfunc = function()
         {
@@ -187,6 +197,7 @@
             if(elements.length != 0)
             {
                 var list = elements[0];
+                
                 if($scope.Projects.length === 0)
                 {
                     $scope.ProjectFactory.getTree();
@@ -198,6 +209,7 @@
 
         var showProjects = function(){
             for(var i = 0; i < $scope.Projects.length; i++) // prikazi dobavljene projekte za user-a kao prosirive liste
+
                 {
                         var node = document.createElement("LI");
                         node.setAttribute("class", "folder not-selectable unexpanded");
@@ -222,7 +234,8 @@
                         list.appendChild(node);
                          
                 }
-            };
+            }
+        }
          
         //this is temporary solution
         var file_manager_resizer = {
