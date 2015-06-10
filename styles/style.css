@@ -561,6 +561,7 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 .context-menu-item{
 	padding: 6px 4px 5px 4px;
 	border-bottom: 1px solid #C8A32E;
+  	cursor: pointer;
 }
 
 .context-menu-item:hover{
