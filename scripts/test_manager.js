@@ -30,11 +30,21 @@ Task.prototype.addTest = function(test){
 	return id;
 }
 
-Task.prototype.showTest = function(test,req_sim, exp_sim, code, gam, gt, exc, iws, reg, sub){
+Task.prototype.removeTest = function(test){
+	for(var i = 0; i < this.test_specifications.length; i++)
+		if(this.test_specifications[i] && this.test_specifications[i].id == test.id){
+			this.test_specifications = this.test_specifications.splice(i,1);
+			return;
+		}
+			
+	throw "Test with this ID already exist";
+}
+
+Task.prototype.showTest = function(test,test_id,req_sim, exp_sim, code, gam, gt, exc, iws, reg, sub){
 	if(typeof(test) != "Object"){
 		var nasao = false
 		for(var i = 0; i < this.test_specifications.length; i++)
-			if(this.test_specifications[i] && this.test_specifications[i].id === test){
+			if(this.test_specifications[i] && this.test_specifications[i].id == test){
 				test = this.test_specifications[i];
 				nasao = true;
 				break;
@@ -42,26 +52,43 @@ Task.prototype.showTest = function(test,req_sim, exp_sim, code, gam, gt, exc, iw
 		if(nasao === false)
 			throw "Test s tim ID-em ne postoji";
 	}
-
+	
+	document.getElementById(test_id).innerHTML = test.id;
 	document.getElementById(req_sim).value = test.require_symbols[0] || "";
 	document.getElementById(exp_sim).value = test.expected[0] || "";
-	document.getElementById(code.env.editor).setValue(test.code || "", 1);
-	document.getElementById(gam.env.editor).setValue(test.global_above_main || "", 1);
-	document.getElementById(gt.env.editor).setValue(test.global_top || "", 1);
+	document.getElementById(code).env.editor.setValue(test.code || "", 1);
+	document.getElementById(gam).env.editor.setValue(test.global_above_main || "", 1);
+	document.getElementById(gt).env.editor.setValue(test.global_top || "", 1);
 	document.getElementById(exc).checked = test.expected_exception || false;
 	document.getElementById(iws).checked = test.ignore_whitespace || false;
-	document.getElementById(regex).checked = test.regex || false;
+	document.getElementById(reg).checked = test.regex || false;
 	document.getElementById(sub).checked = test.substring || false;
 }
 
+Task.prototype.resetFields = function(test_id,req_sim, exp_sim, code, gam, gt, exc, iws, reg, sub){
+	
+	document.getElementById(test_id).innerHTML = "";
+	document.getElementById(req_sim).value = "";
+	document.getElementById(exp_sim).value = "";
+	document.getElementById(code).env.editor.setValue("", -1);
+	document.getElementById(gam).env.editor.setValue("", -1);
+	document.getElementById(gt).env.editor.setValue("", 1);
+	document.getElementById(exc).checked = false;
+	document.getElementById(iws).checked = false;
+	document.getElementById(reg).checked = false;
+	document.getElementById(sub).checked = false;
+}
 
+Task.prototype.getTests = function(){
+	return this.test_specifications;
+}
 function Test(){
 	this.id = null;
 	this.require_symbols = [ ];
 	this.replace_symbols = [ ];
-	this.code = "luka";
-	this.global_above_main = "je";
-	this.global_top = "bio";
+	this.code = "";
+	this.global_above_main = "";
+	this.global_top = "";
 	this.running_params = { "timeout": 10, "vmem": 1000000, "stdin": "" };
 	this.expected = [ "2.00\\n2.10\\n2.20\\n" ]; 
 	this.expected_exception = false;

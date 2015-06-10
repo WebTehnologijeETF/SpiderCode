@@ -51,6 +51,26 @@
         gtEditor.getSession().setMode("ace/mode/c_cpp");
         gtEditor.resize(true)
 
+        var refreshTestList = function(){
+            var list = document.getElementById("tests-list-list");
+            list.innerHTML ="";
+            var tests = $scope.task.getTests();
+            for(var i = 0; i < tests.length; i++){
+                if(tests[i]){
+                    var el =document.createElement("li");
+                    el.id = tests[i].id;
+                    el.innerHTML = "Test " + el.id;
+                    list.appendChild(el);
+
+                    el.addEventListener('click', function(){
+                        $scope.task.showTest(el.id, "test-id", "req-sim", "exp-sim", "codeEditor", "gamEditor", "gtEditor", 
+                            "excCB", "iwsCB", "regCB", "subCB");
+                    }, false);
+                }       
+            }
+        }
+
+        refreshTestList();
         // dummy DATA - BEGIN
 
        
