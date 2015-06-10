@@ -17,11 +17,11 @@
 		return{
 
 			registerGetTreeObserverCallback: function(callback){
-				if(getTreeObserverCallbacks.indexOf(callback) > -1)
+				if(getTreeObserverCallbacks.indexOf(callback) < 0)
          		getTreeObserverCallbacks.push(callback);
          	},
          	registerGetFolderContentsObserverCallback: function(callback){
-         		if(getFolderContentsObserverCallbacks.indexOf(callback) > -1)
+         		if(getFolderContentsObserverCallbacks.indexOf(callback) < 0)
          		getFolderContentsObserverCallbacks.push(callback);
          	},
 
