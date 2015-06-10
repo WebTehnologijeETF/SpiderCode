@@ -30,13 +30,13 @@
 					//TO DO: this
 				});
 			},
-			getTree: function(){
+			getTree: function(scopeVar){
 				return $http.get(url.getTreeUrl())
 				.success(function(data){
 					if(data.success === "true")
 						{
 							setProjects(mapper.FetchTree(data.data));
-							return Projects;
+							scopeVar = Projects;
 						}
 					else
 						alert(data.message);

@@ -87,6 +87,7 @@
                 {
                     //HTTP GET folderov content(samo imena fileova) na osnovu path-a + appear(refElement, refFolder)
                     refFolder.SetContent = $scope.ProjectFactory.getFolderContents({path: refFolder.getPath()});
+                    refFolder.setIsLoad(true);
 
                 }
                 else
@@ -195,10 +196,8 @@
          
                 if($scope.Projects.length === 0)
                 {
-                    $scope.ProjectFactory.getTree();
-                    $scope.Projects =  $scope.ProjectFactory.getProjects();
+                    $scope.ProjectFactory.getTree($scope.Projects);
                 }
-                showProjects();
             
         };
 
