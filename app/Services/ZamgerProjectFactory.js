@@ -34,7 +34,7 @@
 						$params.folder.setContent(mapper.FetchFolderContent(data.data, $params.path));
 						 angular.forEach(getFolderContentsObserverCallbacks, function(callback){
                         	callback($params.folder, $params.refElement);
-                        }
+                        });
 					}
 					else
 						alert(data.message);
@@ -52,7 +52,8 @@
 						{
 							scopeVar = mapper.FetchTree(data.data);
 							 angular.forEach(getTreeObserverCallbacks, function(callback){
-                        	callback(scopeVar);}
+                        	callback(scopeVar);
+                        	});
 						}
 					else
 						alert(data.message);
