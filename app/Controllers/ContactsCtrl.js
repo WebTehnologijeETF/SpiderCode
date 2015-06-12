@@ -98,6 +98,7 @@
             }).
             error(function(data, status, headers, config) {
                 alert("Error se desio: " +  status);
+                alert(status);
             });
         } 
     });
