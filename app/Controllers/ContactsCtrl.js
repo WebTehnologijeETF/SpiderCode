@@ -75,7 +75,7 @@
                     e.innerHTML +=  errors[i] + "<br>" ;
                 }
             }
-
+            /*
             var dummyCpp = "#include <iostream>\n\n int d(int x){\n    return 2*x; \n}\n\nint main(){\n   std::cout << d(2);\n}\n\n";
             //var json = JSON.stringify($scope.task);
             //alert(json);
@@ -102,7 +102,7 @@
             error(function(data, status, headers, config) {
                 alert("Error se desio: " +  status);
                 alert(status);
-            });
+            });*/
         } 
     });
 }());

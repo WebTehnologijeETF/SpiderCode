@@ -92,9 +92,6 @@
         } 
 
         refreshTestList();
-        var dummyCpp = "#include <iostream>\n\n int d(int x){\n    return 2*x; \n}\n\nint main(){\n   std::cout << d(2);\n}\n\n";
-            $scope.manager.getEditor().getSession().setMode("ace/mode/c_cpp");
-            $scope.manager.getEditor().getSession().setValue(dummyCpp);
 
         var startTestBtn = document.getElementById("tests-start");
         startTestBtn.addEventListener('click', function(){
