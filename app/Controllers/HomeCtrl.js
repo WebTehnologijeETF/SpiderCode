@@ -1,7 +1,7 @@
 (function(){
     
  
-   var HomeCtrl = function($scope, fileManager) {
+   var HomeCtrl = function($scope, fileManager, $http) {
     //services - begin
         $scope.ProjectFactory = fileManager.getProjectFactory();
 
@@ -102,11 +102,37 @@
             alert(json);
 
             var zip = new JSZip();
+            var task = new JSZip();
+
+
             alert($scope.manager.getEditor().getSession().getValue());
 
+            task.file("task.json",json);
             zip.file("zad.cpp",$scope.manager.getEditor().getSession().getValue());
-            var a = zip.generate({type:"blob"});
+            var a = zip.generate({type:"blob"}); 
 
+            var fd = new FormData();
+            fd.append('program_data', a);
+            //var taskData = task.file("task.json").asUint8Array();
+
+            var f = new File(json, "task.json", {type: "text/plain"});
+            fd.append('task_data', f);
+            $http({
+                url: "http://php-vljubovic.rhcloud.com/bs/submit.php",
+                method: "POST",
+                data: fd, 
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+                withCredentials : false
+            }).
+            success(function(data, status, headers, config) {
+                alert("Uspjelo!!!: "+ data);
+                alert(data);
+            }).
+            error(function(data, status, headers, config) {
+                alert("Error se desio: " +  status);
+                alert(status);
+            });
         },false);
         document.getElementById('tests-rm').addEventListener('click', function(){
             if(!curTest){
@@ -368,7 +394,7 @@
  
     }
  
-    HomeCtrl.$inject = ['$scope', 'FileManager'];
+    HomeCtrl.$inject = ['$scope', 'FileManager', '$http'];
     angular.module('app').controller('HomeCtrl', HomeCtrl);
  
 })();
