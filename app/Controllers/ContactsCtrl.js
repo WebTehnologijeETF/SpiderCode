@@ -85,11 +85,12 @@
 
             zip.file("zad.cpp",dummyCpp);
             var a = zip.generate({type:"blob"});
-
+            var fd = new FormData();
+            fd.append('program_data', a);
             $http({
                 url: "http://php-vljubovic.rhcloud.com/bs/submit.php",
                 method: "POST",
-                data: {program_data : a}, 
+                data: fd, 
                 transformRequest: angular.identity,
                 headers: {'Content-Type': undefined},
                 withCredentials : false
