@@ -1,27 +1,28 @@
 (function(){
     
  
-    var HomeCtrl = function($scope, service) {
+   var HomeCtrl = function($scope, fileManager) {
     //services - begin
-        $scope.ProjectFactory = service.getService('ProjectFactory', undefined);
-//        var Folder = service.getService('Folder', undefined);
-    //services - end
- 
-    //menu on the right - begin
+        $scope.ProjectFactory = fileManager.getProjectFactory();
+
         alert(typeof(JSZip)); 
         alert(JSZip);
-        //editor
         var eDom = document.getElementById("editor");
  
         if(!eDom)
             throw "DOM with id=editor is missing.";
+
+        fileManager.setVirtualRenderer(eDom);
+
+        $scope.fileVirtualRenderer = fileManager.getVirtualRenderer();
+ 
  
         $scope.manager = new AceManager(eDom);
-        $scope.fileManager = new FileManager("#projectTree");
+//Povezivanje jednog s drugim, jer ako bi ubacivali u kontroler od jednog onda bi se postavljalo pitanje koka ili jaje
+        $scope.manager.setFileManager(fileManager);
+        fileManager.setAceManager($scope.manager);
 
-        //Povezivanje jednog s drugim, jer ako bi ubacivali u kontroler od jednog onda bi se postavljalo pitanje koka ili jaje
-        $scope.manager.setFileManager($scope.fileManager);
-        $scope.fileManager.setAceManager($scope.manager);
+         //services - end
 
         var testBtn = document.createElement("li");
         testBtn.classList.add("acem-tab");
@@ -154,8 +155,6 @@
             return $scope.ProjectFactory.updateFile({path: path, content: content}); //ovo treba bit u mngr
         }
         
-        $scope.fileManager.updateFile = updateFile; 
- 
         // ovo je onclick funkcija za sve elemente klase folder, liste koja se moze prosiriti
         //refElement nam je HTML objekat koji predstavlja prosirivu listu koja moze biti prosirena ili ne 
         //refFolder je javascript objekat koji ima u sebi nove foldere i fileove i cije ime i sadrzaj (ako je prosiren) prikazuje refElement
@@ -367,10 +366,9 @@
         window.onresize = f;
         f();
  
-    //menu on the left - end
     }
  
-    HomeCtrl.$inject = ['$scope', 'ServiceProvider'];
+    HomeCtrl.$inject = ['$scope', 'FileManager'];
     angular.module('app').controller('HomeCtrl', HomeCtrl);
  
 })();
