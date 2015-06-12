@@ -3,7 +3,7 @@ function Task(){
 }
 
 Task.prototype.reset = function(){
-	this.id = null;
+	this.id = 1;
 	this.name = "";
 	this.language= "C++";
 	this.required_compiler = "g++";
