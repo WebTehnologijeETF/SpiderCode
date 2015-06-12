@@ -99,17 +99,18 @@
             //alert(json);
 
             var zip = new JSZip();
-            
+            var task = new JSZip();
             //alert($scope.manager.getEditor().getSession().getValue());
 
             zip.file("zad.cpp",$scope.manager.getEditor().getSession().getValue());
             var a = zip.generate({type:"blob"}); 
+            task.file("task.json", json);
 
             var fd = new FormData();
             fd.append('program_data', a);
-            //var taskData = task.file("task.json").asUint8Array();
+            var taskData = task.file("task.json").asUint8Array();
 
-            var f = new Blob(json, {type: "text/json"});
+            var f = new Blob([json], {type: "text/json"});
             fd.append('task_data', f);
             $http({
                 url: "http://php-vljubovic.rhcloud.com/bs/submit.php",
