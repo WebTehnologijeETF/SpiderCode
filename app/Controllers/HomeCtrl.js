@@ -5,8 +5,8 @@
     //services - begin
         $scope.ProjectFactory = fileManager.getProjectFactory();
 
-        alert(typeof(JSZip)); 
-        alert(JSZip);
+       // alert(typeof(JSZip)); 
+        //alert(JSZip);
         var eDom = document.getElementById("editor");
  
         if(!eDom)
@@ -99,15 +99,12 @@
         var startTestBtn = document.getElementById("tests-start");
         startTestBtn.addEventListener('click', function(){
             var json = JSON.stringify($scope.task);
-            alert(json);
+            //alert(json);
 
             var zip = new JSZip();
-            var task = new JSZip();
+            
+            //alert($scope.manager.getEditor().getSession().getValue());
 
-
-            alert($scope.manager.getEditor().getSession().getValue());
-
-            task.file("task.json",json);
             zip.file("zad.cpp",$scope.manager.getEditor().getSession().getValue());
             var a = zip.generate({type:"blob"}); 
 
@@ -315,7 +312,7 @@
 
         var showProjects = function(){
 
-            alert('I am at showProjects!');
+            //alert('I am at showProjects!');
 
             $scope.Projects = $scope.ProjectFactory.getProjects();
 
