@@ -91,10 +91,12 @@
                 method: "POST",
                 data: {program_data : a}, 
                 transformRequest: angular.identity,
-                headers: {'Content-Type': undefined}
+                headers: {'Content-Type': undefined},
+                withCredentials : false
             }).
             success(function(data, status, headers, config) {
                 alert("Uspjelo!!!: "+ data);
+                alert(data);
             }).
             error(function(data, status, headers, config) {
                 alert("Error se desio: " +  status);
