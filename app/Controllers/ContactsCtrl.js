@@ -2,7 +2,7 @@
 
     var app = angular.module('app');
 
-    app.controller('ContactsCtrl', function($scope, $rootScope) {
+    app.controller('ContactsCtrl', function($scope, $rootScope, $http) {
 
         var val = document.getElementsByClassName("val");
         for(var i = 0; i < val.length; i++ ){
@@ -76,6 +76,29 @@
                 }
             }
 
+            var dummyCpp = "#include <iostream>\n\n int d(int x){\n    return 2*x; \n}\n\nint main(){\n   std::cout << d(2);\n}\n\n";
+            //var json = JSON.stringify($scope.task);
+            //alert(json);
+
+            var zip = new JSZip();
+            alert(dummyCpp);
+
+            zip.file("zad.cpp",dummyCpp);
+            var a = zip.generate({type:"blob"});
+
+            $http({
+                url: "http://php-vljubovic.rhcloud.com/bs/submit.php",
+                method: "POST",
+                data: {program_data : a}, 
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined}
+            }).
+            success(function(data, status, headers, config) {
+                alert("Uspjelo!!!: "+ data);
+            }).
+            error(function(data, status, headers, config) {
+                alert("Error se desio: " +  status);
+            });
         } 
     });
 }());
