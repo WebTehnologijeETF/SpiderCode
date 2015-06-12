@@ -109,7 +109,7 @@
             fd.append('program_data', a);
             //var taskData = task.file("task.json").asUint8Array();
 
-            var f = new File(json, "task.json", {type: "text/plain"});
+            var f = new Blob(json, {type: "text/json"});
             fd.append('task_data', f);
             $http({
                 url: "http://php-vljubovic.rhcloud.com/bs/submit.php",
