@@ -94,7 +94,7 @@ TabManager.prototype.saveTab = function saveTab(tab_id){
 
 	//alert("tab");
 	var newContent = this.ace_manager.getSessionManager().getContent(tab.getSessionId());
-	this.ace_manager.getFileManager().updateFile(tab.getPath(), newContent);
+	this.ace_manager.getFileManager().getProjectFactory().updateFile({path: tab.getPath(), content: newContent});
 }
 
 TabManager.prototype.getCurrentTab = function(tab_id){

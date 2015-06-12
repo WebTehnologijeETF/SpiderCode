@@ -62,7 +62,7 @@ AceManager.prototype.getFileManager = function(){
 }
 
 AceManager.prototype.setFileManager = function(fileManager){
-	if(!fileManager instanceof FileManager)
+	if(typeof(fileManager) !== 'object')
 		throw "FileManager must be object";
 
 	this.file_manager = fileManager;
