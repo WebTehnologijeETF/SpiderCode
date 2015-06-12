@@ -97,7 +97,12 @@ TabManager.prototype.saveTab = function saveTab(tab_id){
 	this.ace_manager.getFileManager().updateFile(tab.getPath(), newContent);
 }
 
-
+TabManager.prototype.getCurrentTab = function(tab_id){
+	if(this.current_tab)
+		return this.$getTabById(this.current_tab);
+	else
+		return null;
+}
 
 //Mapper
 TabManager.prototype.mapper = new Map();

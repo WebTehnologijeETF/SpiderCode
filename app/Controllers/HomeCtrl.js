@@ -8,7 +8,8 @@
     //services - end
  
     //menu on the right - begin
- 
+        alert(typeof(JSZip)); 
+        alert(JSZip);
         //editor
         var eDom = document.getElementById("editor");
  
@@ -90,7 +91,22 @@
         } 
 
         refreshTestList();
+        var dummyCpp = "#include <iostream>\n\n int d(int x){\n    return 2*x; \n}\n\nint main(){\n   std::cout << d(2);\n}\n\n";
+            $scope.manager.getEditor().getSession().setMode("ace/mode/c_cpp");
+            $scope.manager.getEditor().getSession().setValue(dummyCpp);
 
+        var startTestBtn = document.getElementById("tests-start");
+        startTestBtn.addEventListener('click', function(){
+            var json = JSON.stringify($scope.task);
+            alert(json);
+
+            var zip = new JSZip();
+            alert($scope.manager.getEditor().getSession().getValue());
+
+            zip.file("zad.cpp",$scope.manager.getEditor().getSession().getValue());
+            var a = zip.generate({type:"blob"});
+
+        },false);
         document.getElementById('tests-rm').addEventListener('click', function(){
             if(!curTest){
                 alert("Please select test first");
