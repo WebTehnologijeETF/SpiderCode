@@ -12,7 +12,7 @@ Task.prototype.reset = function(){
 	this.compiler_options = "-O1 -Wall -Wuninitialized -Winit-self -Wfloat-equal -Wno-sign-compare -Werror=implicit-function-declaration -Werror=vla -pedantic -lm -pass-exit-codes";
 	this.compiler_options_debug = "-ggdb -lm -pass-exit-codes";
 	this.compile = "true";
-    this.run = "true";
+    this.run = "false";
     this.running_params = { "timeout": 10, "vmem": 1000000, "stdin": "" };
     this.test = "true";
     this.debug = "true";
@@ -124,7 +124,7 @@ function Test(){
 	this.global_above_main = "";
 	this.global_top = "";
 	this.running_params = { "timeout": 10, "vmem": 1000000, "stdin": "" };
-	this.expected = [ "2.00\\n2.10\\n2.20\\n" ]; 
+	this.expected = []; 
 	this.expected_exception = false;
 	this.expected_crash = false;
 	this.ignore_whitespace = false;

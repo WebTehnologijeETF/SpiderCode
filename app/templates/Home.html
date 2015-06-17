@@ -22,19 +22,19 @@
 		</ul>
 		<div class="panel">
 			<div ng-show="taskTab === 1">
-				<div>
-					<span>Modify name:  </span><input type="text" ng-model="task.name"/>
+				<div class="input-inline-group">
+					<label for="task-name">Modify name:</label><input name="task-name" type="text" ng-model="task.name"/>
 				</div>
-				<div>
-					<span>Modify name:  </span><input type="checkbox" ng-model="task.run"/>
+				<div class="input-inline-group">
+					<label for="task-run">Run:</label><input name="task-run" type="checkbox" ng-model="task.run"/>
 				</div>
-				<div>
-					<span>Run stdin:  </span><input type="text" ng-model="task.running_params.stdin"/>
+				<div ng-show="task.run" class="input-inline-group">
+					<label for="task-run-stdin">Run stdin:</label><input name="task-run-stdin" type="text" ng-model="task.running_params.stdin"/>
 				</div>
 	    	</div>
 	    	
 	    	<div ng-show="taskTab === 2">
-				<div id="tests-list" class="test-list">
+				<div id="tests-list" class="tests-list">
 					<div class="heading">
 						<h1>Tests</h1>
 					</div>

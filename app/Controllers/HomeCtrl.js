@@ -52,8 +52,7 @@
 
         }, false);
         $scope.task = new Task();
-        $scope.task.addTest(new Test());
-        $scope.task.addTest(new Test());
+        
         $scope.taskTab = 1;
         var codeEditor = ace.edit("codeEditor");
         codeEditor.setTheme("ace/theme/tomorrow_night");
@@ -75,6 +74,11 @@
             var list = document.getElementById("tests-list-list");
             list.innerHTML ="";
             var tests = $scope.task.getTests();
+            if(tests.length == 0){
+                var el = document.createElement("li");
+                el.innerHTML = "<em>Nema testova</em>";
+                list.appendChild(el);
+            }
             for(var i = 0; i < tests.length; i++){
                 if(tests[i]){
                     var el =document.createElement("li");
