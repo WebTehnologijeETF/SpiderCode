@@ -176,11 +176,12 @@
                 withCredentials : false
 
             }).success(function(data, status, headers, config) {
-                alert("Uspio check status!!!");
-
+                
                 var area = document.getElementById("tests-results");
                 area.value = data;
                 showBuildResults(data);
+
+                alert("Uspio check status!!!");
             }).
             error(function(data, status, headers, config) {
                 alert("Error se desio: " +  status);
@@ -197,6 +198,12 @@
 
             var compileOutput = document.getElementById("tests-compile-result-output");
             compileOutput.value = data.status.compile_result.output;
+
+            var runStatus = document.getElementById("tests-run-result-status");
+            runStatus.innerHTML = data.status.run_result.status == 1 ? "Uspješno" : "Nije uspjelo";
+
+            var runOutput = document.getElementById("tests-run-result-output");
+            runOutput.value = data.status.run_result.output;
        }
  
  // DUMMY DATA END 
