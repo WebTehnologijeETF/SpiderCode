@@ -193,10 +193,10 @@
 
        var showBuildResults = function(data){
             var compileStatus = document.getElementById("tests-compile-result-status");
-            compileStatus.innerHTML = data.compile_result.status == 1 ? "Uspješno" : "Nije uspjelo";
+            compileStatus.innerHTML = data.status.compile_result.status == 1 ? "Uspješno" : "Nije uspjelo";
 
             var compileOutput = document.getElementsByTagName("tests-compile-result-output");
-            compileOutput.value = data.compile_result.output;
+            compileOutput.value = data.status.compile_result.output;
        }
  
  // DUMMY DATA END 
