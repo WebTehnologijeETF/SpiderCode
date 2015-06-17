@@ -180,7 +180,7 @@
 
                 var area = document.getElementById("tests-results");
                 area.value = data;
-
+                showBuildResults(data);
             }).
             error(function(data, status, headers, config) {
                 alert("Error se desio: " +  status);
@@ -191,7 +191,13 @@
         }, false);
         // dummy DATA - BEGIN
 
-       
+       var showBuildResults = function(data){
+            var compileStatus = document.getElementById("tests-compile-result-status");
+            compileStatus.innerHTML = data.compile_result.status == 1 ? "Uspješno" : "Nije uspjelo";
+
+            var compileOutput = document.getElementsByTagName("tests-compile-result-output");
+            compileOutput.value = data.compile_result.output;
+       }
  
  // DUMMY DATA END 
         $scope.openInEditor = function(file)

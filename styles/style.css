@@ -654,30 +654,31 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 }
 
 
-#tests-list{
+#test-list{
 	width: 29%;
+	float: left;
+}
+.tests-list{
 	background-color: #1A1A1A;
 	height: 100%;
-	float: left;
 	border: 1px solid #2a9fd6;
-
 }
 
-#tests-list>.heading, #tests-list>.heading *{
+.tests-list>.heading, .tests-list>.heading *{
 	background-color: #2a9fd6; 
 	margin: 0;
 }
 
-#tests-list>.heading, #tests-list>ul>li{
+.tests-list>.heading, .tests-list>ul>li{
 	padding: 10px;
 
 }
-#tests-list>ul{
+.tests-list>ul{
 	padding: 0px;
 	margin: 0px;
 	list-style: none;
 }
-#tests-list>ul>li:hover{
+.tests-list>ul>li:hover{
 	background-color: #2A2A2A;
 }
 #tests-show{
@@ -719,7 +720,6 @@ content: url("https://cdn4.iconfinder.com/data/icons/linecon/512/sub-20.png");
 		padding: 8px 13px;
 		text-align: right;
 		
-		/*pravimo mjesto za ikonicu i stavljeno inline da moze u jednom redu biti prikazano*/
 		top : 0px;
 		vertical-align: top;
 }
