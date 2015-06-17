@@ -101,7 +101,7 @@ Task.prototype.saveTest = function(test,test_id,req_sim, exp_sim, code, gam, gt,
 
 Task.prototype.resetFields = function(test_id,req_sim, exp_sim, code, gam, gt, exc, iws, reg, sub){
 	
-	document.getElementById(test_id).innerHTML = "";
+	document.getElementById(test_id).innerHTML = "<em>odaberite test lijevo</em>";
 	document.getElementById(req_sim).value = "";
 	document.getElementById(exp_sim).value = "";
 	document.getElementById(code).env.editor.setValue("", -1);
