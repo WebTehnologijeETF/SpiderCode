@@ -168,8 +168,14 @@
                 return;
             }
             
-            $http.get("http://php-vljubovic.rhcloud.com/bs/check_status.php?instance="+$scope.instance).
-            success(function(data, status, headers, config) {
+            $http({
+                url:"http://php-vljubovic.rhcloud.com/bs/check_status.php?instance="+$scope.instance,
+                method: "GET", 
+                transformRequest: angular.identity,
+                headers: {'Content-Type': undefined},
+                withCredentials : false
+
+            }).success(function(data, status, headers, config) {
                 alert("Uspio check status!!!");
 
                 var area = document.getElementById("tests-results");
