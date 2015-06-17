@@ -24,6 +24,9 @@
 			<div ng-show="taskTab === 1">
 				<span>Modify name:  </span><input type="text" ng-model="task.name"/>
 	    	</div>
+	    	<div ng-show="taskTab === 1">
+				<span>Run stdin:  </span><input type="text" ng-model="task.running_params.stdin"/>
+	    	</div>
 	    	<div ng-show="taskTab === 2">
 				<div id="tests-list" class="test-list">
 					<div class="heading">

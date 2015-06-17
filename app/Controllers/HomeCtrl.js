@@ -195,7 +195,7 @@
             var compileStatus = document.getElementById("tests-compile-result-status");
             compileStatus.innerHTML = data.status.compile_result.status == 1 ? "Uspješno" : "Nije uspjelo";
 
-            var compileOutput = document.getElementsByTagName("tests-compile-result-output");
+            var compileOutput = document.getElementById("tests-compile-result-output");
             compileOutput.value = data.status.compile_result.output;
        }
  

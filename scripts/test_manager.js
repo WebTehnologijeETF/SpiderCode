@@ -12,7 +12,8 @@ Task.prototype.reset = function(){
 	this.compiler_options = "-O1 -Wall -Wuninitialized -Winit-self -Wfloat-equal -Wno-sign-compare -Werror=implicit-function-declaration -Werror=vla -pedantic -lm -pass-exit-codes";
 	this.compiler_options_debug = "-ggdb -lm -pass-exit-codes";
 	this.compile = "true";
-    this.run = "false";
+    this.run = "true";
+    this.running_params = { "timeout": 10, "vmem": 1000000, "stdin": "" };
     this.test = "true";
     this.debug = "true";
 	this.profile = "true";
