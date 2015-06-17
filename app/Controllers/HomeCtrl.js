@@ -168,7 +168,7 @@
                 return;
             }
             
-            $http.get("http://php-vljubovic.rhcloud.com/bs/check_status.php?instance"+$scope.instance).
+            $http.get("http://php-vljubovic.rhcloud.com/bs/check_status.php?instance="+$scope.instance).
             success(function(data, status, headers, config) {
                 alert("Uspio check status!!!");
 
