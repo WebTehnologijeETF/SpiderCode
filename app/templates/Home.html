@@ -22,11 +22,17 @@
 		</ul>
 		<div class="panel">
 			<div ng-show="taskTab === 1">
-				<span>Modify name:  </span><input type="text" ng-model="task.name"/>
+				<div>
+					<span>Modify name:  </span><input type="text" ng-model="task.name"/>
+				</div>
+				<div>
+					<span>Modify name:  </span><input type="checkbox" ng-model="task.run"/>
+				</div>
+				<div>
+					<span>Run stdin:  </span><input type="text" ng-model="task.running_params.stdin"/>
+				</div>
 	    	</div>
-	    	<div ng-show="taskTab === 1">
-				<span>Run stdin:  </span><input type="text" ng-model="task.running_params.stdin"/>
-	    	</div>
+	    	
 	    	<div ng-show="taskTab === 2">
 				<div id="tests-list" class="test-list">
 					<div class="heading">
@@ -44,7 +50,7 @@
 				</div>
 				
 				<div class="v-div"></div>
-				<div id="tests-show">
+				<div id="tests-show" class="tests-show">
 					<div class="input-inline-group"><p>Id</p><p id="test-id"></p></div>
 					<div class="input-inline-group"><label for="req-sim">Require simbols</label><input id="req-sim" name="req-sim" type="text"></div>
 					<div class="input-inline-group"><label for="exp-sim">Expecte result</label><textarea id="exp-sim" name="exp-sim" type="text"></textarea></div>
@@ -68,34 +74,37 @@
 				<div id="tests-start" class="btn btn-blue">Start test</div>
 				<div id="tests-check" class="btn btn-blue">Check status</div>
 				<textarea id="tests-results" name="exp-sim" type="text"></textarea>
-				<div class="input-inline-group">
-					<p>Status:</p>
-					<p id="tests-build-status"></p>
-				</div>
-				<div class="tests-list">
-					<div class="heading">
-						<h1>Compile</h1>
-					</div>
+				<div id="buildResultDiv">
 					<div class="input-inline-group">
 						<p>Status:</p>
-						<p id="tests-compile-result-status">Uspješno</p>
+						<p id="tests-build-status"></p>
 					</div>
-					<div class="input-inline-group">
-						<label for="compiler-output">Compiler output:</label><textarea name="compiler-output" id="tests-compile-result-output" type="text">Ovdje ide izlaz compilera</textarea>
+					<div class="tests-list">
+						<div class="heading">
+							<h1>Compile</h1>
+						</div>
+						<div class="input-inline-group">
+							<p>Status:</p>
+							<p id="tests-compile-result-status">Uspješno</p>
+						</div>
+						<div class="input-inline-group">
+							<label for="compiler-output">Compiler output:</label><textarea name="compiler-output" id="tests-compile-result-output" type="text">Ovdje ide izlaz compilera</textarea>
+						</div>
+					</div>
+					<div class="tests-list">
+						<div class="heading">
+							<h1>Run result</h1>
+						</div>
+						<div class="input-inline-group">
+							<p>Status:</p>
+							<p id="tests-run-result-status">Potrebno pokrenuti run</p>
+						</div>
+						<div class="input-inline-group">
+							<label for="compiler-output">Run output:</label><textarea name="compiler-output" id="tests-run-result-output" type="text">Ovdje ide izlaz runovanog programa</textarea>
+						</div>
 					</div>
 				</div>
-				<div class="tests-list">
-					<div class="heading">
-						<h1>Run result</h1>
-					</div>
-					<div class="input-inline-group">
-						<p>Status:</p>
-						<p id="tests-run-result-status">Potrebno pokrenuti run</p>
-					</div>
-					<div class="input-inline-group">
-						<label for="compiler-output">Run output:</label><textarea name="compiler-output" id="tests-run-result-output" type="text">Ovdje ide izlaz runovanog programa</textarea>
-					</div>
-				</div>
+				
 	    	</div>
 		</div>
 		

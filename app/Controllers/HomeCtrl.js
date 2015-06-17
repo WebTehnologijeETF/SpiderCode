@@ -177,14 +177,18 @@
 
             }).success(function(data, status, headers, config) {
                 
-                var area = document.getElementById("tests-results");
-                area.value = data;
-                showBuildResults(data);
-
-                alert("Uspio check status!!!");
+                var div = document.getElementById("buildResultDiv");
+                if(data.status.code === "STA009"){
+                    div.style.display = "block";
+                    showBuildResults(data);
+                    alert("Check build & test results");    
+                } else {
+                    div.style.display = "none";
+                    alert("Build & test isn't finnished yet. Status: " + data.status.message);
+                }
             }).
             error(function(data, status, headers, config) {
-                alert("Error se desio: " +  status);
+                alert("There is error in build and test: " +  status);
                
             });
 
