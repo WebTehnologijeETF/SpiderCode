@@ -95,7 +95,7 @@
 
         var startTestBtn = document.getElementById("tests-start");
         startTestBtn.addEventListener('click', function(){
-            $scope.BTresults = null;
+            $scope.instance = null;
                 
             var json = JSON.stringify($scope.task);
             //alert(json);
@@ -123,7 +123,7 @@
                 withCredentials : false
             }).
             success(function(data, status, headers, config) {
-                $scope.BTresults = data;
+                $scope.instance = data.instance;
                 alert("Uspjelo!!!: "+ data);
 
                 alert(data);
@@ -163,15 +163,25 @@
         }, false)
 
         document.getElementById('tests-check').addEventListener('click', function(){
-            if(!$scope.BTresults){
+            if(!$scope.instance){
                 alert("Please first run build & test");
                 return;
             }
-
-            var area = document.getElementById("tests-results");
-            area.value = $scope.BTresults;
             
+            $http.get("http://php-vljubovic.rhcloud.com/bs/check_status.php?instance"+$scope.instance).
+            success(function(data, status, headers, config) {
+                alert("Uspio check status!!!");
 
+                var area = document.getElementById("tests-results");
+                area.value = data;
+
+            }).
+            error(function(data, status, headers, config) {
+                alert("Error se desio: " +  status);
+               
+            });
+
+            
         }, false);
         // dummy DATA - BEGIN
 
