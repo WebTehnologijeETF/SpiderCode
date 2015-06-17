@@ -31,7 +31,7 @@
         var title = document.createElement("div");
         title.classList.add("acem-tab-title");
         //title.classList.add("not-selectable");
-        var t_text = document.createTextNode("Tests");
+        var t_text = document.createTextNode("Build & Test");
         title.appendChild(t_text);
 
         testBtn.appendChild(title);
@@ -95,6 +95,8 @@
 
         var startTestBtn = document.getElementById("tests-start");
         startTestBtn.addEventListener('click', function(){
+            $scope.BTresults = null;
+                
             var json = JSON.stringify($scope.task);
             //alert(json);
 
@@ -121,7 +123,9 @@
                 withCredentials : false
             }).
             success(function(data, status, headers, config) {
+                $scope.BTresults = data;
                 alert("Uspjelo!!!: "+ data);
+
                 alert(data);
             }).
             error(function(data, status, headers, config) {
@@ -157,6 +161,18 @@
             curTest = id;
             refreshTestList();
         }, false)
+
+        document.getElementById('tests-check').addEventListener('click', function(){
+            if(!$scope.BTresults){
+                alert("Please first run build & test");
+                return;
+            }
+
+            var area = document.getElementById("tests-results");
+            area.value = $scope.BTresults;
+            
+
+        }, false);
         // dummy DATA - BEGIN
 
        
