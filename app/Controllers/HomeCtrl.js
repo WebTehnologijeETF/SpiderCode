@@ -232,11 +232,14 @@
 
         var showErrorsInEditor = function(output){
             var lines = output.split("\n");
-            var reg = /.*:(\d+): (\w+):(*)/;
+            var reg = /.*:(\d+): (\w+):(.*)/;
             var annotations = [];
 
             for(var i = 0; i < lines.length; i++){
                 var m = reg.exec(lines[i]);
+                
+                if(!m)
+                    continue;
 
                 annotations.push({
                     row: m[1],
