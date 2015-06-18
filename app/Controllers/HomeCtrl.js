@@ -249,7 +249,7 @@
             }
 
             var session = $scope.manager.editor.getSession();
-            session.setAnnotation(annotations);
+            session.setAnnotations(annotations);
         }
  // DUMMY DATA END 
         $scope.openInEditor = function(file)
