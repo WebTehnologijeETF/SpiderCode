@@ -24,7 +24,10 @@
          		if(getFolderContentsObserverCallbacks.indexOf(callback) < 0)
          		getFolderContentsObserverCallbacks.push(callback);
          	},
-
+         	resetObserverCallbacks: function(){
+         		getTreeObserverCallbacks = [];
+		 		getFolderContentsObserverCallbacks = [];
+         	},
 			getProjects: function(){
 				return Projects;
 			},

@@ -4,7 +4,7 @@
    var HomeCtrl = function($scope, fileManager, $http) {
     //services - begin
         $scope.ProjectFactory = fileManager.getProjectFactory();
-
+        $scope.ProjectFactory.resetObserverCallbacks();
        // alert(typeof(JSZip)); 
         //alert(JSZip);
         var eDom = document.getElementById("editor");
