@@ -100,7 +100,12 @@
         var startTestBtn = document.getElementById("tests-start");
         startTestBtn.addEventListener('click', function(){
             $scope.instance = null;
-                
+             
+            if($scope.task.run === true){
+                $scope.task.run = "true";
+            } else if ($scope.task.run === false){
+                $scope.task.run = "false";
+            }
             var json = JSON.stringify($scope.task);
             //alert(json);
 
