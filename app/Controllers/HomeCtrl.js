@@ -213,7 +213,7 @@
             showErrorsInEditor(data.status.compile_result.output);
 
             var run = document.getElementById("tests-run");
-            if(typeof data.status.run_result === "object"){
+            if(typeof data.status.run_result.status != "undefined"){
                 run.style.display = "block";
 
                 var runStatus = document.getElementById("tests-run-result-status");
