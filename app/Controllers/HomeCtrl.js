@@ -242,7 +242,7 @@
                     continue;
 
                 annotations.push({
-                    row: m[1],
+                    row: m[1]-1,
                     type: m[2],
                     text: m[3],
                 })
