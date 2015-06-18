@@ -124,7 +124,7 @@ function Test(){
 	this.global_above_main = "";
 	this.global_top = "";
 	this.running_params = { "timeout": 10, "vmem": 1000000, "stdin": "" };
-	this.expected = []; 
+	this.expected = [""]; 
 	this.expected_exception = false;
 	this.expected_crash = false;
 	this.ignore_whitespace = false;

@@ -187,14 +187,9 @@
             }).success(function(data, status, headers, config) {
                 
                 var div = document.getElementById("buildResultDiv");
-                if(data.status.code === "STA009"){
-                    div.style.display = "block";
-                    showBuildResults(data);
-                    alert("Check build & test results");    
-                } else {
-                    div.style.display = "none";
-                    alert("Build & test isn't finnished yet. Status: " + data.status.message);
-                }
+                showBuildResults(data);
+                alert("Check build & test results");    
+                
             }).
             error(function(data, status, headers, config) {
                 alert("There is error in build and test: " +  status);
@@ -206,19 +201,53 @@
         // dummy DATA - BEGIN
 
        var showBuildResults = function(data){
+            var buildStatus = document.getElementById("tests-build-status");
+            buildStatus.innerHTML = data.status.message;
+
             var compileStatus = document.getElementById("tests-compile-result-status");
             compileStatus.innerHTML = data.status.compile_result.status == 1 ? "Uspješno" : "Nije uspjelo";
 
             var compileOutput = document.getElementById("tests-compile-result-output");
             compileOutput.value = data.status.compile_result.output;
 
-            var runStatus = document.getElementById("tests-run-result-status");
-            runStatus.innerHTML = data.status.run_result.status == 1 ? "Uspješno" : "Nije uspjelo";
+            showErrorsInEditor(data.status.compile_result.output);
 
-            var runOutput = document.getElementById("tests-run-result-output");
-            runOutput.value = data.status.run_result.output;
+            var run = document.getElementById("tests-run");
+            if(typeof data.status.run_result === "object"){
+                run.style.display = "block";
+
+                var runStatus = document.getElementById("tests-run-result-status");
+                runStatus.innerHTML = data.status.run_result.status == 1 ? "Uspješno" : "Nije uspjelo";
+
+                var runOutput = document.getElementById("tests-run-result-output");
+                runOutput.value = data.status.run_result.output;
+            } else {
+                run.style.display = "none";
+            }
+
+            var tests = document.getElementById("tests-tests");
+            tests.innerHTML = "";
+
        }
- 
+
+        var showErrorsInEditor = function(output){
+            var lines = output.split("\n");
+            var reg = /.*:(\d+): (\w+):(*)/;
+            var annotations = [];
+
+            for(var i = 0; i < lines.length; i++){
+                var m = reg.exec(lines[i]);
+
+                annotations.push({
+                    row: m[1],
+                    type: m[2],
+                    text: m[3],
+                })
+            }
+
+            var session = $scope.manager.editor.getSession();
+            session.setAnnotation(annotations);
+        }
  // DUMMY DATA END 
         $scope.openInEditor = function(file)
         {
